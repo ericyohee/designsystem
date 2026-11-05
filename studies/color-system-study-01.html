@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#F8F8F6">
 <meta name="description" content="Geniotek Color Study 01: IBM-inspired color infrastructure and ABCD-inspired chromatic identity, evaluated in real information compositions.">
-<title>Geniotek — Color System Study 01</title>
+<title>Geniotek — Color System Study 01.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -197,11 +197,85 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 }
 @media(max-width:390px){.scene-a .division{grid-template-columns:1fr}.scene-a .division>div{min-height:125px}.contrast-controls{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.state-demo{transition:none}}
+
+/* Color Study 01.1: chromatic continuity, not isolated dark/light chapters */
+.scene-b{
+ background:linear-gradient(112deg,#F1F0EA 0%,#EDECF4 58%,#E9E9F5 100%);
+ color:#1A1A1A
+}
+.scene-b .scene-brand{color:#666660}
+.scene-b .reading>p{color:#62625E}
+.scene-b .reading h3{color:#242426}
+.scene-b .evidence{
+ background:linear-gradient(115deg,#232337 0%,#29293D 70%,#32324A 100%);
+ color:#F8F8F6;
+ border-top:0;
+ margin-top:73px;
+ padding:28px 31px 31px;
+ box-shadow:0 1px 0 rgba(0,0,0,.06)
+}
+.scene-b .evidence-head{padding-top:0}
+.scene-b .evidence-table strong{color:#F8F8F6}
+.scene-b .findings{color:#E2E2E2}
+.scene-c{
+ background:linear-gradient(128deg,#F0EFF9 0%,#F7F6FA 42%,#F8F8F6 82%,#FFFFFF 100%);
+ color:#1A1A1A
+}
+.scene-c .reading>p{color:#656560}
+.scene-c .steps{margin-top:0}
+.scene-c .journey-spectrum{
+ grid-column:4/span 9;
+ display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+ column-gap:3px;
+ height:12px;
+ margin:68px 0 22px;
+ overflow:hidden
+}
+.scene-c .journey-spectrum i:nth-child(1){background:#6666FF}
+.scene-c .journey-spectrum i:nth-child(2){background:#8181ED}
+.scene-c .journey-spectrum i:nth-child(3){background:#A2A2E9}
+.scene-c .journey-spectrum i:nth-child(4){background:#C6C6ED}
+.scene-c .journey-spectrum i:nth-child(5){background:#E1E1EF}
+.scene-c .step{
+ border-top:1px solid #CDCDD9;
+ padding:23px 0;
+ transition:background-color .15s ease
+}
+.scene-c .step:last-child{border-bottom:1px solid #CDCDD9}
+.scene-c .step .id{color:#6565B8}
+.scene-c .step .state{color:#52525A}
+.scene-c .step .state i{width:12px;height:3px;border-radius:0;background:#6666FF;vertical-align:3px}
+.scene-c .step:nth-child(2) .state i{background:#8888D7}
+.scene-c .step:nth-child(3) .state i{background:#A7A7D5}
+.gradient-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--column-gap);border-top:1px solid var(--line);padding-top:22px}
+.gradient-case{min-width:0}
+.gradient-number{font:400 11px/17px "IBM Plex Mono",monospace;color:var(--soft);margin-bottom:15px}
+.gradient-swatch{height:145px;border:1px solid rgba(20,20,30,.08)}
+.gradient-swatch.atmospheric{background:linear-gradient(115deg,#F1F0EA,#E8E7F6)}
+.gradient-swatch.evidence-glow{background:linear-gradient(115deg,#232337,#343450)}
+.gradient-swatch.sequential{background:linear-gradient(110deg,#6666FF,#C7C7EF)}
+.gradient-case h3{font:500 21px/1.2 "IBM Plex Sans",sans-serif;letter-spacing:-.033em;margin:19px 0 11px}
+.gradient-case p{font-size:13px;line-height:22px;color:var(--muted);margin:0}
+.gradient-guidance{border-top:1px solid var(--line);margin-top:55px;padding-top:24px;align-items:start}
+.gradient-guidance>.eyebrow{grid-column:1/span 3}
+.gradient-guidance>div{grid-column:4/span 9}
+.gradient-guidance p{font-size:14px;line-height:24px;color:#62625E;margin:0 0 20px;max-width:71ch}
+.gradient-guidance p strong{color:var(--ink);font-weight:600}
+.gradient-guidance a{font-size:12px;color:#4B4BDB;line-height:19px}
+@media(max-width:760px){
+ .scene-b .evidence{margin-top:46px;padding:21px 17px 23px}
+ .scene-c .journey-spectrum{grid-column:1/-1;margin:48px 0 18px}
+ .gradient-gallery{grid-template-columns:1fr;gap:43px}
+ .gradient-swatch{height:105px}
+ .gradient-guidance{row-gap:20px}
+ .gradient-guidance>.eyebrow,.gradient-guidance>div{grid-column:1/-1}
+}
+@media(prefers-reduced-motion:reduce){.scene-c .step{transition:none}}
 </style></head>
 <body><div class="page">
 <aside class="rail">
 <img class="logo" src="../assets/geniotek-primary-logo.svg" width="300" height="85" alt="Geniotek">
-<div class="rail-desc">Color System<br>Identity & Infrastructure<br>Study 01</div>
+<div class="rail-desc">Color System<br>Identity & Infrastructure<br>Study 01.1</div>
 <a href="../index.html#color">← Current Color chapter</a>
 <div class="rail-footer">VISUAL RESEARCH<br>NOT PRODUCTION APPROVED<br>NO PRODUCT PHOTOGRAPHY</div>
 </aside>
@@ -224,7 +298,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
   <div class="scene-annotation"><span>DESIGN RATIONALE</span><p><strong>Brand color as an idea:</strong> the violet-to-charcoal transition expresses the shift from product description to engineering inquiry. It is a conditional storytelling device, not an instruction to split every page into two blocks.</p></div>
  </article>
  <article class="scene">
-  <div class="scene-header"><b>02 / EVIDENCE HIGHLIGHT</b><span>IBM-inspired readable infrastructure · deliberate chromatic signal</span></div>
+  <div class="scene-header"><b>02 / EVIDENCE HIGHLIGHT</b><span>Tonal transition · bounded dark evidence surface</span></div>
   <div class="scene-stage scene-b">
    <div class="scene-brand">GENIOTEK / DIMENSIONAL REVIEW<br>ILLUSTRATIVE DATA ONLY</div>
    <div class="reading"><h3>Make the unknown measurable.</h3><p>When the purpose is technical judgment, neutral contrast should make the evidence easy to scan. Color draws attention only to meaningful exceptions.</p></div>
@@ -236,13 +310,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
     <div class="findings"><span><i></i> Measurement requires verification</span><span>Review state: not confirmed</span></div>
    </div>
   </div>
-  <div class="scene-annotation"><span>DESIGN RATIONALE</span><p><strong>The signal has a job:</strong> restrained neutral layers carry most of the information. A small warm marker highlights a review finding, accompanied by explanatory text so color is never the only indicator.</p></div>
+  <div class="scene-annotation"><span>DESIGN RATIONALE</span><p><strong>The signal has a job:</strong> restrained neutral layers carry most of the information. A small warm marker highlights a review finding. A contained dark evidence field gives the technical data focus while the surrounding page stays light and chromatically connected to its neighbors. Text explains the marker.</p></div>
  </article>
  <article class="scene">
-  <div class="scene-header"><b>03 / SERVICE INFORMATION</b><span>IBM-style semantics · restrained brand accent</span></div>
+  <div class="scene-header"><b>03 / SERVICE INFORMATION</b><span>Chromatic sequence · semantic states remain explicit</span></div>
   <div class="scene-stage scene-c">
    <div class="scene-brand">GENIOTEK / LAUNCH & SCALE</div>
    <div class="reading"><h3>From preparation<br>to repeat orders.</h3><p>Five stages, one consistent engineering perspective. Color identifies the role of each state without turning the page into a promotional dashboard.</p></div>
+   <div class="journey-spectrum" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
    <div class="steps">
      <div class="step"><span class="id">01</span><b>Production Readiness</b><span class="state"><i></i>Defined</span></div>
      <div class="step"><span class="id">02</span><b>Pilot Run</b><span class="state"><i></i>In review</span></div>
@@ -252,12 +327,27 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
    </div>
    <p class="footnote">Demonstration states; no implication that this is a live customer project.</p>
   </div>
-  <div class="scene-annotation"><span>DESIGN RATIONALE</span><p><strong>State is not brand identity:</strong> a small status indicator should be semantically distinct from the brand violet. All states retain text labels. The examples are illustrative, not approved state tokens.</p></div>
+  <div class="scene-annotation"><span>DESIGN RATIONALE</span><p><strong>State is not brand identity:</strong> a restrained violet-family sequence creates more chromatic presence without turning process colors into a traffic-light code. Explicit text labels still communicate states. The examples are illustrative, not approved state tokens.</p></div>
  </article>
 </section>
 
+
+<section class="section" id="gradients">
+<div class="sectionhead cols"><span class="eyebrow">02 / Gradient studies</span><div><h2>Gradients can carry<br>structure, not gloss.</h2><p>Three candidate uses—not a universal decorative gradient. The sequence moves from a subtle transition between sections to a bounded evidence field and a progressive journey strip. The colors below are Geniotek experiments, not borrowed IBM or ABCD palette combinations.</p></div></div>
+<div class="gradient-gallery">
+ <article class="gradient-case"><div class="gradient-number">A / ATMOSPHERE</div><div class="gradient-swatch atmospheric"></div><h3>Continuity</h3><p>Gentle neutral-to-violet transitions help neighboring sections feel related. Keep the foreground text on an independently verified, readable surface.</p></article>
+ <article class="gradient-case"><div class="gradient-number">B / EVIDENCE</div><div class="gradient-swatch evidence-glow"></div><h3>Depth in one region</h3><p>A bounded dark tonal field isolates evidence without turning the entire page black. The gradient supports depth rather than imitating a photographic light effect.</p></article>
+ <article class="gradient-case"><div class="gradient-number">C / SEQUENCE</div><div class="gradient-swatch sequential"></div><h3>Progression</h3><p>An ordered tonal movement joins related steps. The colors do not replace actual process names, statuses or accessible labels.</p></article>
+</div>
+<div class="gradient-guidance cols"><span class="eyebrow">Rules / Source & inference</span><div>
+<p><strong>IBM Design Language.</strong> IBM documents two-color gradients chosen from approved color families, discourages mixing colors outside those families, more than two gradient colors, and color pairs more than two tonal steps apart. Those are IBM-specific palette rules—not Geniotek production tokens. IBM also requires text contrast to pass against the least favorable color anywhere within a gradient, accounting for text reflow and resizing.</p>
+<p><strong>Geniotek proposal, inspired by ABCD.</strong> The gradient must communicate a relation—transition, depth, revelation or sequence—or be omitted. Do not add an omnipresent ambient glow. Limit chromatic intensity within a page and keep type-heavy reading zones neutral enough to be comfortable. If a gradient contains text, verify contrast across every relevant stop and position; the existing flat-color contrast inspector cannot certify a gradient.</p>
+<a href="https://www.ibm.com/design/language/color/" target="_blank" rel="noopener">IBM Color / Gradients & contrast ↗</a> · <a href="https://ablackcover.com/Canban" target="_blank" rel="noopener">ABCD Canban / concept-driven color ↗</a>
+</div></div>
+</section>
+
 <section class="section" id="architecture">
-<div class="sectionhead cols"><span class="eyebrow">02 / Color architecture</span><div><h2>A small palette.<br>A precise vocabulary.</h2><p>IBM's role-based approach is the foundation: maintain the distinction between a semantic token and the value assigned to it. Geniotek should not need dozens of near-identical colors to express clear states and surfaces.</p></div></div>
+<div class="sectionhead cols"><span class="eyebrow">03 / Color architecture</span><div><h2>A small palette.<br>A precise vocabulary.</h2><p>IBM's role-based approach is the foundation: maintain the distinction between a semantic token and the value assigned to it. Geniotek should not need dozens of near-identical colors to express clear states and surfaces.</p></div></div>
 <div class="palette-block">
  <span>CORE / PROVISIONAL</span><div class="palette-right"><h3>Identity anchors</h3><p>The established brand violet remains intact. Other values below include previous working values and new demonstration neutrals; none constitute a frozen production palette.</p>
  <div class="swatch-grid">
@@ -290,7 +380,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 </section>
 
 <section class="section" id="principles">
-<div class="sectionhead cols"><span class="eyebrow">03 / Methodology</span><div><h2>The method should work<br>without opening a link.</h2><p>These are designer/agent-facing rules embedded in the study. Original source approaches are distinguished from Geniotek's proposed use.</p></div></div>
+<div class="sectionhead cols"><span class="eyebrow">04 / Methodology</span><div><h2>The method should work<br>without opening a link.</h2><p>These are designer/agent-facing rules embedded in the study. Original source approaches are distinguished from Geniotek's proposed use.</p></div></div>
 <div class="method cols"><span class="eyebrow">IBM / Infrastructure</span><div class="method-body">
 <h3>Define relationships before color values.</h3>
 <p><strong>Documented IBM Carbon method.</strong> Neutral gray surfaces organize content into layered zones. Base, layer 01, layer 02, and layer 03 each introduce a context for text, borders, fields, and interaction states. The role represented by a token does not change from light to dark; the token's color value does. Core token groups include backgrounds, layers, fields, borders, text, links, icons, focus, and support states. An action color is not interchangeable with support-error or support-warning just because both draw attention.</p>
@@ -313,7 +403,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 </section>
 
 <section class="section" id="contrast">
-<div class="sectionhead cols"><span class="eyebrow">04 / Diagnostics</span><div><h2>Check actual combinations.</h2><p>Color infrastructure must be inspectable. This calculator uses the WCAG 2.x relative luminance equation; it checks a flat foreground/background combination, not gradients, opacity blending, or visual legibility as a whole.</p></div></div>
+<div class="sectionhead cols"><span class="eyebrow">05 / Diagnostics</span><div><h2>Check actual combinations.</h2><p>Color infrastructure must be inspectable. This calculator uses the WCAG 2.x relative luminance equation; it checks a flat foreground/background combination, not gradients, opacity blending, or visual legibility as a whole.</p></div></div>
 <div class="contrast-lab"><h3>Contrast Inspector</h3><p>Enter two 6-digit HEX colors. The demo updates its ratio and the WCAG AA threshold for normal and large text. The checker is a supporting tool, not the first thing a reader encounters.</p>
 <div class="contrast-controls">
 <div><label for="fgHex">Text / foreground</label><input id="fgHex" maxlength="7" value="#FFFFFF" inputmode="text" spellcheck="false" aria-describedby="contrastError"></div>
@@ -323,7 +413,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 </section>
 
 <section class="action-section cols"><span class="eyebrow">Next / Decision</span><div><h2>Approve the behavior.<br>Then freeze the colors.</h2><p>The three compositions and the semantic-color structure are research proposals. We have not decided the final neutral temperature, secondary expressive palette, state-token values, dark-theme necessity or color proportions. Those decisions should follow review of real Geniotek page scenarios.</p><p>No client products or AI-generated pictures are required for the compositions to communicate the brand.</p><a href="../index.html#color">Return to the existing Color chapter ↗</a></div></section>
-<footer class="endnote"><span>GENIOTEK / COLOR STUDY 01</span><span>IBM INFRASTRUCTURE × ABCD IDENTITY / NOT FROZEN</span></footer>
+<footer class="endnote"><span>GENIOTEK / COLOR STUDY 01.1</span><span>IBM INFRASTRUCTURE × ABCD IDENTITY / NOT FROZEN</span></footer>
 </main></div>
 <script>
 (function(){
