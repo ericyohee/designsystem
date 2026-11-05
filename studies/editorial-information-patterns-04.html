@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8f8f6">
+<title>Geniotek — Editorial Information Patterns / Study 04</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@118,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f8f8f6;--ink:#1f1f1e;--body:#454541;--muted:#777772;--quiet:#999994;--line:#dcdcd6;--accent:#6666ff;--g:24px;--pad:clamp(24px,5.2vw,80px);--measure:62ch;--unit:8px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}button{font:inherit}a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.app{max-width:1800px;margin:auto;display:grid;grid-template-columns:clamp(168px,16vw,236px) minmax(0,1fr);min-height:100vh}
+.side{border-right:1px solid var(--line);padding:32px 23px;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.brand{width:min(142px,100%);height:auto;display:block}.side-note{font-size:11px;line-height:18px;letter-spacing:.03em;color:var(--muted);max-width:174px}
+.side-foot{font:400 10px/18px "IBM Plex Mono",monospace;color:var(--quiet);margin-top:auto}.side a{font-size:11px;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:4px}
+.content{min-width:0;padding:0 var(--pad) 100px}
+.headline{display:flex;justify-content:space-between;gap:20px;align-items:baseline;padding:27px 0 19px;border-bottom:1px solid var(--line)}
+.eyebrow,.headline span{font-size:11px;line-height:17px;letter-spacing:.035em;color:var(--muted);font-weight:500;text-transform:uppercase}
+.headline .right{font-weight:400;color:var(--quiet)}
+.canvas{position:relative;isolation:isolate;--cols:repeat(12,minmax(0,1fr))}
+.grid{display:grid;grid-template-columns:var(--cols);column-gap:var(--g)}
+.hero{padding:85px 0 100px}
+.hero .eyebrow{grid-column:1/span 3;align-self:start}
+.hero h1{grid-column:4/span 9;font-size:clamp(52px,6.4vw,100px);font-weight:500;letter-spacing:-.071em;line-height:1.015;margin:0;max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{grid-column:4/span 7;font-size:17px;line-height:26px;color:var(--muted);max-width:44ch;margin:30px 0 0}
+.study{border-top:1px solid var(--ink);padding:24px 0 110px}
+.study-top{align-items:start;min-height:98px}
+.study-top .eyebrow{grid-column:1/span 3}
+.study-top h2{grid-column:4/span 9;font-size:clamp(32px,3.4vw,52px);font-weight:500;letter-spacing:-.055em;line-height:1.12;margin:0}
+.caption{font-size:12px;line-height:19px;color:var(--muted);margin:0}
+.reading .article{grid-column:4/span 7;max-width:var(--measure)}
+.article h3{font-size:clamp(25px,2.8vw,39px);font-weight:500;line-height:1.2;letter-spacing:-.042em;margin:0 0 26px}
+.article p{font-size:16px;line-height:26px;color:var(--body);margin:0 0 24px}
+.article p:last-child{margin-bottom:0}
+.reading .margin-note{grid-column:11/span 2;font-size:11px;line-height:18px;color:var(--quiet);margin:0}
+.parallel .parallel-intro{grid-column:4/span 7;font-size:15px;line-height:24px;color:var(--muted);margin:0 0 40px}
+.parallel-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--g);border-top:1px solid var(--line)}
+.parallel-item{padding:23px 0 2px;min-width:0}
+.parallel-item h3{font-size:clamp(21px,2.2vw,31px);font-weight:500;line-height:1.21;letter-spacing:-.04em;margin:0 0 18px}
+.parallel-item p{font-size:15px;line-height:24px;color:var(--body);max-width:30ch;margin:0 0 18px}
+.parallel-item small{font-size:11px;line-height:17px;color:var(--quiet)}
+.number-focus{padding-bottom:110px}
+.number-intro{grid-column:4/span 7;color:var(--muted);font-size:15px;line-height:24px;max-width:45ch;margin:0 0 56px}
+.metric-major{grid-column:4/span 5;align-self:end}
+.metric-minor{grid-column:10/span 3;align-self:end;margin-bottom:9px}
+.metric-major .metric{font:500 clamp(65px,7.7vw,124px)/1.02 "IBM Plex Sans",sans-serif;letter-spacing:-.07em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.metric-minor .metric{font:400 clamp(32px,3vw,48px)/1.1 "IBM Plex Mono",monospace;letter-spacing:-.05em;white-space:nowrap}
+.metric .unit{font-size:.22em;letter-spacing:0;vertical-align:baseline;margin-left:.35em;color:var(--muted);font-weight:400}
+.metric-major .explain,.metric-minor .explain{font-size:13px;line-height:20px;color:var(--muted);margin:17px 0 0}
+.metric-rule{grid-column:4/-1;border-top:1px solid var(--line);margin:26px 0 0}
+.metric-foot{grid-column:4/span 8;font:400 11px/18px "IBM Plex Mono",monospace;color:var(--quiet);margin:19px 0 0}
+.dense-top{grid-column:4/span 7;margin:0 0 34px}
+.dense-top h3{font-size:28px;letter-spacing:-.04em;line-height:1.2;font-weight:500;margin:0 0 14px}
+.dense-top p{font-size:14px;line-height:22px;color:var(--muted);margin:0;max-width:52ch}
+.specification{border-top:1px solid var(--line)}
+.specification .spec{padding:18px 0;align-items:baseline;border-bottom:1px solid var(--line)}
+.spec .key{grid-column:4/span 4;font-size:14px;line-height:22px;color:var(--muted)}
+.spec .val{grid-column:8/span 5;font:400 15px/23px "IBM Plex Mono",monospace;color:var(--ink)}
+.spec .val.plain{font-family:"IBM Plex Sans",sans-serif}
+.flow-lead{grid-column:4/span 7;font-size:15px;line-height:24px;color:var(--muted);margin:0 0 35px;max-width:44ch}
+.steps{border-top:1px solid var(--line)}
+.steps .step{border-bottom:1px solid var(--line);padding:20px 0;align-items:baseline}
+.step .id{grid-column:1/span 3;font:400 12px/18px "IBM Plex Mono",monospace;color:var(--quiet)}
+.step strong{grid-column:4/span 4;font-size:19px;line-height:26px;font-weight:500;letter-spacing:-.02em}
+.step p{grid-column:8/span 5;margin:0;color:var(--muted);font-size:14px;line-height:22px}
+.mixed{padding-bottom:125px}
+.mixed .thesis{grid-column:4/span 9;max-width:16ch;font-size:clamp(35px,4.6vw,70px);line-height:1.09;letter-spacing:-.063em;font-weight:500;margin:0 0 55px}
+.mixed .prose{grid-column:4/span 6;margin:0;max-width:44ch;color:var(--body);font-size:16px;line-height:26px}
+.mixed .evidence{grid-column:11/span 2;align-self:start;border-top:1px solid var(--line);padding-top:14px;font-size:12px;line-height:19px;color:var(--muted)}
+.mixed .evidence b{display:block;font:400 24px/1.2 "IBM Plex Mono",monospace;letter-spacing:-.04em;color:var(--ink);margin-bottom:8px}
+.sources{border-top:1px solid var(--line);padding:27px 0 0}
+.sources h2{grid-column:1/span 3;font-size:11px;line-height:17px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:0}
+.sources .source-list{grid-column:4/span 9;display:grid;grid-template-columns:1fr 1fr;gap:10px 26px}
+.sources a{font-size:12px;line-height:20px;color:var(--muted);text-decoration-thickness:1px;text-underline-offset:3px}
+.sources p{grid-column:4/span 9;font-size:12px;line-height:20px;color:var(--quiet);margin:18px 0 0;max-width:65ch}
+.end{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);margin-top:100px;padding-top:18px;font:400 11px/18px "IBM Plex Mono",monospace;color:var(--quiet)}
+.overlay{position:absolute;inset:0;display:none;grid-template-columns:var(--cols);column-gap:var(--g);pointer-events:none;z-index:5}
+.overlay i{min-width:0;background:rgba(102,102,255,.052);border-inline:1px solid rgba(102,102,255,.19)}
+.grid-on .overlay{display:grid}
+.control{position:fixed;right:22px;bottom:22px;z-index:20}
+.control button{border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:40px;padding:10px 16px;font-size:12px;line-height:18px;cursor:pointer}
+.control button[aria-pressed=true]{background:#4949b8;border-color:#4949b8}
+@supports(text-box-trim:trim-start){.hero h1{text-box-trim:trim-start;text-box-edge:cap text}}
+@media(max-width:1080px){:root{--g:18px}.metric-major .metric{font-size:clamp(58px,6.3vw,90px)}.metric-minor .metric{font-size:clamp(26px,2.6vw,38px)}.spec .key{grid-column:4/span 4}.spec .val{grid-column:8/span 5}}
+@media(max-width:720px){.app{display:block}.side{border-right:0;border-bottom:1px solid var(--line);padding:19px 22px;flex-direction:row;align-items:center;gap:20px}.brand{width:96px}.side-note{font-size:10px;line-height:16px;max-width:none}.side-foot,.side a{display:none}.content{padding:0 22px 65px}.headline{padding:18px 0}.headline .right{display:none}.canvas{--cols:repeat(4,minmax(0,1fr));--g:12px}.hero{padding:60px 0 76px}.hero .eyebrow,.hero h1,.hero p{grid-column:1/-1}.hero h1{font-size:clamp(48px,10vw,72px);margin-top:22px}.hero p{font-size:15px;line-height:24px;margin-top:26px}.study{padding:21px 0 76px}.study-top{min-height:0;row-gap:16px;margin-bottom:32px}.study-top .eyebrow,.study-top h2{grid-column:1/-1}.study-top h2{font-size:clamp(32px,8vw,46px)}.reading .article,.reading .margin-note,.parallel .parallel-intro,.number-intro,.dense-top,.flow-lead,.mixed .thesis,.mixed .prose,.mixed .evidence{grid-column:1/-1}.reading .margin-note{margin-top:25px}.article h3{font-size:27px}.article p{font-size:15px;line-height:24px}.parallel-items{grid-template-columns:1fr;gap:0}.parallel-item{border-bottom:1px solid var(--line);padding:22px 0}.parallel-item h3{font-size:24px;margin-bottom:10px}.parallel-item p{font-size:14px;line-height:23px;max-width:none}.number-intro{margin-bottom:36px}.metric-major{grid-column:1/-1}.metric-major .metric{font-size:clamp(65px,15vw,106px)}.metric-minor{grid-column:1/-1;margin:40px 0 0}.metric-minor .metric{font-size:clamp(33px,7.5vw,52px)}.metric-rule,.metric-foot{grid-column:1/-1}.specification .spec{padding:16px 0}.spec .key{grid-column:1/span 2;font-size:12px;line-height:19px}.spec .val{grid-column:3/span 2;font-size:12px;line-height:20px;overflow-wrap:anywhere}.steps .step{padding:17px 0;row-gap:6px}.step .id{grid-column:1/span 1}.step strong{grid-column:2/span 3;font-size:17px;line-height:23px}.step p{grid-column:2/span 3;font-size:13px;line-height:21px}.mixed .thesis{font-size:clamp(35px,8.1vw,54px);margin-bottom:28px}.mixed .prose{font-size:15px;line-height:24px}.mixed .evidence{margin-top:30px;max-width:200px}.sources h2,.sources .source-list,.sources p{grid-column:1/-1}.sources .source-list{grid-template-columns:1fr;margin-top:14px}.end{display:block;margin-top:62px}.end span{display:block;margin-bottom:7px}.overlay{grid-template-columns:repeat(4,minmax(0,1fr))}.overlay i:nth-child(n+5){display:none}.control{right:16px;bottom:16px}}
+</style></head><body>
+<div class="app"><aside class="side"><img class="brand" src="../assets/geniotek-primary-logo.svg" alt="Geniotek" width="300" height="85">
+<div class="side-note">Editorial Information<br>Patterns / Study 04</div><a href="./editorial-grid-euc-study-03.html">← Study 03</a>
+<div class="side-foot">ABCD / METHOD RESEARCH<br>DESIGN EXPLORATION<br>NOT PRODUCTION APPROVED</div></aside>
+<main class="content"><header class="headline"><span>GENIOTEK / INFORMATION SYSTEM</span><span class="right">STUDY 04 · SIX READING CONDITIONS</span></header>
+<div class="canvas" id="studyCanvas">
+<section class="hero grid"><span class="eyebrow">A study in editorial order</span><h1>Clarity at<br><em>every density.</em></h1><p>One geometry, six reading conditions. Instead of making every section visually different, this study changes information density while keeping the same typographic discipline.</p></section>
+<section class="study reading" aria-labelledby="reading-title"><div class="study-top grid"><span class="eyebrow">01 / Long-form reading</span><h2 id="reading-title">Editorial text block</h2></div>
+<div class="grid"><article class="article"><h3>Engineering judgment begins before production.</h3>
+<p>A specification defines the expected result, but it does not explain every decision needed to produce it consistently. A supplier may confirm the dimensions, material, and target price while leaving important process assumptions unspoken.</p>
+<p>That gap is where engineering review becomes useful. A small change in material, a tight tolerance, or an untested assembly detail can affect repeatability long before a product reaches the first shipment.</p>
+<p>Geniotek approaches sourcing as an engineering problem: clarify intent, examine manufacturing conditions, and make uncertainty visible. The aim is not to add more paperwork, but to give teams a clearer basis for the next decision.</p></article><p class="margin-note">Editorial example<br>Text measure: 6–7 columns<br>Body leading: 26px</p></div>
+</section>
+<section class="study parallel" aria-labelledby="parallel-title"><div class="study-top grid"><span class="eyebrow">02 / Parallel information</span><h2 id="parallel-title">Three responsibilities</h2></div>
+<div class="grid"><p class="parallel-intro">Three related activities should be understood together without collapsing into one paragraph or becoming three competing cards.</p></div>
+<div class="parallel-items">
+<article class="parallel-item"><h3>Design</h3><p>Define the product’s intended use, interaction, appearance and experience.</p><small>Intent / User experience</small></article>
+<article class="parallel-item"><h3>Engineering</h3><p>Translate the intent into a viable structure, suitable materials and testable requirements.</p><small>Feasibility / Verification</small></article>
+<article class="parallel-item"><h3>Manufacturing</h3><p>Establish a repeatable process that can deliver consistent quality at production scale.</p><small>Process / Repeatability</small></article>
+</div></section>
+<section class="study number-focus" aria-labelledby="numbers-title"><div class="study-top grid"><span class="eyebrow">03 / Numerical emphasis</span><h2 id="numbers-title">Numbers with meaning</h2></div>
+<div class="grid"><p class="number-intro">A primary measure receives the strongest typographic weight. A related tolerance is readable but deliberately secondary. All values below are fictional examples.</p>
+<div class="metric-major"><span class="eyebrow">Nominal diameter</span><div class="metric">24.50<span class="unit">mm</span></div><p class="explain">Illustrative component dimension</p></div>
+<div class="metric-minor"><span class="eyebrow">Tolerance</span><div class="metric">±0.05<span class="unit">mm</span></div><p class="explain">Engineering drawing example</p></div><div class="metric-rule"></div><p class="metric-foot">EXAMPLE DATA / NOT A TEST RESULT OR GENIOTEK PERFORMANCE CLAIM</p></div></section>
+<section class="study dense" aria-labelledby="dense-title"><div class="study-top grid"><span class="eyebrow">04 / Reference density</span><h2 id="dense-title">A technical record</h2></div>
+<div class="grid dense-top-wrap"><div class="dense-top"><h3>Housing — Dimensional Review</h3><p>An inspectable reference should be compact, predictable and easy to scan. Density is appropriate when it supports a concrete lookup task.</p></div></div>
+<div class="specification">
+<div class="spec grid"><span class="key">Part reference</span><span class="val">HS-042 / REV A</span></div>
+<div class="spec grid"><span class="key">Nominal diameter</span><span class="val">Ø 24.50 mm</span></div>
+<div class="spec grid"><span class="key">Tolerance</span><span class="val">± 0.05 mm</span></div>
+<div class="spec grid"><span class="key">Sample size</span><span class="val">n = 30</span></div>
+<div class="spec grid"><span class="key">Material</span><span class="val plain">ABS (illustrative)</span></div>
+<div class="spec grid"><span class="key">Review status</span><span class="val plain">Not verified</span></div>
+</div></section>
+<section class="study sequential" aria-labelledby="sequence-title"><div class="study-top grid"><span class="eyebrow">05 / Sequential information</span><h2 id="sequence-title">From preparation to repeat orders</h2></div>
+<div class="grid"><p class="flow-lead">Here the numbers carry meaning: a process has an order. The numbering is therefore retained, rather than used as a decorative chapter device.</p></div>
+<div class="steps">
+<div class="step grid"><span class="id">01 / 05</span><strong>Production Readiness</strong><p>Clarify requirements and risks before a pilot build.</p></div>
+<div class="step grid"><span class="id">02 / 05</span><strong>Pilot Run</strong><p>Validate the process and quality in a limited build.</p></div>
+<div class="step grid"><span class="id">03 / 05</span><strong>First Batch</strong><p>Transfer verified conditions into initial production.</p></div>
+<div class="step grid"><span class="id">04 / 05</span><strong>Shipment</strong><p>Confirm inspection, packing and delivery readiness.</p></div>
+<div class="step grid"><span class="id">05 / 05</span><strong>Repeat Orders</strong><p>Preserve knowledge and quality across future batches.</p></div>
+</div></section>
+<section class="study mixed" aria-labelledby="mixed-title"><div class="study-top grid"><span class="eyebrow">06 / Editorial contrast</span><h2 id="mixed-title">Statement, context, evidence</h2></div>
+<div class="grid"><h3 class="thesis">Your supplier tells you what's in it. Our engineer tells you what's missing.</h3><p class="prose">An engineer-led review questions what the specification leaves implicit: component fit, process capability, inspection criteria and reliability risks. A claim becomes useful when it leads to a checkable decision.</p><aside class="evidence"><b>±0.05</b>mm tolerance<br>Example inspection criterion, not verified project evidence</aside></div>
+</section>
+<div class="overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+<section class="sources grid" aria-label="Research references"><h2>Research basis</h2><div class="source-list">
+<a href="https://ablackcover.com/EUC" target="_blank" rel="noopener">ABCD / EUC — proportion & order ↗</a>
+<a href="https://ablackcover.com/SNAPSHOT" target="_blank" rel="noopener">ABCD / SNAPSHOT — dense bilingual reading ↗</a>
+<a href="https://ablackcover.com/CHEERS-BOOK-COVER" target="_blank" rel="noopener">ABCD / CHEERS — information first ↗</a>
+<a href="https://ablackcover.com/Smart-Devil" target="_blank" rel="noopener">ABCD / Smart Devil — positive & negative space ↗</a>
+<a href="https://ablackcover.com/Canban" target="_blank" rel="noopener">ABCD / Canban — hierarchy of key information ↗</a>
+<a href="https://ablackcover.com/CAT-BOOK" target="_blank" rel="noopener">ABCD / CAT BOOK — content–form fit ↗</a></div>
+<p>This is an original Geniotek composition study inspired by the methodology described in ABCD's projects, not an ABCD design, endorsement or reproduction of a proprietary grid.</p></section>
+<footer class="end"><span>GENIOTEK / STUDY 04</span><span>VISUAL RESEARCH — TOKENS NOT FROZEN</span></footer></main></div>
+<div class="control"><button type="button" id="toggleGrid" aria-pressed="false" aria-controls="studyCanvas">Show grid</button></div>
+<script>(function(){const b=document.getElementById('toggleGrid'),c=document.getElementById('studyCanvas');b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.textContent=on?'Hide grid':'Show grid';c.classList.toggle('grid-on',on)})})();</script>
+</body></html>
