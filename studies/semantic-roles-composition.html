@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f8f5">
+<title>Geniotek — Semantic Roles Composition Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#20201f;--quiet:#71716d;--subtle:#a4a49d;--paper:#fafaf8;--rule:#deded9;--violet:#6666ff;--u:8px;--g:clamp(16px,2vw,28px);--outer:clamp(24px,5.2vw,88px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",Arial,sans-serif;-webkit-font-smoothing:antialiased}button{font:inherit}a{color:inherit}
+.shell{width:min(100%,1720px);margin:0 auto;min-height:100vh;display:grid;grid-template-columns:clamp(184px,17vw,260px) minmax(0,1fr)}
+.side{padding:40px 28px 36px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:16px}
+.brand{width:128px;max-width:100%;height:auto;display:block}
+.side .eyebrow{color:var(--quiet);font-size:10px;line-height:16px;letter-spacing:.11em;text-transform:uppercase}
+.side .descriptor{font-size:12px;line-height:19px;color:var(--quiet);margin-top:16px;max-width:160px}
+.side .series{margin-top:auto;color:var(--quiet);font-size:11px;line-height:18px}
+.main{padding:0 var(--outer) 104px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:24px;border-bottom:1px solid var(--rule);padding:40px 0 20px;font-size:11px;line-height:16px;color:var(--quiet)}
+.top .status{display:flex;align-items:center;gap:9px}.dot{width:5px;height:5px;border-radius:50%;background:var(--violet)}
+.canvas{position:relative;isolation:isolate}
+.eyebrow{margin:0;font-size:11px;line-height:16px;letter-spacing:.055em;text-transform:uppercase;color:var(--quiet)}
+.hero{padding-top:clamp(68px,9vw,136px);padding-bottom:clamp(64px,8vw,120px);position:relative}
+.hero h1{font-size:clamp(58px,7.3vw,112px);font-weight:500;letter-spacing:-.073em;line-height:1.02;margin:24px 0 0;max-width:12ch}
+.hero h1 em{font-style:normal;color:var(--violet)}
+.hero-note{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--g);margin-top:56px}
+.hero-note p{grid-column:7/span 6;max-width:46ch;color:var(--quiet);font-size:17px;line-height:26px;margin:0}
+.study{--columns:repeat(12,minmax(0,1fr));position:relative}
+.study-heading{display:grid;grid-template-columns:var(--columns);gap:var(--g);align-items:end;padding:24px 0 32px;border-top:1px solid var(--ink)}
+.study-heading h2{grid-column:1/span 6;font-size:clamp(32px,3.6vw,52px);font-weight:500;letter-spacing:-.052em;line-height:1.09;margin:0}
+.study-heading .helper{grid-column:8/span 5;text-align:left;font-size:13px;line-height:20px;color:var(--quiet);margin:0;max-width:34ch}
+.ledger{border-top:1px solid var(--rule)}
+.ledger-row{display:grid;grid-template-columns:var(--columns);gap:var(--g);padding:26px 0 28px;border-bottom:1px solid var(--rule);align-items:baseline}
+.ledger-row strong{grid-column:1/span 6;font-weight:500;font-size:clamp(24px,2.5vw,34px);line-height:1.16;letter-spacing:-.045em}
+.ledger-row span{grid-column:8/span 5;font-size:16px;line-height:24px;color:var(--quiet);max-width:36ch}
+.ledger-row:last-child{border-bottom:0}
+.rules{margin-top:clamp(94px,12vw,164px)}
+.rules .intro{font-size:11px;line-height:16px;letter-spacing:.045em;color:var(--quiet);text-transform:uppercase;margin:0 0 38px}
+.rule-block{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--g);padding:34px 0 44px;border-top:1px solid var(--rule)}
+.rule-block h3{grid-column:1/span 6;font-size:clamp(27px,3vw,42px);font-weight:500;line-height:1.14;letter-spacing:-.05em;margin:0}
+.rule-block p{grid-column:8/span 5;margin:2px 0 0;color:#5e5e5b;font-size:16px;line-height:25px;max-width:39ch}
+.rule-block:last-child{border-bottom:1px solid var(--rule)}
+.footer{display:flex;justify-content:space-between;gap:24px;border-top:1px solid var(--rule);padding-top:18px;margin-top:110px;color:var(--quiet);font-size:11px;line-height:18px}
+.utility{position:fixed;bottom:28px;right:30px;display:flex;align-items:center;gap:8px;z-index:10}
+.utility button{background:#20201f;color:#fff;border:0;border-radius:99px;padding:10px 16px;cursor:pointer;font-size:12px;line-height:18px}
+.utility button:hover{background:#43433e}.utility button[aria-pressed=true]{background:#4949bd}
+.utility button:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+.grid-overlay{display:none;position:absolute;inset:0;pointer-events:none;z-index:8;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--g)}
+.grid-overlay i{background:rgba(102,102,255,.065);border-left:1px solid rgba(102,102,255,.23);border-right:1px solid rgba(102,102,255,.23)}
+.show-grid .grid-overlay{display:grid}
+@supports(text-box-trim:trim-start){.hero h1{text-box-trim:trim-start;text-box-edge:cap text}}
+@media(max-width:900px){.shell{grid-template-columns:156px minmax(0,1fr)}.side{padding:30px 18px}.main{padding-left:28px;padding-right:28px}.hero-note p{grid-column:6/span 7}.study-heading .helper,.ledger-row span,.rule-block p{grid-column:7/span 6}.study-heading h2,.ledger-row strong,.rule-block h3{grid-column:1/span 6}}
+@media(max-width:650px){.shell{display:block}.side{border-right:0;border-bottom:1px solid var(--rule);padding:22px 24px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:14px}.brand{width:92px}.side .eyebrow{font-size:9px}.side .descriptor,.side .series{display:none}.main{padding:0 24px 66px}.top{padding:18px 0}.top .right{display:none}.hero{padding:64px 0 70px}.hero h1{font-size:clamp(51px,11vw,76px);max-width:100%;margin-top:24px}.hero-note{margin-top:28px;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.hero-note p{grid-column:1/-1;font-size:15px;line-height:24px}.study-heading{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:22px 0}.study-heading h2{grid-column:1/-1}.study-heading .helper{grid-column:1/-1;font-size:12px;line-height:20px}.ledger-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:22px 0}.ledger-row strong{grid-column:1/span 2;font-size:22px}.ledger-row span{grid-column:3/span 2;font-size:13px;line-height:21px}.rules{margin-top:76px}.rule-block{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:27px 0}.rule-block h3,.rule-block p{grid-column:1/-1}.rule-block h3{font-size:27px}.rule-block p{font-size:14px;line-height:23px}.footer{margin-top:70px;display:block}.footer span{display:block;margin-bottom:4px}.grid-overlay{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.grid-overlay i:nth-child(n+5){display:none}.utility{right:20px;bottom:20px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side" aria-label="Study information">
+    <img class="brand" src="../assets/geniotek-primary-logo.svg" width="300" height="85" alt="Geniotek">
+    <div class="eyebrow">Design System<br>Composition Studies</div>
+    <p class="descriptor">A single-page calibration before changing any production layout.</p>
+    <p class="series">01 / SEMANTIC ROLES<br>VISUAL RESEARCH · NOT APPROVED</p>
+  </aside>
+  <main class="main">
+    <div class="top"><span>GENIOTEK / TYPE STUDY</span><span class="right status"><span class="dot"></span> COMPOSITION 01 — EXPERIMENTAL</span></div>
+    <div class="canvas" id="canvas">
+      <section class="hero" aria-labelledby="main-title">
+        <p class="eyebrow">TYPE IS A SYSTEM OF DECISIONS</p>
+        <h1 id="main-title">One language.<br>Five distinct <em>jobs.</em></h1>
+        <div class="hero-note"><p>Typeface is a choice. Meaning is the rule. Different kinds of information should not all speak with the same visual voice.</p></div>
+      </section>
+      <section class="study" aria-labelledby="roles-title">
+        <header class="study-heading">
+          <h2 id="roles-title">Semantic roles</h2>
+          <p class="helper">Five roles, one common alignment system. No decorative numbering or competing cards.</p>
+        </header>
+        <div class="ledger">
+          <div class="ledger-row"><strong>display</strong><span>Short brand statement</span></div>
+          <div class="ledger-row"><strong>heading-1 / 2 / 3</strong><span>Document and section hierarchy</span></div>
+          <div class="ledger-row"><strong>body</strong><span>Continuous reading</span></div>
+          <div class="ledger-row"><strong>label / caption</strong><span>Navigation, controls, explanatory notes</span></div>
+          <div class="ledger-row"><strong>data</strong><span>Engineering values and identifiers</span></div>
+        </div>
+      </section>
+      <section class="rules" aria-label="Core rules">
+        <p class="intro">TWO RULES / ONE SHARED GEOMETRY</p>
+        <article class="rule-block">
+          <h3>Choose the<br>role first.</h3>
+          <p>AI should identify the content’s job before assigning numerical styling. Display may be used for short marketing headlines; long product titles normally stay in Sans. Heading size alone does not determine HTML heading structure.</p>
+        </article>
+        <article class="rule-block">
+          <h3>Chinese and<br>font fallback.</h3>
+          <p>IBM Plex Sans SC is the preferred Chinese candidate, but glyph coverage and production assets are not verified. Use the documented fallback: IBM Plex Sans SC → PingFang SC → Microsoft YaHei → sans-serif. Font fallback must not silently alter content or hierarchy.</p>
+        </article>
+      </section>
+      <div class="grid-overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <footer class="footer"><span>COMPOSITION STUDY 01 / SOURCE CONTENT: TYPOGRAPHY V1.0</span><span>REVIEW THE COMPOSITION BEFORE EXTRACTING GRID RULES</span></footer>
+  </main>
+</div>
+<div class="utility"><button type="button" id="gridButton" aria-pressed="false" aria-controls="canvas">Show grid</button></div>
+<script>
+(function(){var button=document.getElementById('gridButton'),canvas=document.getElementById('canvas');button.addEventListener('click',function(){var on=button.getAttribute('aria-pressed')!=='true';button.setAttribute('aria-pressed',String(on));button.textContent=on?'Hide grid':'Show grid';canvas.classList.toggle('show-grid',on)})})();
+</script>
+</body>
+</html>
