@@ -349,16 +349,93 @@
  .principle-title,.principle-row>p{grid-column:1/-1}
  .principle-row>p{font-size:14px;line-height:23px}
 }
+
+/* PHASE 05 — Grid specification research, deliberately isolated from typography and color rules. */
+.grid-spec{--gs-g:clamp(14px,1.6vw,24px);--gs-rule:#dededa;--gs-secondary:#73736f;--gs-quiet:#92928c}
+.grid-spec .pagehead{margin-bottom:54px}
+.grid-spec .pagehead h1{font-size:clamp(60px,8.2vw,124px);line-height:1.02;letter-spacing:-.074em}
+.grid-spec .pagehead .lead{max-width:665px}
+.grid-spec .gs-kicker{font:500 11px/16px "IBM Plex Sans",sans-serif;letter-spacing:.025em;color:var(--gs-secondary)}
+.grid-spec .gs-provenance{display:grid;grid-template-columns:1fr 2fr auto;gap:var(--gs-g);align-items:baseline;margin:0 0 88px;padding:15px 0;border-top:1px solid var(--gs-rule);border-bottom:1px solid var(--gs-rule)}
+.grid-spec .gs-provenance p{font-size:13px;line-height:1.5;color:var(--gs-secondary);margin:0}
+.grid-spec .gs-provenance a{font-size:12px;color:#4b4bdb;text-decoration:none;white-space:nowrap}
+.grid-spec .gs-cols{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gs-g)}
+.grid-spec .gs-section-intro{margin:0 0 52px;align-items:start}
+.grid-spec .gs-section-intro>.gs-kicker{grid-column:1/span 3;padding-top:11px}
+.grid-spec .gs-section-intro>div{grid-column:4/span 9}
+.grid-spec .gs-section-intro h2{font:500 clamp(30px,3.3vw,48px)/1.13 "IBM Plex Sans",sans-serif;letter-spacing:-.055em;margin:0 0 21px}
+.grid-spec .gs-section-intro p{font:400 15px/24px "IBM Plex Sans",sans-serif;color:var(--gs-secondary);max-width:61ch;margin:0}
+.grid-spec .gs-margin-top{margin-top:110px;border-top:1px solid var(--gs-rule);padding-top:30px}
+.grid-spec .gs-principles{border-top:1px solid var(--gs-rule)}
+.grid-spec .gs-principle{border-bottom:1px solid var(--gs-rule);padding:21px 0}
+.grid-spec .gs-principle>span{grid-column:4/span 3;font:500 17px/24px "IBM Plex Sans",sans-serif;letter-spacing:-.025em}
+.grid-spec .gs-principle>p{grid-column:7/span 6;font:400 14px/23px "IBM Plex Sans",sans-serif;color:var(--gs-secondary);margin:0;max-width:50ch}
+.grid-spec .gs-pattern{padding:33px 0;border-top:1px solid var(--gs-rule);align-items:start}
+.grid-spec .gs-pattern-name{grid-column:4/span 3}
+.grid-spec .gs-pattern-name>span{font-size:10px;line-height:16px;color:var(--gs-quiet);letter-spacing:.035em}
+.grid-spec .gs-pattern h3{font:500 22px/1.22 "IBM Plex Sans",sans-serif;letter-spacing:-.036em;margin:12px 0 0}
+.grid-spec .gs-reading,.grid-spec .gs-parallel,.grid-spec .gs-record{grid-column:7/span 6}
+.grid-spec .gs-reading strong{font-size:16px;line-height:24px;font-weight:600}
+.grid-spec .gs-reading p{font-size:15px;line-height:24px;color:var(--gs-secondary);margin:10px 0 0}
+.grid-spec .gs-parallel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid-spec .gs-parallel b{font-size:14px;font-weight:500}
+.grid-spec .gs-parallel p{font-size:12px;line-height:19px;color:var(--gs-secondary);margin:10px 0 0}
+.grid-spec .gs-record>div{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--gs-rule)}
+.grid-spec .gs-record>div:first-child{border-top:1px solid var(--gs-rule)}
+.grid-spec .gs-record span{font-size:12px;color:var(--gs-secondary)}
+.grid-spec .gs-record b{font:400 12px/19px "IBM Plex Mono",monospace}
+.grid-spec .gs-record small{display:block;font-size:11px;color:var(--gs-quiet);margin-top:13px;line-height:1.5}
+.grid-spec .gs-values{border-top:1px solid var(--gs-rule)}
+.grid-spec .gs-value{border-bottom:1px solid var(--gs-rule);align-items:baseline;padding:22px 0;row-gap:10px}
+.grid-spec .gs-value>span{grid-column:4/span 4;font:500 16px/24px "IBM Plex Sans",sans-serif}
+.grid-spec .gs-value>strong{grid-column:8/span 2;font:500 29px/1.15 "IBM Plex Sans",sans-serif;letter-spacing:-.04em}
+.grid-spec .gs-value>strong span{font-size:15px;font-weight:400;letter-spacing:0;margin-left:3px}
+.grid-spec .gs-value>p{grid-column:10/span 3;font-size:12px;line-height:19px;color:var(--gs-secondary);margin:0}
+.grid-spec .gs-checks>.gs-kicker{grid-column:1/span 3}
+.grid-spec .gs-checks>div{grid-column:4/span 9}
+.grid-spec .gs-checks p{font-size:15px;line-height:25px;color:var(--gs-secondary);max-width:65ch;margin:0 0 20px}
+.grid-spec .gs-checks a{font-size:13px;color:#4b4bdb;text-decoration:none}
+.grid-spec .gs-footnote{font-size:12px;line-height:1.55;color:var(--gs-quiet);margin:84px 0 0;padding-top:20px;border-top:1px solid var(--gs-rule)}
+@media(max-width:900px){
+ .grid-spec .gs-provenance{grid-template-columns:1fr 2fr}
+ .grid-spec .gs-provenance a{grid-column:2}
+ .grid-spec .gs-pattern-name{grid-column:4/span 4}
+ .grid-spec .gs-reading,.grid-spec .gs-parallel,.grid-spec .gs-record{grid-column:8/span 5}
+ .grid-spec .gs-parallel{grid-template-columns:1fr;gap:12px}
+}
+@media(max-width:700px){
+ .grid-spec .pagehead{margin-bottom:35px}
+ .grid-spec .pagehead h1{font-size:clamp(54px,12vw,78px)}
+ .grid-spec .gs-provenance{display:block;margin-bottom:60px}
+ .grid-spec .gs-provenance>*{display:block;margin:0 0 12px}
+ .grid-spec .gs-cols{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:12px}
+ .grid-spec .gs-section-intro>.gs-kicker,.grid-spec .gs-section-intro>div,
+ .grid-spec .gs-principle>span,.grid-spec .gs-principle>p,
+ .grid-spec .gs-pattern-name,.grid-spec .gs-reading,.grid-spec .gs-parallel,.grid-spec .gs-record,
+ .grid-spec .gs-checks>.gs-kicker,.grid-spec .gs-checks>div{grid-column:1/-1}
+ .grid-spec .gs-section-intro{row-gap:20px;margin-bottom:33px}
+ .grid-spec .gs-section-intro h2{font-size:34px}
+ .grid-spec .gs-margin-top{margin-top:77px;padding-top:23px}
+ .grid-spec .gs-principle{row-gap:9px}
+ .grid-spec .gs-pattern{row-gap:22px}
+ .grid-spec .gs-parallel{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+ .grid-spec .gs-value>span{grid-column:1/span 2}
+ .grid-spec .gs-value>strong{grid-column:3/span 2}
+ .grid-spec .gs-value>p{grid-column:1/-1}
+ .grid-spec .gs-checks{row-gap:22px}
+ .grid-spec .gs-footnote{margin-top:60px}
+}
+@media(max-width:420px){.grid-spec .gs-parallel{grid-template-columns:1fr}}
 </style></head><body>
 <div class="app"><aside aria-label="Chapter navigation" class="side" id="sidebar">
 <button aria-label="Close navigation" class="mobile-close" id="closeMenu">×</button>
 <div class="wordmark"><img src="./assets/geniotek-primary-logo.svg" width="300" height="85" alt="Geniotek" decoding="async"/></div><div class="side-sub">Website Standards<br/>Editorial Working Draft</div><div class="side-rule"></div>
 <div class="navgroup">Start here</div><nav class="nav"><button aria-current="page" data-page="overview"><span class="num">00</span><span class="lbl">Overview</span><span class="status">↗</span></button></nav>
-<div class="navgroup">Foundations</div><nav class="nav"><button data-page="typography"><span class="num">01</span><span class="lbl">Typography</span><span class="status">↗</span></button><button data-page="color"><span class="num">02</span><span class="lbl">Color</span><span class="status">↗</span></button><button disabled="" title="Planned for later"><span class="num">03</span><span class="lbl">Layout &amp; Grid</span><span class="status">Later</span></button><button disabled=""><span class="num">04</span><span class="lbl">Image &amp; Media</span><span class="status">Later</span></button></nav>
+<div class="navgroup">Foundations</div><nav class="nav"><button data-page="typography"><span class="num">01</span><span class="lbl">Typography</span><span class="status">↗</span></button><button data-page="color"><span class="num">02</span><span class="lbl">Color</span><span class="status">↗</span></button><button data-page="grid"><span class="num">03</span><span class="lbl">Layout &amp; Grid</span><span class="status">↗</span></button><button disabled=""><span class="num">04</span><span class="lbl">Image &amp; Media</span><span class="status">Later</span></button></nav>
 <div class="navgroup">Library &amp; Application</div><nav class="nav"><button disabled=""><span class="num">05</span><span class="lbl">Components</span><span class="status">Later</span></button><button disabled=""><span class="num">06</span><span class="lbl">Sections</span><span class="status">Later</span></button><button disabled=""><span class="num">07</span><span class="lbl">Page Structures</span><span class="status">Later</span></button><button disabled=""><span class="num">08</span><span class="lbl">Motion</span><span class="status">Later</span></button><button disabled=""><span class="num">09</span><span class="lbl">Website Audit</span><span class="status">Later</span></button></nav>
 <div class="side-bottom"><strong>Typography research / v0.7</strong><br/>Typography uses the Notion V1.0 frozen role definitions; website values and responsive demonstrations remain under review. Color remains an earlier study.</div></aside>
 <div class="main"><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><button aria-label="Open navigation" class="mobile-menu" id="openMenu">☰</button><div class="crumb" id="crumb">Standards / Overview</div></div><div class="topright"><span><i class="dot"></i>DESIGN STUDY</span><span>2026 / 11</span></div></header>
-<section class="page active" id="page-overview"><div class="wrap"><div class="pagehead"><div class="eyebrow">Geniotek / Website identity / 00</div><h1>Clarity<br/>by design<span style="color:var(--blue)">.</span></h1><p class="lead">A considered visual reference for the people and AI systems shaping the Geniotek website.</p></div><div class="chapterline"><strong>00 / THE INTENTION</strong><span>One direction, carefully defined</span></div><hr class="rule"/><div class="overview-hero"><div class="overview-kicker">GENIOTEK / VISUAL PRINCIPLE</div><h2>Precision<br/>without <em>noise.</em></h2><div class="overview-foot"><p>Engineering confidence is expressed through hierarchy, restraint and evidence — not decoration.</p><span>01 / VISUAL LANGUAGE</span></div></div><div class="introcolumns"><h3>Not more design.<br/>Better decisions.</h3><p>This document is an editorial working reference, not a finished brand manual. We align on what looks right first, then explain the rules behind it. Each chapter is designed to be read, inspected and revised independently.</p></div><div class="chapterline"><strong>CONTENTS</strong><span>Available / Planned</span></div><div class="indexitems"><div class="indexitem"><small>01 / FOUNDATION</small><button data-go="typography"><b>Typography ↗</b></button><span>Available for review</span></div><div class="indexitem"><small>02 / FOUNDATION</small><button data-go="color"><b>Color ↗</b></button><span>Available for review</span></div><div class="indexitem"><small>03 / FOUNDATION</small><b>Layout &amp; Grid</b><span>Next phase</span></div><div class="indexitem"><small>04 / FOUNDATION</small><b>Image &amp; Media</b><span>Next phase</span></div><div class="indexitem"><small>05–08 / LIBRARY</small><b>UI &amp; Sections</b><span>Next phase</span></div><div class="indexitem"><small>09 / APPLICATION</small><b>Website Audit</b><span>After alignment</span></div></div><div class="editorialnote">Design baseline: IBM Plex Sans (400 / 500 / 600), brand blue #6666FF, action blue #4B4BDB, ink #1A1A1A and risk orange #FF5900, inherited from the original alignment study. All large-scale layout decisions shown here remain proposals.</div></div></section>
+<section class="page active" id="page-overview"><div class="wrap"><div class="pagehead"><div class="eyebrow">Geniotek / Website identity / 00</div><h1>Clarity<br/>by design<span style="color:var(--blue)">.</span></h1><p class="lead">A considered visual reference for the people and AI systems shaping the Geniotek website.</p></div><div class="chapterline"><strong>00 / THE INTENTION</strong><span>One direction, carefully defined</span></div><hr class="rule"/><div class="overview-hero"><div class="overview-kicker">GENIOTEK / VISUAL PRINCIPLE</div><h2>Precision<br/>without <em>noise.</em></h2><div class="overview-foot"><p>Engineering confidence is expressed through hierarchy, restraint and evidence — not decoration.</p><span>01 / VISUAL LANGUAGE</span></div></div><div class="introcolumns"><h3>Not more design.<br/>Better decisions.</h3><p>This document is an editorial working reference, not a finished brand manual. We align on what looks right first, then explain the rules behind it. Each chapter is designed to be read, inspected and revised independently.</p></div><div class="chapterline"><strong>CONTENTS</strong><span>Available / Planned</span></div><div class="indexitems"><div class="indexitem"><small>01 / FOUNDATION</small><button data-go="typography"><b>Typography ↗</b></button><span>Available for review</span></div><div class="indexitem"><small>02 / FOUNDATION</small><button data-go="color"><b>Color ↗</b></button><span>Available for review</span></div><div class="indexitem"><small>03 / FOUNDATION</small><button data-go="grid"><b>Layout &amp; Grid ↗</b></button><span>Specification / in review</span></div><div class="indexitem"><small>04 / FOUNDATION</small><b>Image &amp; Media</b><span>Next phase</span></div><div class="indexitem"><small>05–08 / LIBRARY</small><b>UI &amp; Sections</b><span>Next phase</span></div><div class="indexitem"><small>09 / APPLICATION</small><b>Website Audit</b><span>After alignment</span></div></div><div class="editorialnote">Design baseline: IBM Plex Sans (400 / 500 / 600), brand blue #6666FF, action blue #4B4BDB, ink #1A1A1A and risk orange #FF5900, inherited from the original alignment study. All large-scale layout decisions shown here remain proposals.</div></div></section>
 <section class="page" id="page-typography"><div class="wrap type-v4">
 <div class="pagehead"><h1>Typography<span style="color:var(--blue)">.</span></h1><p class="lead">A practical language for choosing, composing and adapting type across Geniotek’s website.</p><details class="v4-source" aria-label="Typography research provenance"><summary>Specification · V1.0 <span aria-hidden="true">+</span></summary><div class="v4-source-detail"><p>Brand font roles are frozen. Website sizing and responsive behavior remain under review.</p><a href="https://app.notion.com/p/409f324578fc81b6b579ea9415798a3f" rel="noopener" target="_blank">Read specification ↗</a></div></details></div>
 
@@ -446,10 +523,39 @@
 </div>
 </div>
 </div></div></section>
+<section class="page" id="page-grid"><div class="wrap grid-spec">
+<div class="pagehead"><div class="eyebrow">Foundations / Spatial organization</div><h1>Layout &amp;<br>Grid<span style="color:var(--blue)">.</span></h1><p class="lead">Order gives information room to work. A shared geometry supports different reading tasks without dictating their visual expression.</p></div>
+<div class="gs-provenance"><div class="gs-kicker">STUDY STATUS / PHASE 05</div><p>Editorial principles accepted from Study 04.3. Geometric measurements are <strong>candidates under verification</strong>, not production tokens.</p><a href="https://ericyohee.github.io/designsystem/studies/editorial-information-patterns-04.html" target="_blank" rel="noopener">Open approved study ↗</a></div>
+<div class="gs-frame">
+<div class="gs-section-intro gs-cols"><span class="gs-kicker">01 / FOUNDATION</span><div><h2>One geometry.<br>Many reading tasks.</h2><p>Keep the page’s main reference lines stable. Allow text, data, sequences and other information formats to occupy them differently depending on what must be understood.</p></div></div>
+<div class="gs-principles">
+<div class="gs-principle gs-cols"><span>Spatial boundaries</span><p>Reserve a consistent index / annotation region when the page needs one. Content should not drift into it without a deliberate compositional reason.</p></div>
+<div class="gs-principle gs-cols"><span>Information alignment</span><p>Align meaningful text starts, numerical baselines and table fields. Backgrounds may extend beyond those lines without shifting the content inside.</p></div>
+<div class="gs-principle gs-cols"><span>Rhythm by relationship</span><p>Use larger intervals to distinguish separate ideas; smaller intervals to bind a headline, explanation and supporting evidence together.</p></div>
+<div class="gs-principle gs-cols"><span>Modular, not restrictive</span><p>Typography does not govern color, icons, symbols, underlines, interactions or animation. Those systems can independently establish hierarchy and meaning.</p></div>
+</div>
+<div class="gs-section-intro gs-cols gs-margin-top"><span class="gs-kicker">02 / COMPOSITION PATTERNS</span><div><h2>Patterns, not templates.</h2><p>The same column geometry can support open reading, parallel information and dense reference material. These are validated directions to refine, not mandatory page arrangements.</p></div></div>
+<div class="gs-patterns">
+<article class="gs-pattern gs-cols"><div class="gs-pattern-name"><span>OPEN / READING</span><h3>Editorial text</h3></div><div class="gs-reading"><strong>Meaning before scale.</strong><p>A readable text block needs a controlled measure and paragraph rhythm. Adjacent white space is a compositional choice, not missing content.</p></div></article>
+<article class="gs-pattern gs-cols"><div class="gs-pattern-name"><span>PARALLEL / COMPARISON</span><h3>Three columns</h3></div><div class="gs-parallel"><div><b>Design</b><p>Intent and experience</p></div><div><b>Engineering</b><p>Feasibility and testing</p></div><div><b>Manufacturing</b><p>Process repeatability</p></div></div></article>
+<article class="gs-pattern gs-cols"><div class="gs-pattern-name"><span>COMPACT / LOOKUP</span><h3>Technical record</h3></div><div class="gs-record"><div><span>Nominal diameter</span><b>Ø 24.50 mm</b></div><div><span>Tolerance</span><b>± 0.05 mm</b></div><div><span>Material</span><b>ABS / sample</b></div><small>Illustrative values — not a production specification.</small></div></article>
+</div>
+<div class="gs-section-intro gs-cols gs-margin-top"><span class="gs-kicker">03 / CANDIDATE GEOMETRY</span><div><h2>Test the proportions.</h2><p>These parameters describe the working study so the system can be reproduced and challenged. They remain adjustable until tested against mobile, long-copy, bilingual, accessibility and real Geniotek pages.</p></div></div>
+<div class="gs-values">
+<div class="gs-value gs-cols"><span>Desktop column grid</span><strong>12</strong><p>Study baseline, not a required count for every layout</p></div>
+<div class="gs-value gs-cols"><span>Desktop gutter</span><strong>24<span>px</span></strong><p>Candidate; may respond to available content width</p></div>
+<div class="gs-value gs-cols"><span>Space reference</span><strong>8<span>px</span></strong><p>Working unit; optical corrections and readable line heights take priority</p></div>
+<div class="gs-value gs-cols"><span>Mobile column grid</span><strong>4</strong><p>Reflow principle accepted; exact breakpoints still to test</p></div>
+</div>
+<div class="gs-section-intro gs-cols gs-margin-top"><span class="gs-kicker">04 / VALIDATION</span><div><h2>Prove it in context.</h2><p>A grid is successful when content remains orderly after the guides disappear. The next validation must cover actual service pages, different copy lengths and responsive behavior.</p></div></div>
+<div class="gs-checks gs-cols"><span class="gs-kicker">BEFORE FREEZING TOKENS</span><div><p>Verify shared reference lines, reading order, contrast of information density, numerical alignment, 200% browser zoom, text reflow, fallback typography and combined use with color, symbols and interactive states.</p><p><a href="https://ericyohee.github.io/designsystem/studies/editorial-information-patterns-04.html" target="_blank" rel="noopener">Study 04.3 · Six information conditions ↗</a></p></div></div>
+</div>
+<div class="gs-footnote">Review status: compositional direction approved; measurements and final implementation patterns not frozen.</div>
+</div></section>
 <section class="page" id="page-color"><div class="wrap"><div class="pagehead"><div class="eyebrow">Foundations / 02 / <span class="accent">In review</span></div><h1>Color<span style="color:var(--blue)">.</span></h1><p class="lead">Color should have a job. Recognition, contrast and emphasis — never decoration for its own sake.</p></div><div class="chapterline"><strong>02.01 / PRIMARY CONTRAST</strong><span>Established palette</span></div><hr class="rule"/><div class="colorscene"><div class="colorscene-main"><span class="swatch-id">01 / Brand recognition</span><div><div class="hex">#6666FF</div><p>Expresses the brand identity. Use with intentional contrast, especially when setting text.</p></div></div><div class="colorscene-side"><span class="swatch-id">02 / Technical foundation</span><div><div class="hex">#1A1A1A</div><p>Gives the system its editorial and technical character.</p></div></div></div><div class="chapterline"><strong>02.02 / COLOR ROLES</strong><span>Values from original study</span></div><hr class="rule"/><div class="palette"><div class="swatch"><div class="chip" style="background:#6666ff"></div><b>Brand</b><p>#6666FF</p></div><div class="swatch"><div class="chip" style="background:#4b4bdb"></div><b>Action</b><p>#4B4BDB</p></div><div class="swatch"><div class="chip" style="background:#1a1a1a"></div><b>Ink</b><p>#1A1A1A</p></div><div class="swatch"><div class="chip" style="background:#ff5900"></div><b>Risk</b><p>#FF5900</p></div></div><div class="contrast"><div><div class="eyebrow">02.03 / LEGIBILITY</div><h3>Contrast is not optional.</h3><p>The earlier alignment study measured white text on brand blue at approximately 4.28:1 — below the 4.5:1 standard for ordinary small text. It proposed deeper blue #4B4BDB for contrast-sensitive applications.</p><p>These examples illustrate the distinction; final usage rules require review.</p></div><div class="samplebox"><div class="samples blue"><span>BRAND BLUE / CAUTION FOR SMALL TYPE</span><div><b>Explore<br/>our work.</b><span style="display:block;margin-top:8px">#6666FF · 4.28:1*</span></div></div><div class="samples deep"><span>DEEP BLUE / BETTER CONTRAST</span><div><b>Explore<br/>our work.</b><span style="display:block;margin-top:8px">#4B4BDB · 6.31:1*</span></div></div></div></div><div class="editorialnote">* Contrast values are carried forward from the original study for white text. Orange is a risk / attention accent, not a new general-purpose section background. Additional neutrals and state colors remain undecided.</div></div></section>
-<footer class="footer"><span>GENIOTEK / WEBSITE STANDARDS — TYPOGRAPHY STUDY V0.7</span><span>NOT A PRODUCTION STYLE GUIDE · YET</span></footer></div></div>
+<footer class="footer"><span>GENIOTEK / WEBSITE STANDARDS — GRID STUDY PHASE 05</span><span>NOT A PRODUCTION STYLE GUIDE · YET</span></footer></div></div>
 <script>
-(function(){const pages=[...document.querySelectorAll('.page')],navBtns=[...document.querySelectorAll('[data-page]')],side=document.getElementById('sidebar');function activate(name,history=true){if(!document.getElementById('page-'+name))return;pages.forEach(p=>p.classList.toggle('active',p.id==='page-'+name));navBtns.forEach(b=>{if(b.dataset.page===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});document.getElementById('crumb').textContent='Standards / '+(name==='overview'?'Overview':name==='typography'?'Typography':'Color');document.body.classList.remove('nav-open');window.scrollTo({top:0,behavior:'instant'});if(history&&location.hash!=='#'+name)history.replaceState(null,'','#'+name)}navBtns.forEach(b=>b.addEventListener('click',()=>activate(b.dataset.page)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>activate(b.dataset.go)));window.addEventListener('hashchange',()=>activate(location.hash.slice(1),false));if(['overview','typography','color'].includes(location.hash.slice(1)))activate(location.hash.slice(1),false);document.getElementById('openMenu').addEventListener('click',()=>document.body.classList.add('nav-open'));document.getElementById('closeMenu').addEventListener('click',()=>document.body.classList.remove('nav-open'));document.addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('nav-open')});document.querySelectorAll('[data-device]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-device]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.getElementById('typeStage').classList.toggle('mobile',b.dataset.device==='mobile')}));document.getElementById('specToggle').addEventListener('click',e=>{let on=e.currentTarget.getAttribute('aria-pressed')!=='true';e.currentTarget.setAttribute('aria-pressed',String(on));document.getElementById('typeStage').classList.toggle('show-spec',on)});})();
+(function(){const pages=[...document.querySelectorAll('.page')],navBtns=[...document.querySelectorAll('[data-page]')],side=document.getElementById('sidebar');function activate(name,history=true){if(!document.getElementById('page-'+name))return;pages.forEach(p=>p.classList.toggle('active',p.id==='page-'+name));navBtns.forEach(b=>{if(b.dataset.page===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});document.getElementById('crumb').textContent='Standards / '+(name==='overview'?'Overview':name==='typography'?'Typography':name==='grid'?'Layout & Grid':'Color');document.body.classList.remove('nav-open');window.scrollTo({top:0,behavior:'instant'});if(history&&location.hash!=='#'+name)history.replaceState(null,'','#'+name)}navBtns.forEach(b=>b.addEventListener('click',()=>activate(b.dataset.page)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>activate(b.dataset.go)));window.addEventListener('hashchange',()=>activate(location.hash.slice(1),false));if(['overview','typography','color','grid'].includes(location.hash.slice(1)))activate(location.hash.slice(1),false);document.getElementById('openMenu').addEventListener('click',()=>document.body.classList.add('nav-open'));document.getElementById('closeMenu').addEventListener('click',()=>document.body.classList.remove('nav-open'));document.addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('nav-open')});document.querySelectorAll('[data-device]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-device]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.getElementById('typeStage').classList.toggle('mobile',b.dataset.device==='mobile')}));document.getElementById('specToggle').addEventListener('click',e=>{let on=e.currentTarget.getAttribute('aria-pressed')!=='true';e.currentTarget.setAttribute('aria-pressed',String(on));document.getElementById('typeStage').classList.toggle('show-spec',on)});})();
 </script><script>(function(){
  const tabs=[...document.querySelectorAll('[data-type-tab]')];
  function tab(name,focus){tabs.forEach(el=>{let active=el.dataset.typeTab===name;el.setAttribute('aria-selected',active?'true':'false');el.tabIndex=active?0:-1;if(active&&focus)el.focus()});document.querySelectorAll('.typography-panel').forEach(p=>p.hidden=p.id!=='panel-'+name)}
