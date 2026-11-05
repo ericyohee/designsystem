@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F8F8F6">
+<meta name="description" content="Geniotek Color Study 01: IBM-inspired color infrastructure and ABCD-inspired chromatic identity, evaluated in real information compositions.">
+<title>Geniotek — Color System Study 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --paper:#F8F8F6;--white:#fff;--ink:#1A1A1A;--body:#4B4B48;--muted:#777772;--soft:#989892;--line:#DBDBD5;
+ --violet:#6666FF;--action:#4B4BDB;--cream:#F1F0EA;--pale:#EAEAFF;--orange:#FF5900;
+ --column-gap:clamp(14px,1.65vw,26px);--edge:clamp(24px,5vw,82px)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:4px}
+button,input,select{font:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #4B4BDB;outline-offset:4px}
+.page{max-width:1800px;margin:auto;display:grid;grid-template-columns:clamp(170px,16vw,240px) minmax(0,1fr);min-height:100vh}
+.rail{position:relative;border-right:1px solid var(--line);padding:34px 24px;display:flex;flex-direction:column;gap:22px}
+.rail .logo{width:min(145px,100%);height:auto;display:block}
+.rail .rail-desc{color:var(--muted);font-size:11px;line-height:18px}
+.rail a{align-self:flex-start;color:var(--body);font-size:11px;line-height:19px;text-decoration:none;border-bottom:1px solid var(--line)}
+.rail .rail-footer{margin-top:auto;color:var(--soft);font:400 10px/18px "IBM Plex Mono",monospace}
+.main{padding:0 var(--edge) 100px;min-width:0}
+.minihead{display:flex;justify-content:space-between;gap:18px;align-items:baseline;padding:26px 0 18px;border-bottom:1px solid var(--line);font-size:11px;line-height:18px;color:var(--muted)}
+.cols{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--column-gap)}
+.eyebrow{font:500 11px/17px "IBM Plex Sans",sans-serif;letter-spacing:.035em;color:var(--muted);text-transform:uppercase}
+.intro{padding:84px 0 98px;align-items:start}
+.intro .eyebrow{grid-column:1/span 3;padding-top:9px}
+.intro h1{grid-column:4/span 9;font-size:clamp(55px,6.7vw,106px);letter-spacing:-.078em;line-height:1.015;font-weight:500;margin:0}
+.intro h1 span{color:var(--violet)}
+.intro p{grid-column:4/span 8;font-size:17px;line-height:27px;color:var(--muted);max-width:54ch;margin:29px 0 0}
+.intro small{grid-column:4/span 8;margin-top:26px;font:400 11px/18px "IBM Plex Mono",monospace;color:var(--soft)}
+.section{border-top:1px solid var(--ink);padding:25px 0 116px}
+.sectionhead{align-items:start;margin-bottom:47px}
+.sectionhead .eyebrow{grid-column:1/span 3;padding-top:7px}
+.sectionhead>div{grid-column:4/span 9}
+.sectionhead h2{font-size:clamp(32px,3.55vw,54px);letter-spacing:-.055em;line-height:1.12;font-weight:500;margin:0 0 18px}
+.sectionhead p{font-size:15px;line-height:25px;color:var(--muted);max-width:63ch;margin:0}
+.scene-header{border-top:1px solid var(--line);padding:15px 0 19px;display:flex;justify-content:space-between;gap:20px;align-items:baseline;color:var(--muted);font-size:11px;line-height:18px}
+.scene-header b{font-weight:500;color:var(--ink)}
+.scene{margin-bottom:84px;overflow:hidden}
+.scene:first-of-type{margin-top:0}
+.scene .tag{font:500 10px/17px "IBM Plex Sans",sans-serif;letter-spacing:.027em}
+.scene .sub{font-size:13px;line-height:21px}
+.scene .action-link{text-decoration:none;font-size:13px;line-height:20px;display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid currentColor;padding-bottom:5px;width:max-content}
+.scene-stage{min-height:590px}
+.scene-a{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--column-gap);row-gap:0;background:var(--cream);padding:38px 34px 50px}
+.scene-a .scene-brand{grid-column:1/span 3;color:#666660;font-size:11px;letter-spacing:.04em;line-height:18px}
+.scene-a .scene-intro{grid-column:4/span 9;max-width:850px;align-self:start}
+.scene-a h3{font-size:clamp(46px,5.2vw,84px);font-weight:500;letter-spacing:-.07em;line-height:1.09;margin:50px 0 29px;max-width:12ch}
+.scene-a h3 em{font-style:normal;color:var(--violet)}
+.scene-a .scene-intro>p{font-size:16px;line-height:26px;color:#5E5E59;max-width:49ch;margin:0 0 38px}
+.scene-a .action-link{color:#3434A7}
+.scene-a .division{grid-column:4/span 9;display:grid;grid-template-columns:1.4fr 1fr;margin-top:102px;min-height:195px}
+.scene-a .division>div{padding:27px 28px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.scene-a .division .known{background:var(--violet);color:white}
+.scene-a .division .unknown{background:#22221F;color:#fff}
+.scene-a .division span{font-size:10px;letter-spacing:.03em;opacity:.9}
+.scene-a .division strong{font-size:clamp(25px,2.9vw,43px);line-height:1.13;font-weight:500;letter-spacing:-.055em}
+.scene-a .division .known span{color:#fff}
+.scene-a .division .unknown span{color:#dadad7}
+.scene-b{padding:36px 34px 45px;background:#1B1B1C;color:#F8F8F6;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 var(--column-gap)}
+.scene-b .scene-brand{grid-column:1/span 3;color:#aaa9a7;font-size:11px;line-height:18px}
+.scene-b .reading{grid-column:4/span 9}
+.scene-b h3{font-size:clamp(41px,4.5vw,70px);line-height:1.11;letter-spacing:-.062em;font-weight:500;margin:57px 0 28px;max-width:13ch}
+.scene-b .reading>p{color:#b9b9b7;font-size:15px;line-height:24px;max-width:51ch;margin:0}
+.scene-b .evidence{grid-column:4/span 9;margin-top:100px;border-top:1px solid #696967}
+.scene-b .evidence-head{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:25px;padding:18px 0 24px}
+.scene-b .evidence-head span{color:#b9b9b7;font:400 11px/18px "IBM Plex Mono",monospace}
+.scene-b .evidence-head span:last-child{text-align:right;color:#d3d3d0}
+.scene-b .evidence-table{display:grid;grid-template-columns:1fr 1fr}
+.scene-b .evidence-table>div{padding:29px 0 19px;border-bottom:1px solid #555554}
+.scene-b .evidence-table>div:nth-child(2n){padding-left:20px}
+.scene-b .evidence-table .label{color:#b8b8b6;font-size:11px;line-height:17px}
+.scene-b .evidence-table strong{display:block;font:400 clamp(31px,3.6vw,58px)/1.18 "IBM Plex Mono",monospace;letter-spacing:-.055em;margin:12px 0 15px}
+.scene-b .evidence-table strong i{font:400 13px/1 "IBM Plex Mono",monospace;font-style:normal;letter-spacing:0}
+.scene-b .evidence-table small{color:#b3b3b0;font-size:11px}
+.scene-b .findings{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;margin-top:34px;padding-top:13px;color:#dededc;font-size:12px;line-height:20px}
+.scene-b .findings span{display:flex;align-items:center;gap:8px}
+.scene-b .findings i{background:#FF945C;width:7px;height:7px;display:block;border-radius:50%;flex-shrink:0}
+.scene-c{background:#fff;padding:35px 34px 44px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--column-gap)}
+.scene-c .scene-brand{grid-column:1/span 3;font-size:11px;color:#777}
+.scene-c .reading{grid-column:4/span 9}
+.scene-c h3{font-size:clamp(42px,4.5vw,72px);letter-spacing:-.065em;line-height:1.1;font-weight:500;margin:53px 0 21px;max-width:15ch}
+.scene-c .reading>p{font-size:15px;line-height:25px;color:#777;max-width:52ch}
+.scene-c .steps{grid-column:4/span 9;margin:90px 0 0}
+.scene-c .step{display:grid;grid-template-columns:1fr 2fr 1fr;gap:20px;border-top:1px solid #d8d8d3;padding:21px 0;align-items:baseline}
+.scene-c .step:last-child{border-bottom:1px solid #d8d8d3}
+.scene-c .step .id{font:400 12px "IBM Plex Mono",monospace;color:#888}
+.scene-c .step b{font-weight:500;font-size:18px;line-height:25px;letter-spacing:-.02em}
+.scene-c .step .state{font-size:11px;line-height:18px;text-align:right;color:#575751}
+.scene-c .step .state i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--violet);margin-right:8px;vertical-align:1px}
+.scene-c .step:nth-child(2) .state i{background:#777}
+.scene-c .step:nth-child(3) .state i{background:#D45A33}
+.scene-c .footnote{grid-column:4/span 9;margin-top:29px;font-size:12px;line-height:20px;color:#888}
+.scene-annotation{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--column-gap);padding:21px 0 0}
+.scene-annotation span{grid-column:1/span 3;color:var(--soft);font-size:11px;line-height:19px}
+.scene-annotation p{grid-column:4/span 9;font-size:13px;line-height:23px;color:var(--muted);margin:0;max-width:70ch}
+.scene-annotation strong{color:var(--ink);font-weight:500}
+.palette-block{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--column-gap);margin-bottom:47px}
+.palette-block>span{grid-column:1/span 3;color:var(--muted);font:500 11px/17px "IBM Plex Sans",sans-serif;padding-top:5px}
+.palette-block .palette-right{grid-column:4/span 9;min-width:0}
+.palette-block h3{font-size:23px;font-weight:500;letter-spacing:-.035em;margin:0 0 19px}
+.palette-block p{font-size:14px;line-height:23px;color:var(--muted);max-width:65ch;margin:0 0 25px}
+.swatch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.swatch .color{height:91px;border:1px solid rgba(40,40,40,.10)}
+.swatch .swatch-name{font-size:11px;margin-top:10px}
+.swatch .swatch-hex{color:var(--muted);font:400 10px/17px "IBM Plex Mono",monospace;margin-top:3px}
+.palette-table{border-top:1px solid var(--line)}
+.palette-row{display:grid;grid-template-columns:minmax(140px,.85fr) minmax(0,1.15fr);gap:18px;padding:16px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:21px}
+.palette-row b{font-weight:500}
+.palette-row span{color:var(--muted)}
+.palette-row code{font:400 12px/18px "IBM Plex Mono",monospace;color:#5F5FC5}
+.state-lab{background:#fff;border:1px solid var(--line);padding:24px;margin-top:30px}
+.state-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:26px}
+.state-head b{font-size:15px;font-weight:500}.state-head span{font-size:11px;color:var(--soft)}
+.state-controls{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px}
+.state-controls button{background:#fff;border:1px solid #d0d0ca;color:#41413d;padding:9px 13px;font-size:12px;cursor:pointer}
+.state-controls button[aria-pressed="true"]{color:white;background:#252523;border-color:#252523}
+.state-demo{--demo-bg:#F8F8F6;--demo-text:#1A1A1A;--demo-sub:#65655F;--demo-layer:#FFF;--demo-border:#DCDCD6;--demo-action:#4B4BDB;--demo-on-action:#FFF;background:var(--demo-bg);color:var(--demo-text);padding:30px;transition:background .18s ease,color .18s ease;min-height:210px}
+.state-demo[data-theme="dark"]{--demo-bg:#222224;--demo-text:#F3F3F0;--demo-sub:#C1C1BC;--demo-layer:#303033;--demo-border:#505052;--demo-action:#B5B5FF;--demo-on-action:#202020}
+.state-demo .state-caption{font-size:11px;line-height:17px;color:var(--demo-sub);margin:0 0 15px}
+.state-demo .state-card{background:var(--demo-layer);border:1px solid var(--demo-border);padding:23px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:18px}
+.state-demo .state-card h4{font-size:21px;font-weight:500;letter-spacing:-.032em;margin:0 0 8px}
+.state-demo .state-card p{font-size:12px;color:var(--demo-sub);line-height:19px;margin:0;max-width:34ch}
+.state-demo .state-card .demo-cta{background:var(--demo-action);color:var(--demo-on-action);padding:11px 16px;font-size:12px;font-weight:500;white-space:nowrap;text-decoration:none}
+.state-demo .state-card .demo-cta:hover{filter:brightness(.93)}
+.state-demo .state-card .demo-cta:focus-visible{outline:3px solid #FF945C;outline-offset:3px}
+.state-explain{margin-top:13px;color:var(--muted);font-size:12px;line-height:20px}
+.method{border-top:1px solid var(--line);padding:22px 0 30px;align-items:start}
+.method>.eyebrow{grid-column:1/span 3}
+.method .method-body{grid-column:4/span 9}
+.method h3{font-size:clamp(21px,2.3vw,34px);font-weight:500;letter-spacing:-.04em;margin:0 0 24px}
+.method p{font-size:15px;line-height:26px;color:#585853;max-width:73ch;margin:0 0 22px}
+.method strong{font-weight:600;color:var(--ink)}
+.method a{font-size:12px;color:#4B4BDB}
+.method .application{border-top:1px solid var(--line);margin-top:27px;padding-top:19px}
+.method .application b{font-size:12px;font-weight:500}
+.method .application p{font-size:13px;line-height:23px;margin-top:9px}
+.contrast-lab{border-top:1px solid var(--line);margin-top:34px;padding:25px 0 0}
+.contrast-lab h3{font-size:25px;font-weight:500;letter-spacing:-.035em;margin:0 0 18px}
+.contrast-lab>p{max-width:58ch;color:var(--muted);font-size:13px;line-height:22px}
+.contrast-controls{display:grid;grid-template-columns:1fr 1fr;gap:15px;max-width:540px;margin-top:25px}
+.contrast-controls label{display:block;font-size:12px;color:var(--muted);margin-bottom:7px}
+.contrast-controls input{width:100%;padding:11px;font:400 13px "IBM Plex Mono",monospace;border:1px solid var(--line);background:#fff;border-radius:0}
+.contrast-output{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;border-top:1px solid var(--line);margin-top:22px;padding-top:25px}
+.contrast-sample{padding:26px;min-height:145px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.contrast-sample strong{font-size:26px;font-weight:500;letter-spacing:-.04em}
+.contrast-sample span{font-size:13px}
+.contrast-data strong{font:500 40px/1.1 "IBM Plex Mono",monospace;letter-spacing:-.05em;display:block}
+.contrast-data span{display:block;font-size:12px;line-height:20px;margin:12px 0 0;color:var(--muted)}
+.contrast-data small{display:block;font-size:11px;color:var(--soft);line-height:18px;margin-top:10px}
+.action-section{border-top:1px solid var(--ink);padding:26px 0 40px}
+.action-section .eyebrow{grid-column:1/span 3}
+.action-section>div{grid-column:4/span 9}
+.action-section h2{font-size:clamp(32px,3.7vw,52px);font-weight:500;letter-spacing:-.05em;line-height:1.13;margin:0 0 24px}
+.action-section p{font-size:15px;color:var(--muted);line-height:25px;max-width:60ch;margin:0 0 18px}
+.action-section a{font-size:13px;color:#4545A8}
+.endnote{border-top:1px solid var(--line);margin-top:45px;padding:17px 0;display:flex;justify-content:space-between;gap:16px;color:var(--soft);font:400 11px/19px "IBM Plex Mono",monospace}
+@media(max-width:1100px){.scene-a h3{font-size:58px}.scene-b h3,.scene-c h3{font-size:49px}.scene-b .evidence-table strong{font-size:33px}.swatch-grid{gap:8px}}
+@media(max-width:760px){
+ .page{display:block}.rail{border-right:0;border-bottom:1px solid var(--line);padding:18px 22px;flex-direction:row;align-items:center;gap:16px}
+ .rail .logo{width:100px}.rail .rail-desc{font-size:10px;line-height:17px}.rail a,.rail .rail-footer{display:none}
+ .main{padding:0 22px 65px}.minihead{padding:18px 0}.minihead span:last-child{display:none}
+ .cols{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:12px}
+ .intro{padding:65px 0 75px;row-gap:21px}.intro .eyebrow,.intro h1,.intro p,.intro small{grid-column:1/-1}
+ .intro h1{font-size:clamp(51px,12vw,78px)}.intro p{font-size:15px;line-height:24px;margin:0}.intro small{margin-top:0}
+ .section{padding:22px 0 80px}.sectionhead{row-gap:20px;margin-bottom:36px}.sectionhead .eyebrow,.sectionhead>div{grid-column:1/-1}.sectionhead h2{font-size:36px}
+ .scene-header{padding:13px 0;display:block}.scene-header span{display:block;margin-top:4px}
+ .scene{margin-bottom:67px}.scene-stage{min-height:0}
+ .scene-a,.scene-b,.scene-c{grid-template-columns:repeat(4,minmax(0,1fr));gap:0 12px;padding:24px 20px 27px}
+ .scene-a .scene-brand,.scene-a .scene-intro,.scene-a .division,.scene-b .scene-brand,.scene-b .reading,.scene-b .evidence,.scene-c .scene-brand,.scene-c .reading,.scene-c .steps,.scene-c .footnote{grid-column:1/-1}
+ .scene-a h3{font-size:clamp(45px,10vw,68px);margin:54px 0 20px}.scene-a .scene-intro>p{font-size:15px;line-height:23px}
+ .scene-a .division{margin-top:70px;grid-template-columns:1fr 1fr;min-height:160px}
+ .scene-a .division>div{padding:17px}.scene-a .division strong{font-size:clamp(22px,5vw,33px)}
+ .scene-b h3{font-size:clamp(43px,9.5vw,62px);margin:48px 0 20px}.scene-b .evidence{margin-top:65px}
+ .scene-b .evidence-table strong{font-size:clamp(24px,5.5vw,41px)}
+ .scene-b .evidence-table>div:nth-child(2n){padding-left:12px}
+ .scene-b .findings{grid-template-columns:1fr}
+ .scene-c h3{font-size:clamp(42px,9vw,61px);margin-top:51px}.scene-c .steps{margin-top:62px}
+ .scene-c .step{grid-template-columns:30px minmax(0,1fr) auto;gap:9px}.scene-c .step b{font-size:15px;line-height:23px}.scene-c .step .state{font-size:10px}
+ .scene-annotation{grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.scene-annotation span,.scene-annotation p{grid-column:1/-1}
+ .palette-block{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;row-gap:18px}
+ .palette-block>span,.palette-block .palette-right{grid-column:1/-1}
+ .swatch-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.swatch .color{height:66px}.swatch .swatch-name,.swatch .swatch-hex{font-size:9px;overflow-wrap:anywhere}
+ .palette-row{grid-template-columns:1fr;gap:6px}
+ .method>.eyebrow,.method .method-body{grid-column:1/-1}.method{row-gap:15px}.method h3{font-size:28px}.method p{font-size:14px;line-height:24px}
+ .state-card{grid-template-columns:1fr}.state-demo .state-card{grid-template-columns:1fr}
+ .contrast-output{grid-template-columns:1fr}.contrast-controls{grid-template-columns:1fr 1fr}
+ .action-section{row-gap:15px}.action-section .eyebrow,.action-section>div{grid-column:1/-1}
+ .endnote{display:block}.endnote span{display:block;margin-bottom:6px}
+}
+@media(max-width:390px){.scene-a .division{grid-template-columns:1fr}.scene-a .division>div{min-height:125px}.contrast-controls{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.state-demo{transition:none}}
+</style></head>
+<body><div class="page">
+<aside class="rail">
+<img class="logo" src="../assets/geniotek-primary-logo.svg" width="300" height="85" alt="Geniotek">
+<div class="rail-desc">Color System<br>Identity & Infrastructure<br>Study 01</div>
+<a href="../index.html#color">← Current Color chapter</a>
+<div class="rail-footer">VISUAL RESEARCH<br>NOT PRODUCTION APPROVED<br>NO PRODUCT PHOTOGRAPHY</div>
+</aside>
+<main class="main">
+<header class="minihead"><span>GENIOTEK / COLOR RESEARCH</span><span>IBM × ABCD · 05 NOV 2026</span></header>
+<div class="intro cols"><span class="eyebrow">Color / Working study 01</span><h1>Color is<br><span>structure.</span><br>Color is identity.</h1><p>A visual investigation into how Geniotek can make credible engineering information and distinctive brand expression coexist—without relying on confidential products, staged photography or decorative AI imagery.</p><small>RESEARCH ONLY / PALETTE VALUES & CHROMATIC RULES ARE CANDIDATES</small></div>
+
+<section class="section" id="application">
+ <div class="sectionhead cols"><span class="eyebrow">01 / Application gallery</span><div><h2>Three tasks.<br>One visual language.</h2><p>Three original compositions use the same Geniotek subject matter. Their different color densities are intentional responses to content—not mandatory recipes for three page types.</p></div></div>
+ <article class="scene">
+  <div class="scene-header"><b>01 / BRAND EXPRESSION</b><span>ABCD-inspired concept · content-driven color division</span></div>
+  <div class="scene-stage scene-a">
+    <div class="scene-brand">GENIOTEK / SOURCING<br>ENGINEERING PERSPECTIVE</div>
+    <div class="scene-intro"><h3>What you see.<br><em>What you don't.</em></h3><p>A supplier can describe the product. An engineering review helps reveal what the specification does not.</p><a class="action-link" href="#principles">Read the color method <span>↗</span></a></div>
+    <div class="division" aria-label="Two parts of the product investigation">
+      <div class="known"><span>01 / VISIBLE INFORMATION</span><strong>Specification<br>Appearance</strong></div>
+      <div class="unknown"><span>02 / ENGINEERING INQUIRY</span><strong>Tolerance<br>Process risk</strong></div>
+    </div>
+  </div>
+  <div class="scene-annotation"><span>DESIGN RATIONALE</span><p><strong>Brand color as an idea:</strong> the violet-to-charcoal transition expresses the shift from product description to engineering inquiry. It is a conditional storytelling device, not an instruction to split every page into two blocks.</p></div>
+ </article>
+ <article class="scene">
+  <div class="scene-header"><b>02 / EVIDENCE HIGHLIGHT</b><span>IBM-inspired readable infrastructure · deliberate chromatic signal</span></div>
+  <div class="scene-stage scene-b">
+   <div class="scene-brand">GENIOTEK / DIMENSIONAL REVIEW<br>ILLUSTRATIVE DATA ONLY</div>
+   <div class="reading"><h3>Make the unknown measurable.</h3><p>When the purpose is technical judgment, neutral contrast should make the evidence easy to scan. Color draws attention only to meaningful exceptions.</p></div>
+   <div class="evidence"><div class="evidence-head"><span>COMPONENT / HS-042</span><span>EXAMPLE / REV A</span></div>
+    <div class="evidence-table">
+      <div><span class="label">Nominal diameter</span><strong>24.50 <i>mm</i></strong><small>Drawing reference</small></div>
+      <div><span class="label">Tolerance</span><strong>±0.05 <i>mm</i></strong><small>Design specification</small></div>
+    </div>
+    <div class="findings"><span><i></i> Measurement requires verification</span><span>Review state: not confirmed</span></div>
+   </div>
+  </div>
+  <div class="scene-annotation"><span>DESIGN RATIONALE</span><p><strong>The signal has a job:</strong> restrained neutral layers carry most of the information. A small warm marker highlights a review finding, accompanied by explanatory text so color is never the only indicator.</p></div>
+ </article>
+ <article class="scene">
+  <div class="scene-header"><b>03 / SERVICE INFORMATION</b><span>IBM-style semantics · restrained brand accent</span></div>
+  <div class="scene-stage scene-c">
+   <div class="scene-brand">GENIOTEK / LAUNCH & SCALE</div>
+   <div class="reading"><h3>From preparation<br>to repeat orders.</h3><p>Five stages, one consistent engineering perspective. Color identifies the role of each state without turning the page into a promotional dashboard.</p></div>
+   <div class="steps">
+     <div class="step"><span class="id">01</span><b>Production Readiness</b><span class="state"><i></i>Defined</span></div>
+     <div class="step"><span class="id">02</span><b>Pilot Run</b><span class="state"><i></i>In review</span></div>
+     <div class="step"><span class="id">03</span><b>First Batch</b><span class="state"><i></i>Pending</span></div>
+     <div class="step"><span class="id">04</span><b>Shipment</b><span class="state">— Not started</span></div>
+     <div class="step"><span class="id">05</span><b>Repeat Orders</b><span class="state">— Not started</span></div>
+   </div>
+   <p class="footnote">Demonstration states; no implication that this is a live customer project.</p>
+  </div>
+  <div class="scene-annotation"><span>DESIGN RATIONALE</span><p><strong>State is not brand identity:</strong> a small status indicator should be semantically distinct from the brand violet. All states retain text labels. The examples are illustrative, not approved state tokens.</p></div>
+ </article>
+</section>
+
+<section class="section" id="architecture">
+<div class="sectionhead cols"><span class="eyebrow">02 / Color architecture</span><div><h2>A small palette.<br>A precise vocabulary.</h2><p>IBM's role-based approach is the foundation: maintain the distinction between a semantic token and the value assigned to it. Geniotek should not need dozens of near-identical colors to express clear states and surfaces.</p></div></div>
+<div class="palette-block">
+ <span>CORE / PROVISIONAL</span><div class="palette-right"><h3>Identity anchors</h3><p>The established brand violet remains intact. Other values below include previous working values and new demonstration neutrals; none constitute a frozen production palette.</p>
+ <div class="swatch-grid">
+  <div class="swatch"><div class="color" style="background:#6666FF"></div><div class="swatch-name">Brand violet</div><div class="swatch-hex">#6666FF</div></div>
+  <div class="swatch"><div class="color" style="background:#4B4BDB"></div><div class="swatch-name">Action</div><div class="swatch-hex">#4B4BDB</div></div>
+  <div class="swatch"><div class="color" style="background:#1A1A1A"></div><div class="swatch-name">Ink</div><div class="swatch-hex">#1A1A1A</div></div>
+  <div class="swatch"><div class="color" style="background:#F8F8F6"></div><div class="swatch-name">Paper candidate</div><div class="swatch-hex">#F8F8F6</div></div>
+  <div class="swatch"><div class="color" style="background:#DBDBD5"></div><div class="swatch-name">Rule candidate</div><div class="swatch-hex">#DBDBD5</div></div>
+ </div></div>
+</div>
+<div class="palette-block">
+<span>ROLES / BEFORE HEX</span><div class="palette-right"><h3>Semantic structure</h3><p>Use names that survive a theme change. Map each role to an actual color only after readability and contrast have been tested in its intended context.</p>
+<div class="palette-table">
+ <div class="palette-row"><b><code>brand-primary</code></b><span>Recognition, campaign accent; not implicitly safe for small white text</span></div>
+ <div class="palette-row"><b><code>action-primary</code></b><span>Buttons and text links with independently verified foreground color</span></div>
+ <div class="palette-row"><b><code>surface-base / layer-01 / layer-02</code></b><span>Spatial hierarchy through quiet neutral separation; avoid redundant card borders</span></div>
+ <div class="palette-row"><b><code>text-primary / secondary / inverse</code></b><span>Reading hierarchy; theme-specific values, stable semantic names</span></div>
+ <div class="palette-row"><b><code>border-subtle / focus-visible</code></b><span>Structural boundaries and clear keyboard focus</span></div>
+ <div class="palette-row"><b><code>status-success / warning / error / info</code></b><span>Functional meaning; never infer solely from branding colors</span></div>
+ <div class="palette-row"><b><code>expression-highlight</code></b><span>Optional storytelling accent, deliberately separated from functional risk</span></div>
+</div></div></div>
+<div class="palette-block">
+<span>THEME / EXPERIMENT</span><div class="palette-right"><h3>Role persists. Value can change.</h3><p>Try light and dark mappings of a small service information component. This is a functioning semantic-color demo, not an approved alternate website theme.</p>
+<div class="state-lab"><div class="state-head"><b>Semantic theme preview</b><span>INTERACTIVE STUDY</span></div>
+<div class="state-controls"><button type="button" data-theme-select="light" aria-pressed="true">Light mapping</button><button type="button" data-theme-select="dark" aria-pressed="false">Dark mapping</button></div>
+<div class="state-demo" id="themeDemo" data-theme="light"><p class="state-caption">COMPONENT / SERVICE ENQUIRY</p><div class="state-card"><div><h4>Engineering review</h4><p>Bring a product question. We can help clarify the next technical decision.</p></div><a href="#contrast" class="demo-cta">Check contrast ↗</a></div></div>
+<p class="state-explain">UI tokens change their values with the chosen surface. Brand identity remains present through a separately mapped action/accent role.</p>
+</div></div>
+</div>
+</section>
+
+<section class="section" id="principles">
+<div class="sectionhead cols"><span class="eyebrow">03 / Methodology</span><div><h2>The method should work<br>without opening a link.</h2><p>These are designer/agent-facing rules embedded in the study. Original source approaches are distinguished from Geniotek's proposed use.</p></div></div>
+<div class="method cols"><span class="eyebrow">IBM / Infrastructure</span><div class="method-body">
+<h3>Define relationships before color values.</h3>
+<p><strong>Documented IBM Carbon method.</strong> Neutral gray surfaces organize content into layered zones. Base, layer 01, layer 02, and layer 03 each introduce a context for text, borders, fields, and interaction states. The role represented by a token does not change from light to dark; the token's color value does. Core token groups include backgrounds, layers, fields, borders, text, links, icons, focus, and support states. An action color is not interchangeable with support-error or support-warning just because both draw attention.</p>
+<p><strong>Implementation choice for Geniotek.</strong> Use a compact vocabulary of semantic roles, with no fixed number of gradients or accents imposed on page art direction. Keep content-heavy pages mostly neutral, and protect important actions with verified foreground/background combinations. Technical status always includes a text label or symbol in addition to its hue.</p>
+<p><strong>Agent check.</strong> For every color use, state the role: brand identity, foreground text, interactive control, neutral surface, status, data differentiation, or expressive art direction. If a single color is performing conflicting jobs, split the roles even if they temporarily share the same HEX.</p>
+<a target="_blank" rel="noopener" href="https://www.carbondesignsystem.com/building-blocks/foundations/color/overview">Read IBM Carbon color foundation ↗</a> · <a target="_blank" rel="noopener" href="https://www.carbondesignsystem.com/building-blocks/foundations/color/guidelines">Color layering guidelines ↗</a></div></div>
+<div class="method cols"><span class="eyebrow">ABCD / Chromatic identity</span><div class="method-body">
+<h3>Make the composition express the idea.</h3>
+<p><strong>Documented ABCD method.</strong> In Canban, the concept of “half” informed a two-part graphic system, and color differentiation helped identify product attributes. This is not evidence of a universal two-color rule. In EUC, the studio's discussion of proportion, grids, and restrained design argues for order emerging from the subject matter; it does not publish Geniotek-ready color ratios.</p>
+<p><strong>Original proposal for Geniotek.</strong> “Visible / Invisible” is a hypothesis to test on product sourcing, engineering investigation, and factory audit communication. Violet can support the known product intention, while a charcoal or neutral region can support investigation and verification. The exact hue–meaning mapping is still provisional. In other contexts, a technical document may need no violet surface at all.</p>
+<p><strong>Agent check.</strong> Before creating a colored zone, write one sentence saying what information relationship it expresses. Then turn off the color and ask whether hierarchy and reading order still make sense. Avoid making every page a compulsory purple/black split. When expressive color is removed, the fundamental content must remain coherent.</p>
+<a target="_blank" rel="noopener" href="https://ablackcover.com/Canban">Read ABCD / Canban full case ↗</a> · <a target="_blank" rel="noopener" href="https://ablackcover.com/EUC">Read ABCD / EUC ↗</a> · <a target="_blank" rel="noopener" href="https://www.behance.net/NodYoung">Nod Young / Behance ↗</a></div></div>
+<div class="method cols"><span class="eyebrow">Geniotek / Decision framework</span><div class="method-body">
+<h3>One brand; adjustable intensity.</h3>
+<p><strong>Low expression:</strong> engineering reports, support tables, legal and process documentation. Prioritize near-neutral surfaces, precise status markers and strong text contrast.</p>
+<p><strong>Medium expression:</strong> service explanations, landing page modules, case narratives. Preserve a calm structure and use brand violet as a selective anchor or orientation mark.</p>
+<p><strong>High expression:</strong> major hero statements, campaign pages and carefully chosen brand moments. Allow more saturated fields, division or transitions when the brand concept genuinely calls for them.</p>
+<p><strong>Non-negotiables:</strong> check the actual text/background pairing; ensure interactive states are recognizable; do not present color as the only status cue; distinguish real engineering results from fictional demonstration values. Color, typography, grid, signs and motion remain cooperating systems—not a hierarchy where one forbids the other.</p>
+<div class="application"><b>Agent workflow / Before outputting Color CSS</b><p>1. Identify the information task and content density. 2. Select low, medium, or high chromatic intensity with a rationale. 3. Assign semantic roles. 4. Select provisional values and check contrast. 5. Test in representative page compositions, including longer copy and different widths. 6. State the unverified choices rather than claiming they are approved tokens.</p></div></div></div>
+</section>
+
+<section class="section" id="contrast">
+<div class="sectionhead cols"><span class="eyebrow">04 / Diagnostics</span><div><h2>Check actual combinations.</h2><p>Color infrastructure must be inspectable. This calculator uses the WCAG 2.x relative luminance equation; it checks a flat foreground/background combination, not gradients, opacity blending, or visual legibility as a whole.</p></div></div>
+<div class="contrast-lab"><h3>Contrast Inspector</h3><p>Enter two 6-digit HEX colors. The demo updates its ratio and the WCAG AA threshold for normal and large text. The checker is a supporting tool, not the first thing a reader encounters.</p>
+<div class="contrast-controls">
+<div><label for="fgHex">Text / foreground</label><input id="fgHex" maxlength="7" value="#FFFFFF" inputmode="text" spellcheck="false" aria-describedby="contrastError"></div>
+<div><label for="bgHex">Background</label><input id="bgHex" maxlength="7" value="#6666FF" inputmode="text" spellcheck="false" aria-describedby="contrastError"></div>
+</div>
+<div class="contrast-output"><div class="contrast-sample" id="contrastSample"><strong>Engineering matters.</strong><span>Small text sample, contrast-sensitive.</span></div><div class="contrast-data"><strong id="ratio">4.28:1</strong><span id="normalResult">Normal text AA: calculating</span><span id="largeResult">Large text AA: calculating</span><small id="contrastError" role="status">WCAG AA: 4.5:1 normal / 3:1 large. Non-text indicators require separate assessment.</small></div></div></div>
+</section>
+
+<section class="action-section cols"><span class="eyebrow">Next / Decision</span><div><h2>Approve the behavior.<br>Then freeze the colors.</h2><p>The three compositions and the semantic-color structure are research proposals. We have not decided the final neutral temperature, secondary expressive palette, state-token values, dark-theme necessity or color proportions. Those decisions should follow review of real Geniotek page scenarios.</p><p>No client products or AI-generated pictures are required for the compositions to communicate the brand.</p><a href="../index.html#color">Return to the existing Color chapter ↗</a></div></section>
+<footer class="endnote"><span>GENIOTEK / COLOR STUDY 01</span><span>IBM INFRASTRUCTURE × ABCD IDENTITY / NOT FROZEN</span></footer>
+</main></div>
+<script>
+(function(){
+"use strict";
+const themeButtons=[...document.querySelectorAll("[data-theme-select]")],theme=document.getElementById("themeDemo");
+themeButtons.forEach(btn=>btn.addEventListener("click",function(){
+ theme.dataset.theme=btn.dataset.themeSelect;
+ themeButtons.forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));
+}));
+const fg=document.getElementById("fgHex"),bg=document.getElementById("bgHex"),sample=document.getElementById("contrastSample");
+const ratio=document.getElementById("ratio"),normal=document.getElementById("normalResult"),large=document.getElementById("largeResult"),error=document.getElementById("contrastError");
+const valid=s=>/^#[0-9a-f]{6}$/i.test(s);
+function luminance(hex){
+ const rgb=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255);
+ const linear=rgb.map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);
+ return .2126*linear[0]+.7152*linear[1]+.0722*linear[2];
+}
+function update(){
+ const f=fg.value.trim(),b=bg.value.trim();
+ const ok=valid(f)&&valid(b);fg.setAttribute("aria-invalid",String(!valid(f)));bg.setAttribute("aria-invalid",String(!valid(b)));
+ if(!ok){ratio.textContent="—";normal.textContent="Normal text AA: unavailable";large.textContent="Large text AA: unavailable";error.textContent="Use #RRGGBB for both colors.";return;}
+ const x=luminance(f),y=luminance(b),v=(Math.max(x,y)+.05)/(Math.min(x,y)+.05);
+ sample.style.color=f;sample.style.background=b;
+ ratio.textContent=v.toFixed(2)+":1";normal.textContent="Normal text AA: "+(v>=4.5?"PASS":"FAIL");large.textContent="Large text AA: "+(v>=3?"PASS":"FAIL");
+ error.textContent="WCAG 2.x / AA normal 4.5:1 · large 3:1. Actual font sizes and non-text indicators need separate checks.";
+}
+fg.addEventListener("input",update);bg.addEventListener("input",update);update();
+})();
+</script>
+</body></html>
