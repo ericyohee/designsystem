@@ -563,6 +563,7 @@
 .g5-method-text>p{font-size:14px;line-height:24px}
 .g5-agent-note{row-gap:24px}.g5-review{row-gap:20px}
 }
+.g5-view-navigation button{font:400 12px/20px "IBM Plex Sans",sans-serif;border:0;background:transparent;padding:0;color:#666660;cursor:pointer;text-align:left}.g5-view-navigation button:hover{text-decoration:underline}.g5-big-number{font-size:clamp(55px,6vw,94px)}.g5-data-main{grid-column:4/span 6}.g5-data-secondary{grid-column:10/span 3}@media(max-width:700px){.g5-data-main,.g5-data-secondary{grid-column:1/-1}.g5-big-number{font-size:clamp(56px,13vw,82px)}}
 </style></head><body>
 <div class="app"><aside aria-label="Chapter navigation" class="side" id="sidebar">
 <button aria-label="Close navigation" class="mobile-close" id="closeMenu">×</button>
@@ -662,7 +663,7 @@
 </div></div></section>
 <section class="page" id="page-grid"><div class="wrap g5">
   <header class="g5-head g5-cols"><div class="g5-label">FOUNDATIONS / 03<br>COMPOSITION SYSTEM</div><div class="g5-title"><h1>Layout &amp;<br>Grid<span>.</span></h1><p>A framework for relations, not a template for appearances. Design the content first; use geometry to clarify its reading, relationships and proportions.</p><div class="g5-meta">PHASE 05 / REDESIGNED RESEARCH · NOT PRODUCTION APPROVED</div></div></header>
-  <div class="g5-view-navigation" aria-label="Chapter sections"><a href="#grid-gallery">01 / Composition gallery</a><a href="#grid-anatomy">02 / Anatomy</a><a href="#grid-method">03 / Methodology for designers &amp; agents</a><a href="#grid-review">04 / Review &amp; tools</a></div>
+  <div class="g5-view-navigation" aria-label="Chapter sections"><button type="button" data-g5-target="grid-gallery">01 / Composition gallery</button><button type="button" data-g5-target="grid-anatomy">02 / Anatomy</button><button type="button" data-g5-target="grid-method">03 / Methodology for designers &amp; agents</button><button type="button" data-g5-target="grid-review">04 / Review &amp; tools</button></div>
   <div id="grid-gallery" class="g5-part">
     <div class="g5-part-head g5-cols"><span>01 / COMPOSITION GALLERY</span><div><h2>First, the work.</h2><p>Three different reading tasks. The geometry remains disciplined, but the content—not the grid—determines the composition.</p></div></div>
     <article class="g5-example" id="grid-editorial"><div class="g5-example-meta"><span>EXAMPLE A / EDITORIAL</span><span>Reading · Measured paragraphs · Open space</span></div>
@@ -785,6 +786,7 @@ const labFont=document.getElementById('lab-font');if(labFont)labFont.dispatchEve
  const guide=work.querySelector('.g5-guide');if(!guide)return;
  for(let i=0;i<12;i++)guide.appendChild(document.createElement('i'));
  });
+ group.querySelectorAll('[data-g5-target]').forEach(function(button){button.addEventListener('click',function(){const target=document.getElementById(button.dataset.g5Target);if(target)target.scrollIntoView({behavior:'smooth',block:'start'});});});
  group.querySelectorAll('.g5-toggle').forEach(function(button){
  button.addEventListener('click',function(){
  const work=button.closest('.g5-example').querySelector('.g5-work');
