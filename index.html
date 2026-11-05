@@ -94,70 +94,142 @@
 .font-load-panel .font-pass{color:#26734c}.font-load-panel .font-fail{color:#b1482b}
 @media(max-width:720px){.font-load-panel{grid-template-columns:1fr;gap:12px}}
 
-/* V0.5.2 — editorial refinement, avoids adding new display roles */
-:root{--editorial-measure:67ch}
-.indexitems{border-top:0;gap:clamp(12px,2.5vw,30px);grid-template-columns:repeat(3,minmax(0,1fr))}
-.indexitem{min-height:136px;padding:20px 22px 20px 22px!important;border:0!important;background:#f6f6f3;gap:20px}
-.indexitem:first-child{background:#eeeee9}
-.indexitem b{font-size:clamp(19px,1.6vw,24px);line-height:1.18;letter-spacing:-.04em}
-.indexitem small,.indexitem span{font-size:11px;letter-spacing:0}
-.indexitem button{min-height:96px}
-.indexitem button:hover b,.indexitem button:focus-visible b{color:var(--action)}
+/* V0.6 — Editorial Consistency Pass. Guide UI only; specimen typography remains intentionally variable. */
+:root{--guide-ink:#1a1a1a;--guide-muted:#696967;--guide-soft:#f5f5f2;--guide-border:#e3e3e0;--guide-body:15px;--guide-measure:64ch}
+
+/* Chapter overview: generous but deliberate; no pseudo-dashboard tiles. */
+.indexitems{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;border-top:0;margin-top:24px}
+.indexitem,.indexitem:nth-child(even),.indexitem:not(:nth-child(3n)){border:0!important;padding:24px!important;background:#f5f5f2;min-height:146px;gap:16px}
+.indexitem:first-child{background:#eeeef8}
+.indexitem button{min-height:84px;align-items:center}
+.indexitem b{font-size:clamp(19px,1.65vw,24px);font-weight:500;line-height:1.18;letter-spacing:-.035em}
+.indexitem small,.indexitem span{font-size:11px;line-height:1.4;letter-spacing:0}
+.indexitem button:hover b{color:#3939b5}
+
+/* Stable typography for the GUIDE, not for type specimens. */
+.type-v4{--guide-label-size:11px}
 .type-v4 .pagehead{margin-bottom:28px}
-.type-v4 .pagehead h1{margin:16px 0 22px;line-height:1.02;letter-spacing:-.075em}
-.type-v4 .v4-source{margin-bottom:34px;gap:24px}
-.type-v4 .type-tabs{margin:0 0 clamp(40px,5vw,65px);display:flex;align-items:center;gap:4px;padding:5px;background:#f2f2ef;border:0;border-radius:9px}
-.type-v4 .type-tab{flex:1;min-width:0;border:0!important;border-radius:6px;padding:15px 17px;text-align:left;background:transparent;transition:background .18s,color .18s,box-shadow .18s;color:#656563;letter-spacing:0;font-size:11px;line-height:1.3}
-.type-v4 .type-tab span{font-size:clamp(13px,1.15vw,16px);line-height:1.3;letter-spacing:-.025em;margin-top:5px;font-weight:500}
-.type-v4 .type-tab[aria-selected="true"]{background:#fff;color:#171717;box-shadow:0 1px 5px rgba(0,0,0,.08);font-weight:600}
-.type-v4 .type-tab:hover:not([aria-selected="true"]){background:rgba(255,255,255,.6);color:#333}
-.type-v4 .type-tab:focus-visible{outline:2px solid #4b4bdb;outline-offset:1px}
-.type-v4 .chapterline{margin-bottom:24px}
-.type-v4 .chapterline strong{font-size:12px;font-weight:500;letter-spacing:0}
-.type-v4 .chapterline span{font-size:11px;letter-spacing:.015em}
-.type-v4 .v4-intro{gap:7%;margin:26px 0 46px;align-items:center}
-.type-v4 .v4-intro p{line-height:1.55;font-size:15.5px}
-.type-v4 .v4-source p,.type-v4 .v4-family p,.type-v4 .v4-rule-block p,.type-v4 .v4-study-notes p,.type-v4 .v4-decision-grid p,.type-v4 .v5-rule p,.type-v4 .v5-note{line-height:1.55;letter-spacing:0}
-.type-v4 .v4-family{padding:31px 0 37px}
-.type-v4 .v4-family p{max-width:var(--editorial-measure);font-size:15px}
-.type-v4 .v4-family-note{font-size:12px;line-height:1.5;margin-top:14px}
-.type-v4 .v4-roles{margin:25px 0 43px;gap:0 28px;border:0}
-.type-v4 .v4-roles>div{border-bottom:1px solid #e4e4e1;padding:17px 0;gap:4px}
-.type-v4 .v4-roles b{font-size:20px}
-.type-v4 .v4-roles span{font-size:13px;line-height:1.45}
-.type-v4 .v4-rule-block{border:0;padding:26px 0;gap:clamp(20px,5vw,80px)}
-.type-v4 .v4-rule-block h3{font-size:22px;line-height:1.22;margin:12px 0}
-.type-v4 .v4-rule-block p{font-size:14px;max-width:64ch}
-.type-v4 .v4-gap{margin-top:57px}
-.type-v4 .v4-study-notes{gap:16px;margin:20px 0 54px}
-.type-v4 .v4-study-notes>div{border:0;background:#f6f6f3;padding:25px 27px}
-.type-v4 .v4-study-notes h3{font-size:22px;line-height:1.23;margin:13px 0}
-.type-v4 .v4-decision-grid{gap:12px;margin:22px 0 54px;grid-template-columns:1.15fr 1fr 1fr}
-.type-v4 .v4-decision-grid article{border:0;padding:25px 24px 29px;background:#f5f5f2;min-height:225px}
-.type-v4 .v4-decision-grid article:first-child{background:#eaeaf7}
-.type-v4 .v4-decision-grid h3{font-size:22px;line-height:1.25;margin:17px 0}
-.type-v4 .v4-decision-grid p{font-size:14px}
-.type-v4 .v4-endnote{border:0;background:#f5f5f2;padding:22px 26px;margin-top:30px;line-height:1.55}
-.type-v4 .v5-section{border-top:0;padding-top:10px;margin-top:55px}
-.type-v4 .v5-section:nth-of-type(even){background:#f8f8f6;padding:26px clamp(18px,3vw,32px);margin-inline:calc(-1 * clamp(18px,3vw,32px))}
-.type-v4 .v5-rule{border-top:0;border-bottom:1px solid #e6e6e3;padding:16px 0}
-.type-v4 .v5-rule:last-child{border:0}
-.type-v4 .v5-audit{border-top:0;border-bottom:1px solid #e3e3e0}
-.type-v4 .v5-spec{border:0;background:#f4f4f1;padding:clamp(22px,3vw,32px)}
+.type-v4 .pagehead h1{margin:16px 0 20px;line-height:1;letter-spacing:-.073em}
+.type-v4 .pagehead .lead{max-width:680px;font-size:clamp(18px,1.65vw,22px);line-height:1.46}
+.type-v4 .eyebrow,.type-v4 .chapterline strong,.type-v4 .v4-kicker,
+.type-v4 .v4-family-meta,.type-v4 .v5-overline,.type-v4 .v5-tag,
+.type-v4 .v5-label,.type-v4 .v4-label,.type-v4 .v4-lab-overline{
+  font-size:var(--guide-label-size);letter-spacing:.025em;font-weight:500;line-height:1.4
+}
+.type-v4 .chapterline{align-items:baseline;gap:24px;margin:0 0 20px}
+.type-v4 .chapterline strong{font-weight:600}
+.type-v4 .chapterline span{font-size:11px;letter-spacing:0;line-height:1.5;color:#82827e;text-transform:none;text-align:right}
+.type-v4 .v4-source{grid-template-columns:minmax(170px,.85fr) minmax(0,2.3fr) auto;gap:20px;align-items:start;padding:17px 0 20px;margin-bottom:36px}
+.type-v4 .v4-source>span{font-size:11px;letter-spacing:0;line-height:1.5}
+.type-v4 .v4-source p{font-size:13px;line-height:1.5;max-width:70ch}
+.type-v4 .v4-source a{font-size:12px;line-height:1.5}
+.type-v4 .v4-intro{grid-template-columns:minmax(0,1.25fr) minmax(240px,.65fr);gap:clamp(35px,5vw,90px);align-items:center;margin:26px 0 46px}
+.type-v4 .v4-intro h2{font-weight:500;font-size:clamp(45px,5.45vw,76px);line-height:1.04;letter-spacing:-.063em}
+.type-v4 .v4-intro p{font-size:15px;line-height:1.53;color:var(--guide-muted);max-width:40ch}
+
+/* Chapter navigation: restrained editorial control, not an underline tab bar. */
+.type-v4 .type-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;gap:3px;padding:5px;margin:0 0 clamp(44px,5vw,67px);border:0;background:#f2f2ef;border-radius:8px}
+.type-v4 .type-tab{min-width:0;text-align:left;padding:15px 17px;background:transparent;border:0!important;border-radius:5px;color:#70706d;font-size:11px;letter-spacing:0;line-height:1.2;font-weight:500;transition:background .18s,color .18s,box-shadow .18s}
+.type-v4 .type-tab span{display:block;font-size:clamp(13px,1.15vw,16px);font-weight:500;letter-spacing:-.025em;line-height:1.28;margin-top:6px}
+.type-v4 .type-tab[aria-selected="true"]{background:#fff;color:var(--guide-ink);box-shadow:0 1px 5px #0000000c;font-weight:600}
+.type-v4 .type-tab:hover:not([aria-selected="true"]){background:#ffffff99;color:#303030}
+.type-v4 .type-tab:focus-visible{outline:2px solid #4b4bdb;outline-offset:0}
+
+/* Specimens retain font roles. Explanatory copy is intentionally uniform. */
+.type-v4 .v4-family{padding:30px 0 38px}
+.type-v4 .v4-family p,.type-v4 .v4-rule-block p,.type-v4 .v4-study-notes p,
+.type-v4 .v4-decision-grid p,.type-v4 .v5-note,.type-v4 .v5-rule p,
+.type-v4 .v5-audit p,.type-v4 .v5-spec p,.type-v4 .v5-explain{
+  font-size:var(--guide-body);line-height:1.55;letter-spacing:0;color:var(--guide-muted)
+}
+.type-v4 .v4-family p{max-width:var(--guide-measure)}
+.type-v4 .v4-family-note{margin-top:16px;font-size:12px;line-height:1.5}
+.type-v4 .v4-family-meta b{font-size:11px;letter-spacing:0}
+.type-v4 .v4-gap{margin-top:58px}
+.type-v4 .v4-roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;border-top:0;margin:26px 0 42px}
+.type-v4 .v4-roles>div{border-bottom:1px solid var(--guide-border);padding:18px 0;gap:5px}
+.type-v4 .v4-roles b{font-size:21px;line-height:1.2;font-weight:500}
+.type-v4 .v4-roles span{font-size:13px;line-height:1.48}
+.type-v4 .v4-rule-block{border:0;grid-template-columns:minmax(200px,.9fr) minmax(0,1.15fr);gap:clamp(32px,6vw,110px);padding:31px 0}
+.type-v4 .v4-rule-block:nth-of-type(even){padding:31px clamp(22px,3vw,42px);background:#f6f6f4}
+.type-v4 .v4-rule-block h3{font-size:24px;line-height:1.22;font-weight:500;letter-spacing:-.035em;margin:13px 0 0}
+.type-v4 .v4-rule-block p{max-width:60ch;margin:0}
+
+/* Adaptive: one compact compare band, then decision studies with uneven emphasis. */
+.type-v4 .v4-study-notes{grid-template-columns:1.1fr 1fr;gap:16px;margin:24px 0 51px}
+.type-v4 .v4-study-notes>div{border:0;background:#f6f6f3;padding:30px clamp(23px,3vw,36px)}
+.type-v4 .v4-study-notes>div:first-child{background:#ebebf4}
+.type-v4 .v4-study-notes h3{font-size:24px;line-height:1.23;letter-spacing:-.035em;margin:13px 0 14px;font-weight:500}
+.type-v4 .v4-decision-grid{grid-template-columns:1.15fr 1fr 1fr;gap:14px;margin:27px 0 46px}
+.type-v4 .v4-decision-grid article{min-height:218px;background:#f7f7f5;border:0;padding:26px clamp(22px,2.6vw,32px)}
+.type-v4 .v4-decision-grid article:first-child{background:#ededf7}
+.type-v4 .v4-decision-grid article>span{font-size:11px;letter-spacing:.025em;line-height:1.4}
+.type-v4 .v4-decision-grid h3{font-size:23px;font-weight:500;line-height:1.24;letter-spacing:-.03em;margin:16px 0}
+.type-v4 .v4-endnote{border:0;background:#f7f7f5;padding:21px 26px;line-height:1.55;font-size:12px}
+
+/* Website Application: alternate OPEN specimen with soft editorial fields, not repeat separators. */
+.type-v4 .v5-section{margin-top:55px;padding-top:0;border-top:0}
+.type-v4 .v5-section:nth-of-type(even){background:#f8f8f6;padding:32px clamp(22px,3.5vw,42px);margin-inline:calc(-1 * clamp(22px,3.5vw,42px))}
+.type-v4 .v5-lead{font-size:clamp(38px,4vw,57px);font-weight:500;line-height:1.08;letter-spacing:-.052em;margin:18px 0}
+.type-v4 .v5-note{max-width:var(--guide-measure);margin:0 0 24px}
+.type-v4 .v5-grid{gap:18px;margin:28px 0 35px}
+.type-v4 .v5-spec{border:0;background:#f5f5f2;padding:clamp(24px,3vw,36px)}
 .type-v4 .v5-spec.dark{background:#1a1a1a}
-.type-v4 .v5-grid{gap:18px}
-.type-v4 .v5-spec .v5-tag,.type-v4 .v4-family-meta,.type-v4 .v5-overline{letter-spacing:.045em;font-size:11px}
-.type-v4 .v5-micro{border-top:0;padding-top:4px}
-@media(max-width:980px){.type-v4 .type-tab{padding:13px 10px}.type-v4 .v4-decision-grid{grid-template-columns:1fr 1fr}.indexitems{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){.indexitems{grid-template-columns:1fr}.indexitem{min-height:110px}.type-v4 .type-tabs{display:grid;grid-template-columns:1fr 1fr}.type-v4 .type-tab span{font-size:14px}.type-v4 .v4-decision-grid{grid-template-columns:1fr}.type-v4 .v4-study-notes{grid-template-columns:1fr}.type-v4 .v4-rule-block{grid-template-columns:1fr;gap:10px}.type-v4 .v4-intro{grid-template-columns:1fr}.type-v4 .v4-source{grid-template-columns:1fr}}
-.wordmark img{display:block;width:145px;max-width:100%;height:auto;object-fit:contain} .wordmark{line-height:normal}</style></head><body>
+.type-v4 .v5-spec h3{font-size:clamp(26px,3vw,40px);line-height:1.11;letter-spacing:-.04em;margin:28px 0 16px}
+.type-v4 .v5-spec .v5-micro{margin-top:23px;border-top:1px solid #ddddda;padding-top:13px;font-size:12px;line-height:1.52;letter-spacing:0}
+.type-v4 .v5-spec.dark .v5-micro{border-color:#484848}
+.type-v4 .v5-rule{border-top:0;border-bottom:1px solid var(--guide-border);padding:18px 0}
+.type-v4 .v5-rule:last-child{border-bottom:0}
+.type-v4 .v5-rule h4{font-size:14px;line-height:1.4;font-weight:600}
+.type-v4 .v5-audit{border-top:0;border-bottom:1px solid var(--guide-border);padding:20px 0}
+.type-v4 .v5-audit b{font-size:16px;font-weight:500}
+.type-v4 .v5-status{font-size:11px;line-height:1.4;letter-spacing:0}
+.type-v4 .v5-source{padding:23px 28px;font-size:13px;line-height:1.57}
+.type-v4 .v5-choice{gap:8px}
+.type-v4 .v5-choice button{border-radius:4px;font-size:12px}
+.type-v4 .v5-explain{padding:18px 24px;min-height:0}
+
+/* Lab retains functionality, controls look like the same editorial book. */
+.type-v4 .v4-lab-head{font-size:11px;letter-spacing:.015em}
+.type-v4 .v4-lab-caption{font-size:15px;line-height:1.53}
+.type-v4 .v4-lab-controls{font-size:13px}
+.type-v4 .v4-lab-controls label{font-size:12px;letter-spacing:0}
+.type-v4 .v4-lab-warning{font-size:12px;line-height:1.5}
+.type-v4 .font-load-panel{gap:22px}
+.type-v4 .font-load-panel p{font-size:12px;line-height:1.5}
+
+/* Responsive guards: no tiny columns or overflowing headings. */
+@media(max-width:1100px){
+  .type-v4 .v4-source{grid-template-columns:1fr 2fr}
+  .type-v4 .v4-source a{grid-column:2}
+  .type-v4 .v4-decision-grid{grid-template-columns:1fr 1fr}
+  .indexitems{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .type-v4 .v4-intro{grid-template-columns:1fr;gap:19px}
+  .type-v4 .v4-source{grid-template-columns:1fr;gap:8px}
+  .type-v4 .v4-source a{grid-column:auto}
+  .type-v4 .type-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}
+  .type-v4 .type-tab{padding:12px 11px}
+  .type-v4 .type-tab span{font-size:14px}
+  .type-v4 .v4-roles{grid-template-columns:1fr}
+  .type-v4 .v4-rule-block{grid-template-columns:1fr;gap:12px}
+  .type-v4 .v4-study-notes{grid-template-columns:1fr}
+  .type-v4 .v4-decision-grid{grid-template-columns:1fr}
+  .type-v4 .v5-grid{grid-template-columns:1fr}
+  .type-v4 .v5-rule{grid-template-columns:1fr;gap:7px}
+  .indexitems{grid-template-columns:1fr}
+  .indexitem,.indexitem:nth-child(even),.indexitem:not(:nth-child(3n)){min-height:114px;padding:19px 21px!important}
+}
+
+</style></head><body>
 <div class="app"><aside aria-label="Chapter navigation" class="side" id="sidebar">
 <button aria-label="Close navigation" class="mobile-close" id="closeMenu">×</button>
 <div class="wordmark"><img src="./assets/geniotek-primary-logo.svg" width="300" height="85" alt="Geniotek" decoding="async"/></div><div class="side-sub">Website Standards<br/>Editorial Working Draft</div><div class="side-rule"></div>
 <div class="navgroup">Start here</div><nav class="nav"><button aria-current="page" data-page="overview"><span class="num">00</span><span class="lbl">Overview</span><span class="status">↗</span></button></nav>
 <div class="navgroup">Foundations</div><nav class="nav"><button data-page="typography"><span class="num">01</span><span class="lbl">Typography</span><span class="status">↗</span></button><button data-page="color"><span class="num">02</span><span class="lbl">Color</span><span class="status">↗</span></button><button disabled="" title="Planned for later"><span class="num">03</span><span class="lbl">Layout &amp; Grid</span><span class="status">Later</span></button><button disabled=""><span class="num">04</span><span class="lbl">Image &amp; Media</span><span class="status">Later</span></button></nav>
 <div class="navgroup">Library &amp; Application</div><nav class="nav"><button disabled=""><span class="num">05</span><span class="lbl">Components</span><span class="status">Later</span></button><button disabled=""><span class="num">06</span><span class="lbl">Sections</span><span class="status">Later</span></button><button disabled=""><span class="num">07</span><span class="lbl">Page Structures</span><span class="status">Later</span></button><button disabled=""><span class="num">08</span><span class="lbl">Motion</span><span class="status">Later</span></button><button disabled=""><span class="num">09</span><span class="lbl">Website Audit</span><span class="status">Later</span></button></nav>
-<div class="side-bottom"><strong>Typography research / v0.5.3</strong><br/>Typography uses the Notion V1.0 frozen role definitions; website values and responsive demonstrations remain under review. Color remains an earlier study.</div></aside>
+<div class="side-bottom"><strong>Typography research / v0.6</strong><br/>Typography uses the Notion V1.0 frozen role definitions; website values and responsive demonstrations remain under review. Color remains an earlier study.</div></aside>
 <div class="main"><header class="topbar"><div style="display:flex;align-items:center;gap:10px"><button aria-label="Open navigation" class="mobile-menu" id="openMenu">☰</button><div class="crumb" id="crumb">Standards / Overview</div></div><div class="topright"><span><i class="dot"></i>DESIGN STUDY</span><span>2026 / 11</span></div></header>
 <section class="page active" id="page-overview"><div class="wrap"><div class="pagehead"><div class="eyebrow">Geniotek / Website identity / 00</div><h1>Clarity<br/>by design<span style="color:var(--blue)">.</span></h1><p class="lead">A considered visual reference for the people and AI systems shaping the Geniotek website.</p></div><div class="chapterline"><strong>00 / THE INTENTION</strong><span>One direction, carefully defined</span></div><hr class="rule"/><div class="overview-hero"><div class="overview-kicker">GENIOTEK / VISUAL PRINCIPLE</div><h2>Precision<br/>without <em>noise.</em></h2><div class="overview-foot"><p>Engineering confidence is expressed through hierarchy, restraint and evidence — not decoration.</p><span>01 / VISUAL LANGUAGE</span></div></div><div class="introcolumns"><h3>Not more design.<br/>Better decisions.</h3><p>This document is an editorial working reference, not a finished brand manual. We align on what looks right first, then explain the rules behind it. Each chapter is designed to be read, inspected and revised independently.</p></div><div class="chapterline"><strong>CONTENTS</strong><span>Available / Planned</span></div><div class="indexitems"><div class="indexitem"><small>01 / FOUNDATION</small><button data-go="typography"><b>Typography ↗</b></button><span>Available for review</span></div><div class="indexitem"><small>02 / FOUNDATION</small><button data-go="color"><b>Color ↗</b></button><span>Available for review</span></div><div class="indexitem"><small>03 / FOUNDATION</small><b>Layout &amp; Grid</b><span>Next phase</span></div><div class="indexitem"><small>04 / FOUNDATION</small><b>Image &amp; Media</b><span>Next phase</span></div><div class="indexitem"><small>05–08 / LIBRARY</small><b>UI &amp; Sections</b><span>Next phase</span></div><div class="indexitem"><small>09 / APPLICATION</small><b>Website Audit</b><span>After alignment</span></div></div><div class="editorialnote">Design baseline: IBM Plex Sans (400 / 500 / 600), brand blue #6666FF, action blue #4B4BDB, ink #1A1A1A and risk orange #FF5900, inherited from the original alignment study. All large-scale layout decisions shown here remain proposals.</div></div></section>
 <section class="page" id="page-typography"><div class="wrap type-v4">
@@ -235,7 +307,7 @@
 </div>
 </div></div></section>
 <section class="page" id="page-color"><div class="wrap"><div class="pagehead"><div class="eyebrow">Foundations / 02 / <span class="accent">In review</span></div><h1>Color<span style="color:var(--blue)">.</span></h1><p class="lead">Color should have a job. Recognition, contrast and emphasis — never decoration for its own sake.</p></div><div class="chapterline"><strong>02.01 / PRIMARY CONTRAST</strong><span>Established palette</span></div><hr class="rule"/><div class="colorscene"><div class="colorscene-main"><span class="swatch-id">01 / Brand recognition</span><div><div class="hex">#6666FF</div><p>Expresses the brand identity. Use with intentional contrast, especially when setting text.</p></div></div><div class="colorscene-side"><span class="swatch-id">02 / Technical foundation</span><div><div class="hex">#1A1A1A</div><p>Gives the system its editorial and technical character.</p></div></div></div><div class="chapterline"><strong>02.02 / COLOR ROLES</strong><span>Values from original study</span></div><hr class="rule"/><div class="palette"><div class="swatch"><div class="chip" style="background:#6666ff"></div><b>Brand</b><p>#6666FF</p></div><div class="swatch"><div class="chip" style="background:#4b4bdb"></div><b>Action</b><p>#4B4BDB</p></div><div class="swatch"><div class="chip" style="background:#1a1a1a"></div><b>Ink</b><p>#1A1A1A</p></div><div class="swatch"><div class="chip" style="background:#ff5900"></div><b>Risk</b><p>#FF5900</p></div></div><div class="contrast"><div><div class="eyebrow">02.03 / LEGIBILITY</div><h3>Contrast is not optional.</h3><p>The earlier alignment study measured white text on brand blue at approximately 4.28:1 — below the 4.5:1 standard for ordinary small text. It proposed deeper blue #4B4BDB for contrast-sensitive applications.</p><p>These examples illustrate the distinction; final usage rules require review.</p></div><div class="samplebox"><div class="samples blue"><span>BRAND BLUE / CAUTION FOR SMALL TYPE</span><div><b>Explore<br/>our work.</b><span style="display:block;margin-top:8px">#6666FF · 4.28:1*</span></div></div><div class="samples deep"><span>DEEP BLUE / BETTER CONTRAST</span><div><b>Explore<br/>our work.</b><span style="display:block;margin-top:8px">#4B4BDB · 6.31:1*</span></div></div></div></div><div class="editorialnote">* Contrast values are carried forward from the original study for white text. Orange is a risk / attention accent, not a new general-purpose section background. Additional neutrals and state colors remain undecided.</div></div></section>
-<footer class="footer"><span>GENIOTEK / WEBSITE STANDARDS — TYPOGRAPHY STUDY V0.5.3</span><span>NOT A PRODUCTION STYLE GUIDE · YET</span></footer></div></div>
+<footer class="footer"><span>GENIOTEK / WEBSITE STANDARDS — TYPOGRAPHY STUDY V0.6</span><span>NOT A PRODUCTION STYLE GUIDE · YET</span></footer></div></div>
 <script>
 (function(){const pages=[...document.querySelectorAll('.page')],navBtns=[...document.querySelectorAll('[data-page]')],side=document.getElementById('sidebar');function activate(name,history=true){if(!document.getElementById('page-'+name))return;pages.forEach(p=>p.classList.toggle('active',p.id==='page-'+name));navBtns.forEach(b=>{if(b.dataset.page===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});document.getElementById('crumb').textContent='Standards / '+(name==='overview'?'Overview':name==='typography'?'Typography':'Color');document.body.classList.remove('nav-open');window.scrollTo({top:0,behavior:'instant'});if(history&&location.hash!=='#'+name)history.replaceState(null,'','#'+name)}navBtns.forEach(b=>b.addEventListener('click',()=>activate(b.dataset.page)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>activate(b.dataset.go)));window.addEventListener('hashchange',()=>activate(location.hash.slice(1),false));if(['overview','typography','color'].includes(location.hash.slice(1)))activate(location.hash.slice(1),false);document.getElementById('openMenu').addEventListener('click',()=>document.body.classList.add('nav-open'));document.getElementById('closeMenu').addEventListener('click',()=>document.body.classList.remove('nav-open'));document.addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('nav-open')});document.querySelectorAll('[data-device]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-device]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.getElementById('typeStage').classList.toggle('mobile',b.dataset.device==='mobile')}));document.getElementById('specToggle').addEventListener('click',e=>{let on=e.currentTarget.getAttribute('aria-pressed')!=='true';e.currentTarget.setAttribute('aria-pressed',String(on));document.getElementById('typeStage').classList.toggle('show-spec',on)});})();
 </script><script>(function(){
