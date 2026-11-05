@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F8F8F6">
+<meta name="description" content="Geniotek Color Study: two independent solid-color compositions for Launch & Scale service stages.">
+<title>Geniotek — Service Information A/B Composition Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --paper:#F8F8F6;--cream:#F1F0EA;--warm:#F6F5F1;--white:#FFFFFF;
+ --ink:#1A1A1A;--text:#3B3B37;--muted:#73736F;--light:#9E9E97;
+ --line:#DCDCD6;--brand:#6666FF;--brand-action:#4B4BDB;--violet-pale:#E8E8FA;
+ --gap:clamp(12px,1.75vw,25px);--page-pad:clamp(22px,4.6vw,78px)
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:4px}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid #4B4BDB;outline-offset:4px}
+.shell{max-width:1880px;margin:auto;display:grid;grid-template-columns:clamp(185px,16vw,240px) minmax(0,1fr);min-height:100vh}
+.rail{border-right:1px solid var(--line);padding:31px 24px;display:flex;flex-direction:column;gap:22px}
+.rail img{width:min(144px,100%);height:auto}
+.rail p{font:400 11px/19px "IBM Plex Sans",sans-serif;color:var(--muted);margin:0}
+.rail a{font-size:11px;text-decoration:none;align-self:start;border-bottom:1px solid var(--line);padding-bottom:4px;color:var(--muted)}
+.rail .rail-end{font:400 10px/18px "IBM Plex Mono",monospace;color:var(--light);margin-top:auto}
+.main{padding:0 var(--page-pad) 105px;min-width:0}
+.top{padding:24px 0 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:11px;line-height:18px}
+.cols{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+.kicker{font:500 11px/18px "IBM Plex Sans",sans-serif;letter-spacing:.035em;color:var(--muted)}
+.intro{padding:75px 0 61px;align-items:start}
+.intro .kicker{grid-column:1/span 3;padding-top:10px}
+.intro .intro-copy{grid-column:4/span 9}
+.intro h1{font:500 clamp(49px,5.4vw,84px)/1.075 "IBM Plex Sans",sans-serif;letter-spacing:-.067em;margin:0 0 26px;max-width:14ch}
+.intro h1 span{color:var(--brand)}
+.intro p{font-size:16px;line-height:26px;color:var(--muted);max-width:58ch;margin:0}
+.intro .note{margin-top:25px;color:var(--light);font:400 10px/17px "IBM Plex Mono",monospace}
+.view-switch{display:flex;gap:24px;align-items:center;flex-wrap:wrap;border-block:1px solid var(--line);padding:17px 0;margin-bottom:75px}
+.view-switch button{background:transparent;border:0;padding:0 0 3px;color:#85857F;font-size:12px;line-height:18px;border-bottom:1px solid transparent}
+.view-switch button[aria-pressed="true"]{color:var(--ink);font-weight:500;border-color:var(--brand-action)}
+.variant{margin-bottom:119px}
+.variant[hidden]{display:none!important}
+.variant-header{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);margin-bottom:31px}
+.variant-header .label{grid-column:1/span 3;color:var(--muted);font:500 11px/18px "IBM Plex Sans",sans-serif}
+.variant-header .description{grid-column:4/span 9}
+.variant-header h2{font-size:clamp(28px,3.1vw,45px);line-height:1.14;font-weight:500;letter-spacing:-.05em;margin:0 0 14px}
+.variant-header p{margin:0;font-size:14px;line-height:23px;color:var(--muted);max-width:68ch}
+.study-label{display:flex;justify-content:space-between;gap:15px;padding:16px 0;color:var(--muted);border-top:1px solid var(--line);font-size:11px;line-height:18px}
+.study-label strong{font-weight:500;color:var(--text)}
+
+/* A / Color Field — contiguous violet territory, information separate */
+.a-canvas{
+ background:var(--white);
+ display:grid;
+ grid-template-columns:4fr 8fr;
+ min-height:675px;
+ color:var(--ink);
+}
+.a-field{
+ background:var(--brand);
+ color:var(--white);
+ padding:clamp(24px,2.6vw,45px);
+ display:flex;
+ flex-direction:column;
+ justify-content:space-between;
+ min-width:0
+}
+.a-field-top{font-size:11px;line-height:17px;letter-spacing:.03em;color:#FFFFFF}
+.a-field-center{padding-top:120px}
+.a-field-center .small{font:400 11px/19px "IBM Plex Mono",monospace;color:#F5F5FF;margin-bottom:24px}
+.a-field h3{font:500 clamp(33px,3.3vw,55px)/1.08 "IBM Plex Sans",sans-serif;letter-spacing:-.057em;margin:0;max-width:9.5ch}
+.a-field-bottom{border-top:1px solid rgba(255,255,255,.58);padding-top:16px;display:flex;justify-content:space-between;gap:18px;align-items:baseline;font-size:10px;line-height:17px;letter-spacing:.015em;color:#FFFFFF}
+.a-field-bottom strong{font:400 11px/18px "IBM Plex Mono",monospace}
+.a-content{padding:clamp(24px,2.6vw,45px) clamp(23px,3.1vw,57px) 41px;min-width:0;display:flex;flex-direction:column}
+.a-heading{display:flex;justify-content:space-between;gap:15px;margin-bottom:45px}
+.a-heading span{font-size:10px;line-height:17px;letter-spacing:.02em;color:#777771}
+.a-heading span:last-child{font-family:"IBM Plex Mono",monospace;color:#9B9B95}
+.a-list{border-top:1px solid #AFAFA8;flex:1;display:flex;flex-direction:column}
+.a-row{display:grid;grid-template-columns:45px minmax(175px,1fr) minmax(150px,1.08fr);column-gap:21px;align-items:start;border-bottom:1px solid #DCDCD6;flex:1;padding:28px 0 25px;min-height:97px}
+.a-num{font:400 12px/23px "IBM Plex Mono",monospace;color:#5555A8}
+.a-name{font:500 clamp(18px,1.6vw,24px)/1.17 "IBM Plex Sans",sans-serif;letter-spacing:-.038em;color:#232321}
+.a-detail{font-size:13px;line-height:22px;color:#73736F;margin:0;max-width:32ch}
+.a-footer{font-size:10px;line-height:17px;color:#8B8B86;margin-top:24px;letter-spacing:.015em}
+
+/* B / Color Typography — open editorial typography, no colored container */
+.b-canvas{background:var(--warm);padding:clamp(27px,3.5vw,58px);min-height:920px}
+.b-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 var(--gap)}
+.b-caption{grid-column:1/span 3;font:400 11px/18px "IBM Plex Mono",monospace;color:#767670}
+.b-head{grid-column:4/span 9;min-width:0}
+.b-head h3{font:500 clamp(48px,5.6vw,88px)/1.065 "IBM Plex Sans",sans-serif;letter-spacing:-.075em;margin:0 0 29px;max-width:12ch}
+.b-head h3 em{font-style:normal;color:var(--brand-action)}
+.b-head p{font-size:15px;line-height:25px;color:#777771;margin:0;max-width:55ch}
+.b-list{grid-column:4/span 9;margin-top:107px;border-top:1px solid #ABABA6}
+.b-row{display:grid;grid-template-columns:48px minmax(0,1.05fr) minmax(0,1fr);gap:var(--gap);border-bottom:1px solid #C7C7C0;padding:28px 0 29px;align-items:baseline}
+.b-row .index{font:400 11px/20px "IBM Plex Mono",monospace;color:var(--brand-action)}
+.b-row .name{font:500 clamp(23px,2.1vw,32px)/1.17 "IBM Plex Sans",sans-serif;letter-spacing:-.044em;color:#242422}
+.b-row .description{font-size:13px;line-height:22px;color:#777771;max-width:31ch;margin:0}
+.b-footer{grid-column:4/span 9;display:flex;justify-content:space-between;gap:18px;padding-top:22px;color:#85857F;font:400 10px/17px "IBM Plex Mono",monospace}
+.b-footer .ending{color:#5959CC}
+
+/* Methods stay subordinate to compositions */
+.anatomy{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);padding:18px 0 0;border-top:1px solid var(--line)}
+.anatomy .side{grid-column:1/span 3;color:#8E8E88;font:400 11px/18px "IBM Plex Mono",monospace}
+.anatomy .content{grid-column:4/span 9;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.anatomy article{min-width:0}
+.anatomy h4{font-size:13px;font-weight:500;line-height:19px;margin:0 0 9px}
+.anatomy p{font-size:12px;line-height:21px;color:#7A7A74;margin:0}
+.rules{border-top:1px solid var(--ink);padding:26px 0 0}
+.rules .side{grid-column:1/span 3}
+.rules .content{grid-column:4/span 9}
+.rules h2{font-size:clamp(27px,3vw,43px);font-weight:500;letter-spacing:-.052em;line-height:1.15;margin:0 0 25px}
+.rules .item{display:grid;grid-template-columns:1fr 2fr;gap:var(--gap);border-top:1px solid var(--line);padding:16px 0}
+.rules .item:last-child{border-bottom:1px solid var(--line)}
+.rules .item b{font-size:13px;font-weight:500}
+.rules .item p{margin:0;font-size:13px;line-height:22px;color:#777771}
+.rules .closing{margin-top:24px;color:#979790;font-size:11px;line-height:19px}
+.footer{display:flex;justify-content:space-between;gap:18px;margin-top:85px;border-top:1px solid var(--line);padding:20px 0;color:#999994;font:400 10px/19px "IBM Plex Mono",monospace}
+@media(max-width:1180px){
+ .a-row{grid-template-columns:33px minmax(0,1fr);gap:7px 14px;padding:22px 0 20px}
+ .a-detail{grid-column:2;max-width:38ch;font-size:12px;line-height:20px}
+ .a-field h3{font-size:clamp(30px,3vw,45px)}
+}
+@media(max-width:780px){
+ .shell{display:block}.rail{border-right:0;border-bottom:1px solid var(--line);padding:16px 22px;display:flex;flex-direction:row;align-items:center;gap:16px}
+ .rail img{width:100px}.rail p{font-size:10px;line-height:16px}.rail a,.rail-end{display:none!important}
+ .main{padding:0 22px 70px}.top{padding:19px 0}.top span:last-child{display:none}
+ .cols,.intro,.variant-header,.anatomy,.rules{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+ .intro{padding:52px 0 55px;row-gap:20px}.intro .kicker,.intro .intro-copy{grid-column:1/-1}.intro h1{font-size:54px}
+ .intro p{font-size:15px;line-height:24px}
+ .view-switch{margin-bottom:64px;gap:17px}
+ .variant{margin-bottom:86px}
+ .variant-header .label,.variant-header .description{grid-column:1/-1}
+ .variant-header{row-gap:15px}.variant-header h2{font-size:34px}
+ .a-canvas{grid-template-columns:1fr;min-height:0}
+ .a-field{min-height:290px;gap:20px;padding:25px}
+ .a-field-center{padding-top:0}.a-field-center .small{margin-bottom:18px}
+ .a-field h3{font-size:44px;max-width:14ch}
+ .a-field-bottom{margin-top:10px}
+ .a-content{padding:29px 24px 30px}
+ .a-heading{margin-bottom:31px}
+ .a-row{grid-template-columns:28px minmax(0,1fr);gap:8px 15px}
+ .a-name{font-size:22px}
+ .a-detail{grid-column:2;font-size:13px;max-width:40ch}
+ .b-canvas{padding:28px 24px;min-height:0}
+ .b-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:0 12px}
+ .b-caption,.b-head,.b-list,.b-footer{grid-column:1/-1}
+ .b-caption{margin-bottom:40px}
+ .b-head h3{font-size:clamp(43px,9vw,66px)}
+ .b-list{margin-top:55px}
+ .b-row{grid-template-columns:30px minmax(0,1fr);gap:7px 13px;padding:22px 0}
+ .b-row .name{font-size:24px}
+ .b-row .description{grid-column:2;font-size:13px;max-width:40ch}
+ .anatomy{row-gap:20px}.anatomy .side,.anatomy .content,.rules .side,.rules .content{grid-column:1/-1}
+ .anatomy .content{grid-template-columns:1fr;gap:15px}
+ .rules{row-gap:23px}
+ .footer{display:block}.footer span{display:block;margin-bottom:6px}
+}
+@media(max-width:390px){.intro h1{font-size:46px}.a-field h3{font-size:39px}.b-head h3{font-size:43px}.a-row .a-name,.b-row .name{overflow-wrap:break-word}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="rail">
+ <img src="../assets/geniotek-primary-logo.svg" alt="Geniotek" width="300" height="85">
+ <p>Color Study 03<br>Service Information<br>A/B Composition</p>
+ <a href="./color-system-study-01.html">← Color Study 01.2</a>
+ <div class="rail-end">VISUAL REVIEW<br>NOT APPROVED<br>NO GRADIENTS / NO IMAGERY</div>
+</aside>
+<main class="main">
+ <header class="top"><span>GENIOTEK / SERVICE INFORMATION</span><span>ABCD-INSPIRED CHROMATIC STRUCTURE / STUDY 03</span></header>
+ <div class="intro cols">
+   <div class="kicker">COLOR RESEARCH / 03</div>
+   <div class="intro-copy">
+     <h1>One process.<br><span>Two compositions.</span></h1>
+     <p>Five phases are treated as one connected engineering responsibility. The choices below use the same content, but explore two fundamentally different ways for Geniotek violet to become part of the composition.</p>
+     <div class="note">A/B COMPARISON · SOLID COLORS ONLY · SHARED TYPE & SPATIAL SYSTEM</div>
+   </div>
+ </div>
+ <nav class="view-switch" aria-label="Choose composition">
+   <button type="button" data-view="both" aria-pressed="true">Compare A / B</button>
+   <button type="button" data-view="a" aria-pressed="false">View A only</button>
+   <button type="button" data-view="b" aria-pressed="false">View B only</button>
+ </nav>
+ <section class="variant" data-variant="a" aria-labelledby="variantA">
+   <header class="variant-header">
+     <div class="label">A / COLOR FIELD</div>
+     <div class="description"><h2 id="variantA">A territory for the brand.<br>A separate space for reading.</h2>
+      <p>The violet surface communicates a continuous Geniotek responsibility. Five stages remain on a neutral reading field, with no colorful numbering sequence or interface-card decoration.</p></div>
+   </header>
+   <div class="study-label"><strong>COMPOSITION A / BRAND TERRITORY</strong><span>PURE VIOLET × NEUTRAL READING PLANE</span></div>
+   <article class="a-canvas" aria-label="Composition A, brand field and phase register">
+    <section class="a-field">
+      <div class="a-field-top">GENIOTEK / LAUNCH & SCALE</div>
+      <div class="a-field-center">
+        <div class="small">ENGINEERING / MANUFACTURING</div>
+        <h3>From preparation to repeat orders.</h3>
+      </div>
+      <div class="a-field-bottom"><span>ONE CONNECTED PROCESS</span><strong>01—05</strong></div>
+    </section>
+    <section class="a-content">
+      <div class="a-heading"><span>PHASE REGISTER / ENGINEERING SUPPORT</span><span>FIVE PARTS</span></div>
+      <div class="a-list">
+       <div class="a-row"><span class="a-num">01</span><span class="a-name">Production Readiness</span><p class="a-detail">Confirm specifications, process readiness and inspection criteria.</p></div>
+       <div class="a-row"><span class="a-num">02</span><span class="a-name">Pilot Run</span><p class="a-detail">Test the assembly workflow and investigate process variation.</p></div>
+       <div class="a-row"><span class="a-num">03</span><span class="a-name">First Batch</span><p class="a-detail">Verify initial production quality and traceability.</p></div>
+       <div class="a-row"><span class="a-num">04</span><span class="a-name">Shipment</span><p class="a-detail">Review packaging, release documentation and handoff.</p></div>
+       <div class="a-row"><span class="a-num">05</span><span class="a-name">Repeat Orders</span><p class="a-detail">Carry forward lessons and stabilize repeatability.</p></div>
+      </div>
+      <div class="a-footer">EXAMPLE SERVICE COPY / NOT A REAL PROJECT STATUS</div>
+    </section>
+   </article>
+   <div class="anatomy">
+      <div class="side">A / CONSTRUCTION NOTES</div>
+      <div class="content">
+       <article><h4>Color ratio</h4><p>One contiguous violet field occupies one third of the canvas. The entire five-stage register remains neutral and readable.</p></article>
+       <article><h4>Typography</h4><p>Violet-side brand statement: 40–55px. Stage titles: 18–24px. Description text: 13px. No oversized phase numerals.</p></article>
+       <article><h4>Reflow</h4><p>On narrow screens, the violet brand field becomes a short opening block. The five stages follow vertically with intact reading order.</p></article>
+      </div>
+   </div>
+ </section>
+
+ <section class="variant" data-variant="b" aria-labelledby="variantB">
+   <header class="variant-header">
+     <div class="label">B / OPEN EDITORIAL</div>
+     <div class="description"><h2 id="variantB">Brand through type.<br>Space through editorial judgment.</h2>
+      <p>No colored block or large pictogram. Instead, the color participates in the typographic hierarchy: one emphatic violet headline, precisely aligned stage names, and clear compositional air.</p></div>
+   </header>
+   <div class="study-label"><strong>COMPOSITION B / CHROMATIC TYPOGRAPHY</strong><span>OPEN PAPER × VIOLET WORDMARK RHYTHM</span></div>
+   <article class="b-canvas" aria-label="Composition B, open editorial service stages">
+    <div class="b-grid">
+     <div class="b-caption">GENIOTEK<br>LAUNCH & SCALE<br>05 PHASES</div>
+     <div class="b-head">
+       <h3>From preparation<br><em>to repeat orders.</em></h3>
+       <p>Engineering judgment travels through the entire production journey, from early readiness decisions to repeat manufacturing.</p>
+     </div>
+     <div class="b-list">
+       <div class="b-row"><span class="index">01</span><span class="name">Production Readiness</span><p class="description">Confirm specifications, process readiness and inspection criteria.</p></div>
+       <div class="b-row"><span class="index">02</span><span class="name">Pilot Run</span><p class="description">Test the assembly workflow and investigate process variation.</p></div>
+       <div class="b-row"><span class="index">03</span><span class="name">First Batch</span><p class="description">Verify initial production quality and traceability.</p></div>
+       <div class="b-row"><span class="index">04</span><span class="name">Shipment</span><p class="description">Review packaging, release documentation and handoff.</p></div>
+       <div class="b-row"><span class="index">05</span><span class="name">Repeat Orders</span><p class="description">Carry forward lessons and stabilize repeatability.</p></div>
+     </div>
+     <div class="b-footer"><span>ONE CONTINUOUS PROCESS</span><span class="ending">GENIOTEK / ENGINEERING-LED</span></div>
+    </div>
+   </article>
+   <div class="anatomy">
+      <div class="side">B / CONSTRUCTION NOTES</div>
+      <div class="content">
+       <article><h4>Color role</h4><p>Violet appears in the major typographic anchor and discrete index marks. The composition does not depend on filled backgrounds.</p></article>
+       <article><h4>Reading hierarchy</h4><p>Long-form headline first; then a shared index, consistent stage starts and a separate descriptions column. No repeated card edges.</p></article>
+       <article><h4>Reflow</h4><p>All phases remain in the same order. On mobile, descriptions move beneath each title, avoiding squeezed columns or horizontal scrolling.</p></article>
+      </div>
+   </div>
+ </section>
+
+ <section class="rules cols" aria-labelledby="rulesTitle">
+  <div class="kicker side">DESIGN REVIEW / ACCEPTANCE</div>
+  <div class="content">
+   <h2 id="rulesTitle">Review the composition.<br>Not the number of colors.</h2>
+   <div class="item"><b>Visual identity</b><p>With the labels hidden, could either layout still feel meaningfully connected to Geniotek, rather than a generic five-step SaaS template?</p></div>
+   <div class="item"><b>Hierarchy</b><p>Can a reader understand the overall service and the five stages in sequence without confusing the illustration with a live project status?</p></div>
+   <div class="item"><b>Spatial consistency</b><p>Do text starts, row boundaries and color territories behave as a coherent system, including under longer copy and at mobile widths?</p></div>
+   <div class="item"><b>Contrast & scope</b><p>All colors here are solid, no photography or gradients. The violet field in A is a brand moment, not a default component background; neither variant defines new approved tokens.</p></div>
+   <p class="closing">Content is illustrative. The five actual phase names are shared; descriptions are working copy for design evaluation. This study does not modify the accepted Typography, Grid or existing Color Study.</p>
+  </div>
+ </section>
+ <footer class="footer"><span>GENIOTEK / COLOR SYSTEM — SERVICE INFORMATION A/B</span><span>DESIGN RESEARCH ONLY / AWAITING REVIEW</span></footer>
+</main>
+</div>
+<script>
+(function(){
+ const buttons=[...document.querySelectorAll('[data-view]')];
+ const variants=[...document.querySelectorAll('[data-variant]')];
+ buttons.forEach(button=>button.addEventListener('click',()=>{
+  const view=button.dataset.view;
+  buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  variants.forEach(section=>{section.hidden=view!=='both'&&section.dataset.variant!==view});
+ }));
+})();
+</script>
+</body></html>
