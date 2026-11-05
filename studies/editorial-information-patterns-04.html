@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f8f8f6">
-<title>Geniotek — Editorial Information Patterns / Study 04.1</title>
+<title>Geniotek — Editorial Information Patterns / Study 04.2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@118,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -117,9 +117,69 @@ a{color:inherit}button{font:inherit}a:focus-visible,button:focus-visible{outline
  .mixed .study-top h2{font-size:19px}
  .mixed .thesis{font-size:clamp(34px,7.7vw,48px);max-width:100%;margin-bottom:28px}
 }
+
+/* Study 04.2 — respect the 3-column index rail, type density and optical hierarchy.
+   Changes supersede focused prior declarations and do not affect Study 03 or the main design system. */
+
+/* 01 / Primary section identity; subordinate editorial headline shares the body scale,
+   using weight instead of creating a third, oversized typographic step. */
+.reading .study-top h2{font-size:clamp(30px,2.65vw,39px);font-weight:500;line-height:1.19;letter-spacing:-.042em}
+.reading .article h3{font-size:18px;line-height:27px;font-weight:600;letter-spacing:-.01em;max-width:62ch;margin:0 0 21px}
+.reading .article p{font-size:18px;line-height:28px;font-weight:400;letter-spacing:-.006em;max-width:62ch;margin:0 0 25px}
+.reading .article p:last-child{margin-bottom:0}
+
+/* 02 / Section label gets columns 1–3; all parallel information is enclosed by
+   columns 4–12. The divider also begins at the fourth column. */
+.parallel-items{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--g);border-top:0;align-items:stretch}
+.parallel-item{grid-column:auto;display:grid;grid-template-rows:48px minmax(120px,1fr) 20px;row-gap:18px;min-width:0;padding:22px 0 5px;border-top:1px solid var(--line)}
+.parallel-item:nth-child(1){grid-column:4/span 3}
+.parallel-item:nth-child(2){grid-column:7/span 3}
+.parallel-item:nth-child(3){grid-column:10/span 3}
+.parallel-item h3{font-size:clamp(20px,1.7vw,26px);line-height:1.18;font-weight:500;margin:0}
+.parallel-item p{font-size:14px;line-height:22px;max-width:100%;margin:0}
+.parallel-item small{display:block;font-size:11px;line-height:18px;margin:0;align-self:end;color:var(--quiet)}
+.parallel .parallel-intro{max-width:57ch}
+
+/* 04 / The table is entirely contained within the nine-column information field.
+   No table stroke crosses into the chapter's left-side navigation region. */
+.specification{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 var(--g);border-top:0}
+.specification .spec{--cols:repeat(9,minmax(0,1fr));grid-column:4/span 9;grid-template-columns:var(--cols);column-gap:var(--g);padding:17px 0;border-bottom:1px solid var(--line)}
+.specification .spec:first-child{border-top:1px solid var(--line)}
+.specification .spec .key{grid-column:1/span 4}
+.specification .spec .val{grid-column:5/span 5}
+
+/* 06 / Separation between the section title and the brand statement must be
+   greater than separation between the statement and its supporting paragraph. */
+.mixed .study-top{margin-bottom:106px}
+.mixed .study-top h2{font-size:clamp(20px,1.6vw,24px);line-height:1.23;font-weight:500;color:#666661}
+.mixed .thesis{margin:0 0 54px}
+.mixed .prose{margin-top:0}
+
+/* A strong spatial hierarchy must survive reflow. */
+@media(max-width:1050px) and (min-width:721px){
+ .parallel-item{grid-template-rows:50px minmax(150px,1fr) 30px;row-gap:14px}
+ .parallel-item p{font-size:13px;line-height:21px}
+}
+@media(max-width:720px){
+ .reading .study-top h2{font-size:30px}
+ .reading .article h3{font-size:17px;line-height:25px;font-weight:600;margin-bottom:19px}
+ .reading .article p{font-size:17px;line-height:26px}
+ .parallel-items{grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+ .parallel-item:nth-child(1),.parallel-item:nth-child(2),.parallel-item:nth-child(3){grid-column:1/-1}
+ .parallel-item{display:grid;grid-template-rows:auto auto auto;row-gap:9px;padding:20px 0;border-top:1px solid var(--line)}
+ .parallel-item h3{font-size:22px}
+ .parallel-item p{font-size:14px;line-height:22px}
+ .parallel-item small{margin-top:6px}
+ .specification{grid-template-columns:repeat(4,minmax(0,1fr));gap:0 12px}
+ .specification .spec{--cols:repeat(4,minmax(0,1fr));grid-column:1/-1;column-gap:12px}
+ .specification .spec .key{grid-column:1/span 2}
+ .specification .spec .val{grid-column:3/span 2}
+ .mixed .study-top{margin-bottom:66px}
+ .mixed .thesis{margin-bottom:31px}
+}
 </style></head><body>
 <div class="app"><aside class="side"><img class="brand" src="../assets/geniotek-primary-logo.svg" alt="Geniotek" width="300" height="85">
-<div class="side-note">Editorial Information<br>Patterns / Study 04.1</div><a href="./editorial-grid-euc-study-03.html">← Study 03</a>
+<div class="side-note">Editorial Information<br>Patterns / Study 04.2</div><a href="./editorial-grid-euc-study-03.html">← Study 03</a>
 <div class="side-foot">ABCD / METHOD RESEARCH<br>DESIGN EXPLORATION<br>NOT PRODUCTION APPROVED</div></aside>
 <main class="content"><header class="headline"><span>GENIOTEK / INFORMATION SYSTEM</span><span class="right">STUDY 04 · SIX READING CONDITIONS</span></header>
 <div class="canvas" id="studyCanvas">
@@ -170,9 +230,12 @@ a{color:inherit}button{font:inherit}a:focus-visible,button:focus-visible{outline
 <a href="https://ablackcover.com/CHEERS-BOOK-COVER" target="_blank" rel="noopener">ABCD / CHEERS — information first ↗</a>
 <a href="https://ablackcover.com/Smart-Devil" target="_blank" rel="noopener">ABCD / Smart Devil — positive & negative space ↗</a>
 <a href="https://ablackcover.com/Canban" target="_blank" rel="noopener">ABCD / Canban — hierarchy of key information ↗</a>
-<a href="https://ablackcover.com/CAT-BOOK" target="_blank" rel="noopener">ABCD / CAT BOOK — content–form fit ↗</a></div>
+<a href="https://ablackcover.com/CAT-BOOK" target="_blank" rel="noopener">ABCD / CAT BOOK — content–form fit ↗</a>
+<a href="https://www.behance.net/NodYoung" target="_blank" rel="noopener">Nod Young / Behance — selected projects ↗</a>
+<a href="https://www.behance.net/gallery/89583747/751-DESIGN-STORE-IDENTITY" target="_blank" rel="noopener">ABCD / 751 Design Store — integrated brand structure ↗</a>
+<a href="https://www.behance.net/gallery/89344501/Xiongyu-Shishe-VI" target="_blank" rel="noopener">ABCD / Xiongyu Shishe — systematic visual hierarchy ↗</a></div>
 <p>This is an original Geniotek composition study inspired by the methodology described in ABCD's projects, not an ABCD design, endorsement or reproduction of a proprietary grid.</p></section>
-<footer class="end"><span>GENIOTEK / STUDY 04.1</span><span>VISUAL RESEARCH — TOKENS NOT FROZEN</span></footer></main></div>
+<footer class="end"><span>GENIOTEK / STUDY 04.2</span><span>VISUAL RESEARCH — TOKENS NOT FROZEN</span></footer></main></div>
 <div class="control"><button type="button" id="toggleGrid" aria-pressed="false" aria-controls="studyCanvas">Show grid</button></div>
 <script>(function(){const b=document.getElementById('toggleGrid'),c=document.getElementById('studyCanvas');b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.textContent=on?'Hide grid':'Show grid';c.classList.toggle('grid-on',on)})})();</script>
 </body></html>
