@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f8f8f6">
-<title>Geniotek — Editorial Information Patterns / Study 04.2</title>
+<title>Geniotek — Editorial Information Patterns / Study 04.3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@118,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -177,11 +177,102 @@ a{color:inherit}button{font:inherit}a:focus-visible,button:focus-visible{outline
  .mixed .study-top{margin-bottom:66px}
  .mixed .thesis{margin-bottom:31px}
 }
+
+/* Study 04.3 — Full-page geometry discipline.
+  Layout grid governs *every* region of the study; typography alone does not govern
+  the broader multimodal information system (color, signs, icons, interactivity, motion).
+  Shared reference: cols 1–3 = index/annotation; cols 4–12 = reading field. */
+.content{--cols:repeat(12,minmax(0,1fr));position:relative}
+.canvas{--cols:inherit;position:static}
+.headline,.end{display:grid;grid-template-columns:var(--cols);column-gap:var(--g);align-items:baseline}
+.headline>span:first-child,.end>span:first-child{grid-column:1/span 3;min-width:0}
+.headline>span.right,.end>span:last-child{grid-column:4/span 9;text-align:right;min-width:0}
+.hero{padding-top:80px;padding-bottom:104px}
+.hero h1{max-width:13ch}
+.hero p{grid-column:4/span 7}
+.study{position:relative;border-top:0;padding-top:25px}
+.study:before{content:"";position:absolute;top:0;left:calc(25% + var(--g)/4);right:0;border-top:1px solid var(--ink)}
+.study-top{min-height:0;margin-bottom:42px;align-items:baseline}
+.study-top h2{font-size:clamp(25px,2.45vw,37px);letter-spacing:-.038em;line-height:1.2}
+.reading .study-top h2{font-size:clamp(28px,2.5vw,38px)}
+.reading .article,.reading .margin-note{align-self:start}
+.reading .margin-note{padding-top:4px}
+.parallel .study-top{margin-bottom:30px}
+.parallel .parallel-intro{margin-bottom:45px;grid-column:4/span 7}
+.parallel-item{grid-template-rows:auto minmax(123px,1fr) auto;row-gap:17px}
+.parallel-item:nth-child(1){grid-column:4/span 3}
+.parallel-item:nth-child(2){grid-column:7/span 3}
+.parallel-item:nth-child(3){grid-column:10/span 3}
+/* Metrics: one continuous line of reading within information field. */
+.number-intro{grid-column:4/span 7}
+.metric-major{grid-column:4/span 5}
+.metric-minor{grid-column:10/span 3}
+.metric-rule{grid-column:4/span 9}
+.metric-foot{grid-column:4/span 9}
+.dense-top{grid-column:4/span 7}
+.specification{grid-template-columns:var(--cols);column-gap:var(--g)}
+.specification .spec{--cols:repeat(9,minmax(0,1fr));grid-column:4/span 9;column-gap:var(--g)}
+/* Sequence also stays in information field: its numeric step is not a competing
+   chapter label in the index rail. */
+.steps{display:grid;grid-template-columns:var(--cols);column-gap:var(--g);border-top:0}
+.steps .step{--cols:repeat(9,minmax(0,1fr));grid-template-columns:var(--cols);column-gap:var(--g);grid-column:4/span 9;padding:20px 0}
+.steps .step:first-child{border-top:1px solid var(--line)}
+.step .id{grid-column:1/span 2}
+.step strong{grid-column:3/span 3}
+.step p{grid-column:6/span 4}
+.mixed .study-top{margin-bottom:103px}
+.mixed .thesis{grid-column:4/span 9}
+.mixed .prose{grid-column:4/span 6}
+.mixed .evidence{grid-column:11/span 2}
+.sources{position:relative;border-top:0;padding-top:25px}
+.sources:before{content:"";position:absolute;top:0;left:calc(25% + var(--g)/4);right:0;border-top:1px solid var(--line)}
+.sources h2{grid-column:1/span 3}
+.sources .source-list,.sources p{grid-column:4/span 9}
+/* Debug overlay now runs from the header to endnote, including sources & footer,
+   rather than stopping at the last typography specimen. */
+.overlay{position:absolute;inset:0 var(--pad);display:none;grid-template-columns:var(--cols);column-gap:var(--g);z-index:12;pointer-events:none}
+.content.grid-on .overlay{display:grid}
+.end{margin-top:88px}
+@media(max-width:1050px) and (min-width:721px){
+ .steps .step{padding:20px 0}
+ .step .id{grid-column:1/span 2}
+ .step strong{grid-column:3/span 3}
+ .step p{grid-column:6/span 4}
+ .parallel-item p{font-size:13px;line-height:21px}
+}
+@media(max-width:720px){
+ .content{--cols:repeat(4,minmax(0,1fr));--g:12px}
+ .canvas{--cols:inherit}
+ .headline,.end{grid-template-columns:var(--cols);column-gap:var(--g)}
+ .headline>span:first-child,.end>span:first-child{grid-column:1/span 2}
+ .headline>span.right,.end>span:last-child{grid-column:3/span 2}
+ .hero{padding:60px 0 76px}
+ .study{padding-top:20px}
+ .study:before,.sources:before{left:0}
+ .study-top{row-gap:12px;margin-bottom:29px}
+ .study-top h2{font-size:26px}
+ .reading .study-top h2{font-size:27px}
+ .reading .article,.reading .margin-note,.parallel .parallel-intro,
+ .number-intro,.metric-major,.metric-minor,.metric-rule,.metric-foot,.dense-top,
+ .mixed .thesis,.mixed .prose,.mixed .evidence{grid-column:1/-1}
+ .parallel-items{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .parallel-item:nth-child(1),.parallel-item:nth-child(2),.parallel-item:nth-child(3){grid-column:1/-1}
+ .parallel-item{grid-template-rows:auto auto auto}
+ .specification{grid-template-columns:var(--cols)}
+ .specification .spec{--cols:repeat(4,minmax(0,1fr));grid-column:1/-1;column-gap:var(--g)}
+ .steps{grid-template-columns:var(--cols)}
+ .steps .step{--cols:repeat(4,minmax(0,1fr));grid-column:1/-1;column-gap:var(--g)}
+ .step .id{grid-column:1/span 1}
+ .step strong,.step p{grid-column:2/span 3}
+ .mixed .study-top{margin-bottom:66px}
+ .sources h2,.sources .source-list,.sources p{grid-column:1/-1}
+ .overlay{inset:0 var(--pad)}
+}
 </style></head><body>
 <div class="app"><aside class="side"><img class="brand" src="../assets/geniotek-primary-logo.svg" alt="Geniotek" width="300" height="85">
 <div class="side-note">Editorial Information<br>Patterns / Study 04.2</div><a href="./editorial-grid-euc-study-03.html">← Study 03</a>
 <div class="side-foot">ABCD / METHOD RESEARCH<br>DESIGN EXPLORATION<br>NOT PRODUCTION APPROVED</div></aside>
-<main class="content"><header class="headline"><span>GENIOTEK / INFORMATION SYSTEM</span><span class="right">STUDY 04 · SIX READING CONDITIONS</span></header>
+<main class="content" id="pageContent"><header class="headline"><span>GENIOTEK / INFORMATION SYSTEM</span><span class="right">STUDY 04 · SIX READING CONDITIONS</span></header>
 <div class="canvas" id="studyCanvas">
 <section class="hero grid"><span class="eyebrow">A study in editorial order</span><h1>Clarity at<br><em>every density.</em></h1><p>One geometry, six reading conditions. Instead of making every section visually different, this study changes information density while keeping the same typographic discipline.</p></section>
 <section class="study reading" aria-labelledby="reading-title"><div class="study-top grid"><span class="eyebrow">01 / Long-form reading</span><h2 id="reading-title">Editorial text block</h2></div>
@@ -223,7 +314,7 @@ a{color:inherit}button{font:inherit}a:focus-visible,button:focus-visible{outline
 <section class="study mixed" aria-labelledby="mixed-title"><div class="study-top grid"><span class="eyebrow">06 / Editorial contrast</span><h2 id="mixed-title">Statement, context, evidence</h2></div>
 <div class="grid"><h3 class="thesis">Your supplier tells you what's in it. Our engineer tells you what's missing.</h3><p class="prose">An engineer-led review questions what the specification leaves implicit: component fit, process capability, inspection criteria and reliability risks. A claim becomes useful when it leads to a checkable decision.</p><aside class="evidence"><b>±0.05</b>mm tolerance<br>Example inspection criterion, not verified project evidence</aside></div>
 </section>
-<div class="overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+</div>
 <section class="sources grid" aria-label="Research references"><h2>Research basis</h2><div class="source-list">
 <a href="https://ablackcover.com/EUC" target="_blank" rel="noopener">ABCD / EUC — proportion & order ↗</a>
 <a href="https://ablackcover.com/SNAPSHOT" target="_blank" rel="noopener">ABCD / SNAPSHOT — dense bilingual reading ↗</a>
@@ -234,8 +325,8 @@ a{color:inherit}button{font:inherit}a:focus-visible,button:focus-visible{outline
 <a href="https://www.behance.net/NodYoung" target="_blank" rel="noopener">Nod Young / Behance — selected projects ↗</a>
 <a href="https://www.behance.net/gallery/89583747/751-DESIGN-STORE-IDENTITY" target="_blank" rel="noopener">ABCD / 751 Design Store — integrated brand structure ↗</a>
 <a href="https://www.behance.net/gallery/89344501/Xiongyu-Shishe-VI" target="_blank" rel="noopener">ABCD / Xiongyu Shishe — systematic visual hierarchy ↗</a></div>
-<p>This is an original Geniotek composition study inspired by the methodology described in ABCD's projects, not an ABCD design, endorsement or reproduction of a proprietary grid.</p></section>
-<footer class="end"><span>GENIOTEK / STUDY 04.2</span><span>VISUAL RESEARCH — TOKENS NOT FROZEN</span></footer></main></div>
-<div class="control"><button type="button" id="toggleGrid" aria-pressed="false" aria-controls="studyCanvas">Show grid</button></div>
-<script>(function(){const b=document.getElementById('toggleGrid'),c=document.getElementById('studyCanvas');b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.textContent=on?'Hide grid':'Show grid';c.classList.toggle('grid-on',on)})})();</script>
+<p>This is an original Geniotek composition study inspired by the methodology described in ABCD's projects, not an ABCD design, endorsement or reproduction of a proprietary grid. This study isolates typography and grid geometry; it does not prescribe global information-expression rules. Color, iconography, symbols, underlines, motion and interaction may communicate hierarchy in other contexts and must be considered together at the component and page level.</p></section>
+<div class="overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><footer class="end"><span>GENIOTEK / STUDY 04.3</span><span>VISUAL RESEARCH — TOKENS NOT FROZEN</span></footer></main></div>
+<div class="control"><button type="button" id="toggleGrid" aria-pressed="false" aria-controls="pageContent">Show grid</button></div>
+<script>(function(){const b=document.getElementById('toggleGrid'),c=document.querySelector('.content');b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.textContent=on?'Hide grid':'Show grid';c.classList.toggle('grid-on',on)})})();</script>
 </body></html>
