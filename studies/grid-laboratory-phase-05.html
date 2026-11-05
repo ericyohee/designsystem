@@ -151,7 +151,7 @@ const colCheck=document.getElementById("showCols"),baseCheck=document.getElement
 const summary=document.getElementById("auditSummary"),results=document.getElementById("auditResults"),label=document.getElementById("geometryText");
 function config(){
  const n=width.value==="mobile"?4:Number(columns.value),g=width.value==="mobile"?12:mode.value==="wide"?32:mode.value==="narrow"?16:1;
- stage.style.setProperty("--n",String(n));stage.style.setProperty("--rail",String(n/4));stage.style.setProperty("--content-start",String(n/4+1));stage.style.setProperty("--gutter",g+"px");stage.style.setProperty("--leading",leading.value+"px");
+ stage.querySelectorAll(".grid-overlay i").forEach(function(item,i){item.hidden=i>=n;item.style.display=i>=n?"none":""});stage.style.setProperty("--n",String(n));stage.style.setProperty("--rail",String(n/4));stage.style.setProperty("--content-start",String(n/4+1));stage.style.setProperty("--gutter",g+"px");stage.style.setProperty("--leading",leading.value+"px");
  stage.dataset.width=width.value;stage.dataset.mode=mode.value;
  stage.classList.toggle("show-cols",colCheck.checked);stage.classList.toggle("show-baseline",baseCheck.checked);stage.classList.toggle("show-bounds",boundCheck.checked);stage.classList.toggle("simulate-drift",simulate.checked);
  label.textContent=n+" columns / "+g+"px gutter / "+leading.value+"px baseline";
