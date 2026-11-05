@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f8f6"><title>Geniotek — Editorial Grid / Study 03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@118,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f8f8f6;--ink:#222220;--sub:#62625e;--light:#8a8a85;--line:#d6d6d0;--accent:#6666ff;--g:24px;--outer:clamp(24px,5.3vw,84px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button,a{font:inherit}a{color:inherit}button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.shell{max-width:1720px;margin:auto;display:grid;grid-template-columns:clamp(164px,17vw,230px) minmax(0,1fr);min-height:100vh}
+.aside{border-right:1px solid var(--line);padding:32px 22px;display:flex;flex-direction:column;gap:20px}
+.logo{display:block;width:min(145px,100%);height:auto}
+.aside-note{font-size:11px;line-height:18px;color:var(--sub);max-width:160px}
+.aside-end{margin-top:auto;font-size:11px;line-height:18px;color:var(--light)}
+.main{padding:0 var(--outer) 100px;min-width:0}
+.pagebar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:29px 0 20px;border-bottom:1px solid var(--line);font-size:11px;line-height:16px;color:var(--sub)}
+.pagebar small{font-size:11px;color:var(--light)}
+.canvas{position:relative;isolation:isolate;--cols:repeat(12,minmax(0,1fr))}
+.cols{display:grid;grid-template-columns:var(--cols);column-gap:var(--g)}
+.note{font-size:11px;line-height:16px;letter-spacing:.025em;color:var(--light);font-weight:500;text-transform:uppercase;margin:0}
+.intro{padding:88px 0 98px}
+.intro .note{grid-column:1/span 4}
+.intro h1{grid-column:1/span 11;font-size:clamp(62px,7.2vw,116px);font-weight:500;letter-spacing:-.075em;line-height:1.01;margin:24px 0 0}
+.intro h1 span{color:var(--accent)}
+.intro .summary{grid-column:7/span 6;font-size:17px;line-height:26px;color:var(--sub);max-width:43ch;margin:33px 0 0}
+.section{border-top:1px solid var(--ink);padding-top:24px}
+.section-head{align-items:start;margin-bottom:48px}
+.section-head .note{grid-column:1/span 3}
+.section-head h2{grid-column:4/span 9;font-size:clamp(34px,3.8vw,56px);font-weight:500;line-height:1.12;letter-spacing:-.058em;margin:0;max-width:17ch}
+.section-sub{grid-column:4/span 7;font-size:14px;line-height:22px;color:var(--sub);margin:18px 0 0}
+.section-one{padding-bottom:128px}
+.roles{border-top:1px solid var(--line)}
+.role{display:grid;grid-template-columns:var(--cols);column-gap:var(--g);align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line)}
+.role .word{grid-column:4/span 4;font-size:clamp(22px,2.15vw,32px);letter-spacing:-.038em;font-weight:500;line-height:1.2}
+.role .word.distinct{font-family:"Archivo","IBM Plex Sans",sans-serif;font-weight:700;font-stretch:118%;font-variation-settings:"wdth" 118,"wght" 700;letter-spacing:-.06em;font-size:clamp(25px,2.6vw,38px)}
+.role .description{grid-column:8/span 5;font-size:14px;line-height:21px;color:var(--sub);max-width:33ch}
+.role .number{grid-column:1/span 2;font:400 11px/16px "IBM Plex Mono",monospace;color:#aaa}
+.rule-study{display:grid;grid-template-columns:var(--cols);column-gap:var(--g);padding:48px 0 0}
+.rule-study .note{grid-column:1/span 3}
+.rule-study p{grid-column:4/span 8;font-size:17px;line-height:27px;color:var(--ink);max-width:58ch;margin:0}
+.rule-study p strong{font-weight:500}
+.section-two{padding-bottom:128px}
+.service-title{grid-column:4/span 9;font-size:clamp(39px,5.05vw,76px);line-height:1.08;letter-spacing:-.062em;font-weight:500;margin:8px 0 48px}
+.service-title em{font-style:normal;color:var(--accent)}
+.service-body{grid-column:4/span 6;font-size:17px;line-height:27px;color:var(--sub);max-width:42ch;margin:0 0 55px}
+.service-meta{grid-column:11/span 2;align-self:start;font:400 11px/18px "IBM Plex Mono",monospace;color:var(--light);margin:4px 0 0}
+.phases{border-top:1px solid var(--line)}
+.phase{display:grid;grid-template-columns:var(--cols);column-gap:var(--g);padding:24px 0;align-items:baseline;border-bottom:1px solid var(--line)}
+.phase .phase-no{grid-column:1/span 3;font:400 12px/18px "IBM Plex Mono",monospace;color:var(--light)}
+.phase b{grid-column:4/span 4;font-size:18px;line-height:25px;font-weight:500;letter-spacing:-.018em}
+.phase p{grid-column:8/span 5;margin:0;font-size:14px;line-height:22px;color:var(--sub)}
+.section-three{padding-bottom:30px}
+.spec-intro{margin-bottom:50px}
+.spec-intro p{grid-column:4/span 7;max-width:46ch;font-size:16px;line-height:25px;color:var(--sub);margin:0}
+.spec-sheet{padding:35px 0 0;border-top:1px solid var(--line)}
+.spec-name{grid-column:4/span 6;margin:0;font-size:clamp(28px,3vw,44px);line-height:1.15;letter-spacing:-.045em;font-weight:500}
+.spec-caption{grid-column:10/span 3;margin:7px 0 0;font:400 11px/18px "IBM Plex Mono",monospace;color:var(--light)}
+.spec-table{margin:42px 0 0;border-top:1px solid var(--line)}
+.spec-row{display:grid;grid-template-columns:var(--cols);column-gap:var(--g);padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.spec-row .key{grid-column:4/span 4;font-size:13px;line-height:19px;color:var(--sub)}
+.spec-row .value{grid-column:8/span 5;font:400 15px/22px "IBM Plex Mono",monospace;color:var(--ink)}
+.spec-row .value.text{font:400 14px/22px "IBM Plex Sans",sans-serif}
+.spec-foot{grid-column:4/span 8;margin:32px 0 0;max-width:55ch;font-size:13px;line-height:21px;color:var(--sub)}
+.endnote{display:flex;justify-content:space-between;gap:20px;padding-top:19px;margin-top:110px;border-top:1px solid var(--line);font-size:11px;line-height:18px;color:var(--light)}
+.overlay{position:absolute;inset:0;z-index:8;display:none;grid-template-columns:var(--cols);column-gap:var(--g);pointer-events:none}
+.overlay i{min-width:0;background:rgba(102,102,255,.055);border-inline:1px solid rgba(102,102,255,.18)}
+.grid-on .overlay{display:grid}
+.actions{position:fixed;bottom:22px;right:24px;z-index:10}
+.actions button{border:1px solid var(--ink);border-radius:99px;padding:10px 15px;background:var(--ink);color:#fff;font-size:12px;line-height:18px;cursor:pointer}
+.actions button[aria-pressed=true]{background:#4747aa;border-color:#4747aa}
+@supports(text-box-trim:trim-start){.intro h1{text-box-trim:trim-start;text-box-edge:cap text}}
+@media(max-width:1060px){:root{--g:18px}.section-head .note{grid-column:1/span 3}.section-head h2{grid-column:4/span 9}.role .word{grid-column:4/span 4}.role .description{grid-column:8/span 5}.service-body{grid-column:4/span 7}.service-meta{grid-column:11/span 2}}
+@media(max-width:720px){.shell{display:block}.aside{padding:19px 22px;flex-direction:row;align-items:center;gap:20px;border-right:0;border-bottom:1px solid var(--line)}.logo{width:96px}.aside-end{display:none}.aside-note{max-width:none;font-size:10px;line-height:16px}.main{padding:0 22px 65px}.pagebar{padding:18px 0}.pagebar small{display:none}.canvas{--cols:repeat(4,minmax(0,1fr));--g:12px}.intro{padding:65px 0 74px}.intro .note,.intro h1,.intro .summary{grid-column:1/-1}.intro h1{font-size:clamp(55px,12vw,78px);margin-top:23px}.intro .summary{font-size:15px;line-height:24px;margin-top:27px}.section-head{margin-bottom:30px}.section-head .note,.section-head h2,.section-sub{grid-column:1/-1}.section-head h2{font-size:clamp(32px,8vw,48px);margin-top:17px}.section-sub{margin-top:15px}.section-one,.section-two{padding-bottom:83px}.role{padding:18px 0;row-gap:7px}.role .number{grid-column:1/span 1}.role .word{grid-column:2/span 3;font-size:22px}.role .word.distinct{font-size:25px}.role .description{grid-column:2/span 3;font-size:13px;line-height:20px}.rule-study{padding-top:31px;row-gap:13px}.rule-study .note,.rule-study p{grid-column:1/-1}.rule-study p{font-size:15px;line-height:24px}.service-title,.service-body,.service-meta{grid-column:1/-1}.service-title{font-size:clamp(36px,8.5vw,54px);margin:0 0 23px}.service-body{font-size:15px;line-height:24px;margin-bottom:19px}.service-meta{margin-bottom:33px}.phase{padding:18px 0;row-gap:4px}.phase .phase-no{grid-column:1/span 1}.phase b{grid-column:2/span 3;font-size:16px;line-height:23px}.phase p{grid-column:2/span 3;font-size:13px;line-height:21px}.spec-intro p,.spec-name,.spec-caption,.spec-foot{grid-column:1/-1}.spec-intro{margin-bottom:36px}.spec-intro p{font-size:15px;line-height:24px}.spec-caption{margin-top:13px}.spec-row{padding:16px 0}.spec-row .key{grid-column:1/span 2}.spec-row .value{grid-column:3/span 2;font-size:12px;line-height:20px;overflow-wrap:anywhere}.spec-row .value.text{font-size:12px;line-height:20px}.endnote{display:block;margin-top:72px}.endnote span{display:block;margin-bottom:5px}.overlay{grid-template-columns:repeat(4,minmax(0,1fr))}.overlay i:nth-child(n+5){display:none}.actions{bottom:17px;right:17px}}
+</style></head>
+<body>
+<div class="shell">
+<aside class="aside"><img class="logo" src="../assets/geniotek-primary-logo.svg" width="300" height="85" alt="Geniotek"><div class="aside-note">EDITORIAL GRID<br>Composition calibration</div><div class="aside-end">STUDY / 03<br>METHOD INSPIRED BY ABCD EUC<br>NOT THEIR OFFICIAL GRID</div></aside>
+<main class="main"><div class="pagebar"><span>GENIOTEK · TYPE & INFORMATION</span><small>ONE GRID / THREE CONTENT CONDITIONS</small></div>
+<div class="canvas" id="canvas">
+<header class="intro cols"><p class="note">Composition study / 03</p><h1>Order before<br><span>expression.</span></h1><p class="summary">A quieter study of proportion, alignment and reading density. Three different information structures, governed by one underlying geometry.</p></header>
+<section class="section section-one" aria-labelledby="roles-heading">
+<div class="section-head cols"><p class="note">01 · Type system</p><h2 id="roles-heading">Semantic roles</h2><p class="section-sub">Role follows meaning. Relative scale follows the role.</p></div>
+<div class="roles">
+<div class="role"><span class="number">01</span><strong class="word distinct">display</strong><span class="description">Short brand statement</span></div>
+<div class="role"><span class="number">02</span><strong class="word">heading-1 / 2 / 3</strong><span class="description">Document and section hierarchy</span></div>
+<div class="role"><span class="number">03</span><strong class="word">body</strong><span class="description">Continuous reading</span></div>
+<div class="role"><span class="number">04</span><strong class="word">label / caption</strong><span class="description">Navigation, controls, explanatory notes</span></div>
+<div class="role"><span class="number">05</span><strong class="word">data</strong><span class="description">Engineering values and identifiers</span></div>
+</div>
+<div class="rule-study"><p class="note">Principle</p><p><strong>Choose the role first.</strong> Identify what the content needs to communicate before assigning numerical styling. Size alone does not determine HTML heading structure.</p></div>
+</section>
+<section class="section section-two" aria-labelledby="service-heading">
+<div class="section-head cols"><p class="note">02 · Service communication</p><h2 id="service-heading">One system. A different reading task.</h2></div>
+<div class="cols">
+<h3 class="service-title">From product intent<br>to <em>production reality.</em></h3>
+<p class="service-body">The structure below is a composition example using Geniotek’s launch-and-scale stages. It tests the same column positions with a service narrative and sequential information.</p>
+<p class="service-meta">EXAMPLE<br>NOT SITE COPY APPROVAL</p>
+</div>
+<div class="phases">
+<div class="phase"><span class="phase-no">01 / 05</span><b>Production Readiness</b><p>Clarify production requirements before the pilot run.</p></div>
+<div class="phase"><span class="phase-no">02 / 05</span><b>Pilot Run</b><p>Validate process and quality in a limited build.</p></div>
+<div class="phase"><span class="phase-no">03 / 05</span><b>First Batch</b><p>Move from verified pilot conditions to initial production.</p></div>
+<div class="phase"><span class="phase-no">04 / 05</span><b>Shipment</b><p>Coordinate inspection, packing and delivery readiness.</p></div>
+<div class="phase"><span class="phase-no">05 / 05</span><b>Repeat Orders</b><p>Keep quality and production knowledge consistent.</p></div>
+</div>
+</section>
+<section class="section section-three" aria-labelledby="technical-heading">
+<div class="section-head cols"><p class="note">03 · Technical documentation</p><h2 id="technical-heading">Information without decoration.</h2></div>
+<div class="spec-intro cols"><p>This fictional component record tests the same system at higher information density. Its values are illustrative, not a product specification.</p></div>
+<div class="spec-sheet"><div class="cols"><h3 class="spec-name">Housing / dimensional review</h3><p class="spec-caption">EXAMPLE · REV A</p></div>
+<div class="spec-table">
+<div class="spec-row"><span class="key">Nominal diameter</span><span class="value">Ø 24.50 mm</span></div>
+<div class="spec-row"><span class="key">Tolerance</span><span class="value">± 0.05 mm</span></div>
+<div class="spec-row"><span class="key">Sample quantity</span><span class="value">n = 30</span></div>
+<div class="spec-row"><span class="key">Material</span><span class="value text">ABS · illustrative</span></div>
+<div class="spec-row"><span class="key">Verification</span><span class="value text">Pending engineering review</span></div>
+</div>
+<div class="cols"><p class="spec-foot">Chinese fallback remains under review: IBM Plex Sans SC → PingFang SC → Microsoft YaHei → sans-serif. This is an implementation note, not a headline.</p></div>
+</div>
+</section>
+<div class="overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</div><footer class="endnote"><span>GENIOTEK / GRID STUDY 03</span><span>VISUAL RESEARCH · NO TOKENS FROZEN</span></footer>
+</main></div>
+<div class="actions"><button type="button" id="showGrid" aria-pressed="false" aria-controls="canvas">Show grid</button></div>
+<script>(function(){const b=document.getElementById('showGrid'),c=document.getElementById('canvas');b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(on));b.textContent=on?'Hide grid':'Show grid';c.classList.toggle('grid-on',on)})})();</script>
+</body></html>
