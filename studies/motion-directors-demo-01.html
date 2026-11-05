@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F7F7F4">
+<meta name="description" content="Geniotek Motion Identity Study 01 — playable IBM, Apple and ABCD-inspired gradient/motion concept demonstrations.">
+<title>Geniotek — Three Motion Directions / Live Demos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F7F7F4;--ink:#1A1A1A;--body:#55554F;--muted:#7C7C76;--rule:#D8D8D2;--brand:#6666FF;--deep:#4B4BDB;--cream:#F1F0EA;--font:"IBM Plex Sans",Arial,sans-serif;--mono:"IBM Plex Mono",monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--deep);outline-offset:4px}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}
+.site{width:min(100%,1540px);margin:0 auto;padding:0 clamp(21px,4.7vw,83px) 85px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:28px 0;border-bottom:1px solid var(--rule)}
+.logo{font-size:24px;font-weight:600;letter-spacing:-.078em;line-height:1}
+.logo em{color:var(--brand);font-style:normal}
+.header-right{display:flex;gap:20px;align-items:center;font:400 10px/18px var(--mono);color:var(--muted)}
+.header-right a{font-size:11px}
+.hero{display:grid;grid-template-columns:23% minmax(0,1fr);gap:28px;padding:89px 0 96px}
+.kicker{font:500 10px/18px var(--mono);letter-spacing:.015em;color:var(--muted)}
+.hero h1{margin:0 0 24px;font-size:clamp(53px,6vw,98px);font-weight:500;letter-spacing:-.075em;line-height:1.02}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero p{font-size:16px;line-height:27px;color:var(--body);max-width:670px;margin:0}
+.hero-bottom{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:35px}
+.hero-bottom button{background:var(--ink);color:#fff;border:1px solid var(--ink);padding:11px 17px;font-size:12px}
+.hero-bottom small{font:400 10px/17px var(--mono);color:var(--muted)}
+.demos{display:flex;flex-direction:column;gap:102px}
+.demo{display:grid;grid-template-columns:minmax(195px,24%) minmax(0,1fr);gap:clamp(20px,3vw,45px)}
+.demo-info{border-top:1px solid #AFAFA8;padding-top:20px}
+.demo-info .index{font:400 11px/19px var(--mono);color:#777770;margin:0 0 35px}
+.demo-info h2{font:500 clamp(33px,3.25vw,51px)/1.08 var(--font);letter-spacing:-.055em;margin:0 0 16px}
+.demo-info .subtitle{font-size:15px;line-height:23px;color:#373733;margin:0 0 21px}
+.demo-info .why{font-size:13px;line-height:22px;color:var(--muted);margin:0;max-width:28ch}
+.demo-main{min-width:0}
+.demo-topline{padding:16px 0;display:flex;justify-content:space-between;gap:14px;border-top:1px solid #AFAFA8;color:var(--muted);font:400 10px/18px var(--mono)}
+.stage{position:relative;min-height:410px;isolation:isolate;overflow:hidden}
+.stage-label{font:400 10px/16px var(--mono)}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:14px 0 16px;border-bottom:1px solid var(--rule)}
+.controls button{border:1px solid #C9C9C2;background:transparent;color:#32322F;padding:9px 14px;font-size:12px;line-height:18px}
+.controls button:hover{border-color:#777772;background:#F0F0EB}
+.controls .pause[aria-pressed="true"]{border-color:var(--deep);color:var(--deep)}
+.controls .state-readout{font:400 10px/18px var(--mono);color:var(--muted);margin-left:auto}
+.explain{padding-top:15px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.explain p{margin:0;font-size:12px;line-height:20px;color:#777771}
+.explain strong{color:#2C2C29;font-weight:500}
+.source{font:400 10px/17px var(--mono);color:#8B8B85;margin-top:15px}
+.source a{color:#5555AE}
+
+/* IBM / industrial review, engineered scan */
+.ibm-stage{background:#F0F0EB;display:grid;grid-template-columns:1fr;align-items:stretch;padding:clamp(24px,3.1vw,44px)}
+.ibm-stage .ibm-overline{display:flex;justify-content:space-between;gap:13px;font:400 10px/17px var(--mono);color:#6B6B65;position:relative;z-index:2}
+.ibm-stage .ibm-heading{display:grid;grid-template-columns:1.25fr 1fr;gap:30px;position:relative;z-index:2;margin-top:31px}
+.ibm-stage .ibm-heading h3{font:500 clamp(26px,3vw,43px)/1.12 var(--font);letter-spacing:-.052em;margin:0;max-width:15ch}
+.ibm-stage .ibm-heading p{font-size:12px;line-height:21px;color:#696963;margin:5px 0 0;max-width:26ch}
+.ibm-sheet{position:relative;z-index:1;margin-top:29px;border-top:1px solid #BDBDB6}
+.ibm-row{display:grid;grid-template-columns:31% 32% minmax(0,1fr);gap:16px;border-bottom:1px solid #D4D4CD;padding:15px 0;align-items:center;position:relative;z-index:2}
+.ibm-row span{font:400 11px/18px var(--mono);color:#72726D}
+.ibm-row strong{font-weight:500;font-size:14px;line-height:19px}
+.ibm-row .result{font-size:12px;color:#797971}
+.ibm-row .result.emphasis{color:#4B4BDB;font-weight:500}
+.ibm-sweep{position:absolute;z-index:1;pointer-events:none;top:0;bottom:0;left:0;width:9%;opacity:0;background:linear-gradient(90deg,transparent 0%,rgba(169,169,255,.13) 47%,rgba(102,102,255,.35) 100%);border-right:2px solid #5858D1}
+.ibm-outcome{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-top:25px;position:relative;z-index:2}
+.ibm-outcome>div:first-child{font:400 10px/17px var(--mono);color:#6A6A64}
+.ibm-outcome strong{font:500 14px/20px var(--font);color:#393994;display:block}
+.ibm-outcome p{font:400 11px/17px var(--font);color:#7B7B73;margin:7px 0 0;max-width:32ch}
+.ibm-stage.playing .ibm-sweep{animation:ibmSweep 3.1s cubic-bezier(.4,0,.16,1) both}
+.ibm-stage.playing .ibm-outcome{animation:ibmReveal 3.1s ease both}
+@keyframes ibmSweep{0%,10%{left:0;opacity:0}21%{opacity:1}75%{left:91%;opacity:1}93%,100%{left:91%;opacity:0}}
+@keyframes ibmReveal{0%,68%{opacity:.25;transform:translateY(5px)}85%,100%{opacity:1;transform:translateY(0)}}
+
+/* Apple / user-controlled service route, minimal gradient as selected edge */
+.apple-stage{background:#F7F7F5;padding:clamp(23px,3vw,44px);display:grid;grid-template-columns:minmax(190px,.85fr) minmax(0,1.15fr);gap:clamp(19px,3vw,45px);align-items:stretch}
+.apple-left{display:flex;flex-direction:column;justify-content:space-between;gap:45px}
+.apple-left h3{font:500 clamp(27px,3.25vw,47px)/1.09 var(--font);letter-spacing:-.06em;margin:24px 0 0;max-width:12ch}
+.apple-left p{font-size:12px;line-height:21px;color:#73736D;margin:0;max-width:29ch}
+.apple-right{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.apple-option{background:#EEEDEA;border:1px solid transparent;text-align:left;display:flex;align-items:center;gap:18px;position:relative;padding:13px 15px;min-height:57px;transition:background .23s ease,border-color .23s ease}
+.apple-option .n{font:400 10px/17px var(--mono);color:#808078}
+.apple-option .t{font-size:15px;font-weight:500;color:#3A3A36;letter-spacing:-.015em}
+.apple-option[aria-pressed="true"]{background:#FFF;border-color:#D3D3EE}
+.apple-option[aria-pressed="true"] .n{color:#4B4BDB}
+.apple-option::after{content:"";height:3px;background:linear-gradient(90deg,#AFAFFF,#4B4BDB);position:absolute;left:0;bottom:0;right:0;transform:scaleX(0);transform-origin:left;opacity:0}
+.apple-option[aria-pressed="true"]::after{transform:scaleX(1);opacity:1}
+.apple-stage.playing .apple-option[aria-pressed="true"]::after{animation:appleEdge .55s cubic-bezier(.22,1,.36,1) both}
+@keyframes appleEdge{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.apple-route{border-top:1px solid #CBCBC5;padding:19px 2px 0;min-height:112px;position:relative}
+.apple-route .route-label{font:400 10px/16px var(--mono);color:#777771;margin-bottom:7px}
+.apple-route .route-heading{font:500 25px/1.12 var(--font);letter-spacing:-.045em;margin:0 0 7px;color:#333397}
+.apple-route .route-desc{font-size:12px;line-height:20px;color:#6F6F69;margin:0;max-width:42ch}
+.apple-stage.playing .apple-route{animation:appleContent .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes appleContent{from{opacity:.15;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ABCD / independent visual identity proposal with controlled chromatic seam */
+.abcd-stage{background:#1A1A1A;min-height:445px;color:white}
+.abcd-left{position:absolute;inset:0 auto 0 0;width:50%;background:#F1F0EA;color:#1A1A1A;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(23px,3vw,44px)}
+.abcd-right{position:absolute;inset:0 0 0 auto;width:50%;background:#232323;color:#F7F7F5;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(23px,3vw,44px);align-items:flex-end;text-align:right}
+.abcd-top{font:400 10px/18px var(--mono);color:#777770}
+.abcd-right .abcd-top{color:#BDBDB6}
+.abcd-title{font:500 clamp(29px,3.35vw,49px)/1.12 var(--font);letter-spacing:-.06em;max-width:11ch;margin:0}
+.abcd-bottom{font:400 10px/18px var(--mono);color:#777770}
+.abcd-right .abcd-bottom{color:#BDBDB6}
+.abcd-bridge{position:absolute;inset:0 auto 0 42%;width:16%;background:linear-gradient(110deg,#9292FF 0%,#6666FF 39%,#4B4BDB 100%);color:#FFF;z-index:3;transform-origin:50% center;transform:scaleX(1);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.abcd-bridge span{font:500 clamp(14px,1.6vw,23px)/1.17 var(--font);letter-spacing:-.033em;writing-mode:vertical-rl;transform:rotate(180deg);max-height:88%;white-space:nowrap}
+.abcd-stage.playing .abcd-bridge{animation:abcdForm 2.6s cubic-bezier(.58,0,.17,1) both}
+.abcd-stage.playing .abcd-bridge span{animation:abcdLabel 2.6s ease both}
+@keyframes abcdForm{0%,11%{transform:scaleX(0)}53%{transform:scaleX(.09)}80%,100%{transform:scaleX(1)}}
+@keyframes abcdLabel{0%,70%{opacity:0}90%,100%{opacity:1}}
+.abcd-stage .abcd-bridge-line{position:absolute;z-index:4;top:0;bottom:0;left:50%;width:1px;background:rgba(255,255,255,.12);pointer-events:none}
+.abcd-stage.playing .abcd-bridge-line{animation:abcdLine 2.6s both}
+@keyframes abcdLine{0%,55%{opacity:1}85%,100%{opacity:0}}
+.abcd-stage .abcd-under{position:absolute;left:50%;transform:translateX(-50%);bottom:20px;z-index:5;font:400 9px/15px var(--mono);color:#FFF;text-shadow:0 1px 3px #222;white-space:nowrap;pointer-events:none}
+.abcd-stage.playing .abcd-under{animation:abcdLabel 2.6s both}
+
+/* shared motion controls */
+.stage.is-paused,.stage.is-paused *,.stage.is-paused *::before,.stage.is-paused *::after{animation-play-state:paused!important}
+.method{margin-top:100px;border-top:1px solid #AAA9A3;padding-top:26px;display:grid;grid-template-columns:24% minmax(0,1fr);gap:30px}
+.method h2{font:500 clamp(26px,3.2vw,42px)/1.12 var(--font);letter-spacing:-.05em;margin:0 0 22px}
+.method p{font-size:13px;line-height:23px;color:#6C6C66;margin:0 0 15px;max-width:77ch}
+.method strong{color:#282825;font-weight:500}
+.footer{border-top:1px solid var(--rule);padding:21px 0;margin-top:90px;display:flex;justify-content:space-between;gap:14px;color:#888882;font:400 10px/17px var(--mono)}
+@media(max-width:1120px){
+.demo{grid-template-columns:minmax(180px,27%) minmax(0,1fr);gap:25px}
+.ibm-stage .ibm-heading{grid-template-columns:1fr 1fr}
+.apple-stage{grid-template-columns:1fr 1fr}
+.abcd-title{font-size:clamp(25px,3vw,37px)}
+}
+@media(max-width:780px){
+.site{padding:0 21px 60px}
+.header{padding:22px 0}
+.header-right span{display:none}
+.hero{grid-template-columns:1fr;gap:20px;padding:62px 0}
+.hero h1{font-size:clamp(49px,11vw,76px)}
+.hero p{font-size:15px;line-height:25px}
+.demos{gap:78px}
+.demo{grid-template-columns:1fr;gap:17px}
+.demo-info .index{margin-bottom:15px}
+.demo-info h2{font-size:38px}
+.demo-info .why{max-width:65ch}
+.stage{min-height:390px}
+.controls .state-readout{width:100%;margin-left:0;margin-top:4px}
+.explain{gap:13px}
+.method{grid-template-columns:1fr;gap:18px;margin-top:82px}
+.footer{display:block}.footer span{display:block;margin:0 0 6px}
+}
+@media(max-width:550px){
+.demo-topline{display:block}.demo-topline span{display:block;margin-bottom:3px}
+.stage{min-height:0}
+.ibm-stage{padding:22px 17px;min-height:410px}
+.ibm-stage .ibm-overline{font-size:9px}
+.ibm-stage .ibm-heading{display:block;margin-top:27px}
+.ibm-stage .ibm-heading h3{font-size:30px}
+.ibm-stage .ibm-heading p{margin-top:10px;max-width:40ch}
+.ibm-sheet{margin-top:25px}
+.ibm-row{grid-template-columns:1fr 1fr;gap:4px 11px;padding:12px 0}
+.ibm-row .result{grid-column:2;font-size:11px}
+.ibm-row strong{font-size:12px}
+.ibm-outcome{display:block}
+.ibm-outcome>div:last-child{margin-top:10px}
+.apple-stage{grid-template-columns:1fr;gap:23px;padding:24px 18px;min-height:0}
+.apple-left{gap:16px}
+.apple-left h3{font-size:36px;margin:13px 0 0}
+.apple-left p{font-size:12px}
+.apple-option{min-height:52px}
+.apple-route{min-height:107px}
+.abcd-stage{min-height:360px}
+.abcd-left,.abcd-right{padding:23px 16px}
+.abcd-title{font-size:clamp(22px,6.5vw,34px);letter-spacing:-.055em}
+.abcd-top,.abcd-bottom{font-size:8px}
+.abcd-bridge span{font-size:14px}
+.abcd-stage .abcd-under{display:none}
+.explain{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+.stage.playing *, .stage.playing *::before,.stage.playing *::after,.stage.playing{animation:none!important;transition:none!important}
+.ibm-sweep{display:none}
+}
+</style>
+</head>
+<body>
+<main class="site">
+<header class="header">
+<div class="logo">geniotek<em>.</em></div>
+<div class="header-right"><span>PHASE 06-B / MOTION IDENTITY / 01</span><a href="../index.html#color">Color System ↗</a></div>
+</header>
+<div class="hero">
+<div class="kicker">THREE CREATIVE DIRECTIONS<br>ONE BRAND / REAL BEHAVIORS</div>
+<div>
+<h1>Motion,<br><em>with a reason.</em></h1>
+<p>Three playable interpretations of what Geniotek actually does. Watch the motion, then compare: a verification process, a customer decision, and a working relationship between design and manufacturing.</p>
+<div class="hero-bottom"><button id="replayAll" type="button">↻ Replay all three</button><small>CONCEPT STUDY · NOT APPROVED · GRADIENTS + MOTION</small></div>
+</div>
+</div>
+<div class="demos">
+
+<section class="demo" id="demo-ibm" aria-labelledby="ibm-name">
+<div class="demo-info">
+<p class="index">01 / IBM-INSPIRED<br>ENGINEERED MOTION</p>
+<h2 id="ibm-name">Verify the evidence.</h2>
+<p class="subtitle">Manufacturing Sourcing / Validate</p>
+<p class="why">一个检查动作沿输入信息移动；最终不是“检查通过”，而是明确指出哪项证据仍然缺失。</p>
+</div>
+<div class="demo-main">
+<div class="demo-topline"><span>DEMONSTRATION / ENGINEERING REVIEW</span><span>≈ 3.1 S / ONE PASS</span></div>
+<div class="stage ibm-stage" data-demo="ibm" aria-label="IBM-inspired animated engineering review, with a scanning gradient revealing an unverified capability item">
+<div class="ibm-overline"><span>GENIOTEK / TECHNICAL REVIEW</span><span>ILLUSTRATIVE DATA · REF 042</span></div>
+<div class="ibm-heading"><h3>A specification is not proof.</h3><p>The manufacturing decision still needs evidence of process capability, not just a quoted dimension.</p></div>
+<div class="ibm-sheet">
+<div class="ibm-sweep" aria-hidden="true"></div>
+<div class="ibm-row"><span>DRAWING</span><strong>Revision A</strong><span class="result">Reference supplied</span></div>
+<div class="ibm-row"><span>TOLERANCE</span><strong>24.50 ±0.05 mm</strong><span class="result">Specified requirement</span></div>
+<div class="ibm-row"><span>PROCESS CAPABILITY</span><strong>Production evidence</strong><span class="result emphasis">Not yet verified</span></div>
+</div>
+<div class="ibm-outcome">
+<div>DECISION / NEXT EVIDENCE</div>
+<div><strong>Repeatability remains an open question.</strong><p>Ask for measurement records or a controlled pilot before claiming capability.</p></div>
+</div>
+</div>
+<div class="controls" data-controls="ibm"><button class="replay" type="button">↻ Replay</button><button class="pause" type="button" aria-pressed="false">Ⅱ Pause</button><span class="state-readout" role="status" aria-live="polite">READY</span></div>
+<div class="explain"><p><strong>运动意义：</strong>局部渐变扫描代表“正在审查”，消失后留下明确的未验证项。</p><p><strong>关键边界：</strong>扫描结束 ≠ 质量通过；演示数据不是客户真实项目测量。</p></div>
+<p class="source">SITE BASIS: <a href="https://www.geniotekdev.com/service/manufacturing-sourcing" target="_blank" rel="noopener">Manufacturing Sourcing ↗</a></p>
+</div>
+</section>
+
+<section class="demo" id="demo-apple" aria-labelledby="apple-name">
+<div class="demo-info">
+<p class="index">02 / APPLE-INSPIRED<br>CONTEXTUAL MOTION</p>
+<h2 id="apple-name">Choose a starting point.</h2>
+<p class="subtitle">Service Hub / Clarify</p>
+<p class="why">动画不自行循环。只有用户改变选择时，渐变才沿所选路径出现，同时更新推荐服务。</p>
+</div>
+<div class="demo-main">
+<div class="demo-topline"><span>DEMONSTRATION / USER-TRIGGERED ROUTING</span><span>SELECT ANY OPTION</span></div>
+<div class="stage apple-stage" data-demo="apple" aria-label="Apple-inspired user-triggered service router with a gradient selection edge">
+<div class="apple-left"><div><span class="stage-label" style="color:#74746E">GENIOTEK / SERVICE ROUTER</span><h3>Start with what you have.</h3></div><p>Choose your current situation. The next service should follow your project—not the other way around.</p></div>
+<div class="apple-right">
+<button class="apple-option" data-path="idea" type="button" aria-pressed="false"><span class="n">01</span><span class="t">I have an idea</span></button>
+<button class="apple-option" data-path="prototype" type="button" aria-pressed="true"><span class="n">02</span><span class="t">I have a prototype</span></button>
+<button class="apple-option" data-path="cad" type="button" aria-pressed="false"><span class="n">03</span><span class="t">I have CAD / BOM</span></button>
+<div class="apple-route"><div class="route-label">SUGGESTED NEXT CONVERSATION</div><h3 class="route-heading" id="routeHeading">Product Launch</h3><p class="route-desc" id="routeDesc">Discuss engineering changes and verification before manufacturing.</p></div>
+</div></div>
+<div class="controls" data-controls="apple"><button class="replay" type="button">↻ Replay selection</button><button class="pause" type="button" aria-pressed="false">Ⅱ Pause</button><span class="state-readout" role="status" aria-live="polite">READY · SELECT AN OPTION</span></div>
+<div class="explain"><p><strong>运动意义：</strong>渐变边缘代表用户正在确定当前路线，信息区按选择变化。</p><p><strong>关键边界：</strong>无操作时页面保持静止；服务建议是初步路由，不代替真实咨询。</p></div>
+<p class="source">SITE BASIS: <a href="https://www.geniotekdev.com/service-hub" target="_blank" rel="noopener">Service Hub ↗</a></p>
+</div>
+</section>
+
+<section class="demo" id="demo-abcd" aria-labelledby="abcd-name">
+<div class="demo-info">
+<p class="index">03 / ABCD-INSPIRED<br>CHROMATIC IDENTITY</p>
+<h2 id="abcd-name">Connect two worlds.</h2>
+<p class="subtitle">Partnership / Connect</p>
+<p class="why">两块代表不同责任的空间并不混成一块；渐变作为接合区域出现，最终建立 Geniotek 的工程协调角色。</p>
+</div>
+<div class="demo-main">
+<div class="demo-topline"><span>DEMONSTRATION / BRAND SIGNATURE MOTION</span><span>≈ 2.6 S / ONE ARRIVAL</span></div>
+<div class="stage abcd-stage" data-demo="abcd" aria-label="ABCD-inspired moving chromatic seam joining distinct design and manufacturing responsibilities">
+<div class="abcd-left"><div class="abcd-top">01 / DESIGN STUDIO</div><h3 class="abcd-title">Design<br>intent.</h3><div class="abcd-bottom">FORM / EXPERIENCE / CLIENT</div></div>
+<div class="abcd-right"><div class="abcd-top">02 / FACTORY</div><h3 class="abcd-title">Manufacturing<br>reality.</h3><div class="abcd-bottom">PROCESS / QUALITY / DELIVERY</div></div>
+<div class="abcd-bridge"><span>GENIOTEK / ENGINEERING LAYER</span></div>
+<div class="abcd-bridge-line" aria-hidden="true"></div>
+<div class="abcd-under">ONE PROJECT · CLEAR RESPONSIBILITIES</div>
+</div>
+<div class="controls" data-controls="abcd"><button class="replay" type="button">↻ Replay</button><button class="pause" type="button" aria-pressed="false">Ⅱ Pause</button><span class="state-readout" role="status" aria-live="polite">READY</span></div>
+<div class="explain"><p><strong>运动意义：</strong>色彩变化只发生在专业角色的接合区域；品牌不是夺取双方的工作。</p><p><strong>关键边界：</strong>最终定格必须成立，单独截图仍然是一张完整的品牌画面。</p></div>
+<p class="source">SITE BASIS: <a href="https://www.geniotekdev.com/partnership/design-studio" target="_blank" rel="noopener">Design Studio ↗</a> · <a href="https://www.geniotekdev.com/partnership/preferred-manufacturing-network" target="_blank" rel="noopener">Manufacturing Network ↗</a></p>
+</div>
+</section>
+</div>
+
+<section class="method">
+<div class="kicker">COMPARE THE THREE<br>BEFORE SELECTING A SYSTEM</div>
+<div><h2>Three different jobs for motion.</h2>
+<p><strong>IBM</strong> explains a review process with an accountable result. <strong>Apple</strong> responds to a real choice and never steals control. <strong>ABCD</strong> explores whether a distinctive animated color boundary can become part of the Geniotek identity.</p>
+<p>These are original Geniotek visual concepts informed by three design traditions—not the companies’ official designs. Colors, timings and geometry are study candidates, not approved tokens. Animations have stable end states, pause/replay controls and reduced-motion fallback. Do not infer actual factory capability, production milestones or certification from any demonstration.</p>
+</div>
+</section>
+<footer class="footer"><span>GENIOTEK / MOTION IDENTITY STUDY 01</span><span>EXPERIMENTAL · NO CHANGE TO APPROVED COLOR / GRID / TYPOGRAPHY</span></footer>
+</main>
+<script>
+(function(){
+ const stages=[...document.querySelectorAll('[data-demo]')];
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const routeData={
+  idea:{name:'Product Launch',desc:'Start by clarifying feasibility, scope and what the first prototype should prove.'},
+  prototype:{name:'Product Launch',desc:'Discuss engineering changes and verification before manufacturing.'},
+  cad:{name:'Manufacturing Sourcing',desc:'Check whether manufacturing inputs are ready and which supplier capability needs proof.'}
+ };
+ let currentPath='prototype';
+ function writeStatus(key,label){
+  const target=document.querySelector('[data-controls="'+key+'"] .state-readout');if(target)target.textContent=label;
+ }
+ function pauseButton(key,paused){
+  const control=document.querySelector('[data-controls="'+key+'"] .pause');if(!control)return;
+  control.setAttribute('aria-pressed',String(paused));control.textContent=paused?'▶ Resume':'Ⅱ Pause';
+ }
+ function play(key){
+  const stage=document.querySelector('[data-demo="'+key+'"]');if(!stage)return;
+  stage.classList.remove('playing','is-paused');
+  void stage.offsetWidth;
+  stage.classList.add('playing');
+  pauseButton(key,false);
+  writeStatus(key,reduced?'STATIC FINAL FRAME · REDUCED MOTION':'PLAYING / REVIEW');
+ }
+ function updateRoute(path){
+  currentPath=path;
+  document.querySelectorAll('.apple-option').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.path===path)));
+  document.getElementById('routeHeading').textContent=routeData[path].name;
+  document.getElementById('routeDesc').textContent=routeData[path].desc;
+  play('apple');
+ }
+ document.querySelectorAll('.apple-option').forEach(b=>b.addEventListener('click',()=>updateRoute(b.dataset.path)));
+ document.querySelectorAll('[data-controls]').forEach(controls=>{
+   const key=controls.dataset.controls;
+   controls.querySelector('.replay').addEventListener('click',()=>play(key));
+   controls.querySelector('.pause').addEventListener('click',()=>{
+      const stage=document.querySelector('[data-demo="'+key+'"]');
+      if(!stage.classList.contains('playing')){play(key);return}
+      const paused=stage.classList.toggle('is-paused');
+      pauseButton(key,paused);
+      writeStatus(key,paused?'PAUSED':'PLAYING / REVIEW');
+   });
+ });
+ document.getElementById('replayAll').addEventListener('click',()=>stages.forEach(stage=>play(stage.dataset.demo)));
+ stages.forEach(stage=>play(stage.dataset.demo));
+})();
+</script>
+</body></html>
