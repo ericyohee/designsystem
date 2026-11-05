@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f8f6">
+<title>Geniotek — Grid Laboratory / Phase 05</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f8f8f6;--ink:#20201f;--sub:#686864;--dim:#888883;--line:#deded8;--accent:#6666ff;--space:8px}
+*{box-sizing:border-box}
+body{margin:0;font-family:"IBM Plex Sans",Arial,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit}a{color:#4545b1;text-underline-offset:3px}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.shell{display:grid;grid-template-columns:clamp(176px,17vw,248px) minmax(0,1fr);max-width:1850px;margin:auto;min-height:100vh}
+.rail{border-right:1px solid var(--line);padding:32px 23px;display:flex;flex-direction:column;gap:20px}
+.logo{width:min(144px,100%);height:auto}.rail p,.rail a{font-size:12px;line-height:19px;color:var(--sub)}
+.rail a{text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:4px;align-self:flex-start}
+.rail small{font:400 10px/18px "IBM Plex Mono",monospace;color:var(--dim);margin-top:auto}
+.main{padding:0 clamp(22px,4.7vw,78px) 100px;min-width:0}
+.topline{padding:27px 0 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:11px;color:var(--dim)}
+.intro{padding:70px 0 64px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.intro .kicker{grid-column:1/span 3}
+.kicker{font:500 11px/16px "IBM Plex Sans",sans-serif;letter-spacing:.035em;color:var(--dim);text-transform:uppercase}
+.intro h1{grid-column:4/span 9;font:500 clamp(55px,5.8vw,92px)/1.04 "IBM Plex Sans",sans-serif;letter-spacing:-.075em;margin:0}
+.intro p{grid-column:4/span 7;margin:0;font-size:16px;line-height:25px;color:var(--sub);max-width:62ch}
+.section{border-top:1px solid var(--line);padding:25px 0 70px}
+.section-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;margin-bottom:38px}
+.section-head>span{grid-column:1/span 3}.section-head>div{grid-column:4/span 9}
+.section-head h2{font:500 clamp(28px,3.1vw,44px)/1.12 "IBM Plex Sans",sans-serif;letter-spacing:-.05em;margin:0 0 15px}
+.section-head p{max-width:65ch;margin:0;font-size:14px;line-height:23px;color:var(--sub)}
+.workbench{display:grid;grid-template-columns:minmax(220px,275px) minmax(0,1fr);gap:24px;align-items:start}
+.controls{border-top:1px solid var(--line);padding-top:18px}
+.controls h3,.results h3{font-size:15px;font-weight:500;margin:0 0 17px}
+.control{margin:0 0 21px}
+.control label{display:block;font-size:12px;color:var(--sub);margin-bottom:8px}
+.control select,.control input[type=number]{width:100%;padding:10px;border:1px solid #cecec8;background:#fff;border-radius:3px;color:var(--ink);font-size:13px}
+.control .toggle{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ink);cursor:pointer;margin:10px 0}
+.control .toggle input{accent-color:var(--accent);width:15px;height:15px;margin:0}
+.control-hint{font-size:11px;color:var(--dim);line-height:18px;margin:7px 0 0}
+.preview-wrap{min-width:0}
+.preview-header{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:13px;color:var(--sub);font-size:11px}
+.preview-scroller{overflow-x:auto;max-width:100%;padding:0 0 8px}
+.stage{--n:12;--gutter:24px;--rail:3;--content-start:4;--leading:24px;width:100%;min-width:0;max-width:100%;position:relative;isolation:isolate;border:1px solid #d4d4cf;background:#fff;padding:clamp(18px,2vw,30px)}
+.stage[data-width="tablet"]{width:760px;max-width:none}
+.stage[data-width="mobile"]{width:390px;max-width:none;--n:4;--rail:1;--content-start:2;--gutter:12px}
+.stage .cols{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));column-gap:var(--gutter)}
+.stage .minor{font:500 10px/16px "IBM Plex Sans",sans-serif;letter-spacing:.02em;color:#8b8b86}
+.stage .stage-heading{margin:0 0 56px;align-items:baseline}
+.stage .index{grid-column:1/span var(--rail);min-width:0}
+.stage .content-field{grid-column:var(--content-start)/-1;min-width:0}
+.stage h3{font-size:clamp(22px,2.1vw,32px);line-height:1.19;letter-spacing:-.043em;font-weight:500;margin:0}
+.stage .sample-text{margin:0 0 45px;align-items:start}
+.stage .sample-text p{margin:0;font-size:14px;line-height:var(--leading);color:#50504c;max-width:53ch}
+.stage .sample-text .index{padding-top:4px}
+.stage .three{margin:0 0 52px}
+.stage .three .content-field{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.stage .three article{border-top:1px solid #deded8;padding:13px 0 2px}
+.stage .three b{font-size:14px;font-weight:500}
+.stage .three p{margin:10px 0 0;color:#666660;font-size:12px;line-height:19px}
+.stage .metrics{margin-bottom:45px;align-items:baseline}
+.stage .metric{font-size:clamp(29px,4vw,60px);font-variant-numeric:tabular-nums;letter-spacing:-.06em;font-weight:500;line-height:1.2}
+.stage .metric em{font:400 12px/1.3 "IBM Plex Mono",monospace;letter-spacing:0;font-style:normal;margin-left:8px;color:#777}
+.stage .record{margin:0}
+.stage .record .content-field{border-top:1px solid #dadad6}
+.stage .record-line{display:grid;grid-template-columns:1fr 1fr;gap:14px;border-bottom:1px solid #dadad6;padding:12px 0;align-items:baseline}
+.stage .record-line span{font-size:12px;color:#777}
+.stage .record-line b{font:400 12px/20px "IBM Plex Mono",monospace}
+.stage .grid-overlay{display:none;position:absolute;inset:0 clamp(18px,2vw,30px);grid-template-columns:repeat(var(--n),minmax(0,1fr));column-gap:var(--gutter);pointer-events:none;z-index:9}
+.stage .grid-overlay i{min-width:0;background:rgba(102,102,255,.06);border-inline:1px solid rgba(102,102,255,.20)}
+.stage.show-cols .grid-overlay{display:grid}
+.stage .baseline-overlay{display:none;position:absolute;inset:0;pointer-events:none;z-index:8;background:repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--leading) - 1px),rgba(239,127,80,.23) calc(var(--leading) - 1px),rgba(239,127,80,.23) var(--leading))}
+.stage.show-baseline .baseline-overlay{display:block}
+.stage .boundary-overlay{display:none;position:absolute;left:calc(clamp(18px,2vw,30px) + (100% - 2 * clamp(18px,2vw,30px) - (var(--n) - 1) * var(--gutter)) / var(--n) * var(--rail) + (var(--rail) - 1) * var(--gutter));top:0;bottom:0;width:1px;border-left:1px dashed #6666ff;pointer-events:none;z-index:10}
+.stage.show-bounds .boundary-overlay{display:block}
+.stage[data-mode="narrow"] .surface{position:relative}
+.stage[data-mode="narrow"] .surface:before{content:"";position:absolute;inset:-10px -10px;background:#f3f3f0;z-index:-1}
+.stage[data-mode="condensed"] .surface{position:relative}
+.stage[data-mode="condensed"] .surface:before{content:"";position:absolute;inset:-1px;background:#f3f3f0;border:1px solid #ddddda;z-index:-1}
+.stage[data-mode="wide"] .surface{position:relative}
+.stage[data-mode="wide"] .surface:before{content:"";position:absolute;inset:0;background:#f3f3f0;z-index:-1}
+.stage .surface{isolation:isolate;padding:12px 0}
+.stage.simulate-drift [data-audit="content"][data-test="offset"]{transform:translateX(12px)}
+.stage[data-width="mobile"] .stage-heading,.stage[data-width="mobile"] .sample-text,.stage[data-width="mobile"] .three,.stage[data-width="mobile"] .metrics,.stage[data-width="mobile"] .record{row-gap:11px;margin-bottom:37px}
+.stage[data-width="mobile"] .three .content-field{grid-template-columns:1fr}
+.stage[data-width="mobile"] .three article{padding:11px 0}
+.stage[data-width="mobile"] .stage-heading h3{font-size:24px}
+.stage[data-width="mobile"] .metric{font-size:32px}
+.results{border-top:1px solid var(--line);margin-top:25px;padding-top:17px}
+.result-note{font-size:12px;line-height:20px;color:var(--sub);margin:0 0 14px}
+.results-table{display:grid;gap:0}
+.result{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;border-top:1px solid var(--line);padding:12px 0;font-size:12px}
+.result .value{color:#666;font-family:"IBM Plex Mono",monospace;font-size:11px;text-align:right}
+.result.warn .value{color:#b24d34}
+.result.pass .value{color:#33745f}
+.checker-summary{font-size:13px;font-weight:500;margin:0 0 14px}
+.results button{border:1px solid #777;background:transparent;padding:9px 13px;font-size:12px;cursor:pointer}
+.sources{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.sources .label{grid-column:1/span 3}
+.sources .source-list{grid-column:4/span 9;display:grid;gap:25px}
+.source-row{display:grid;grid-template-columns:minmax(155px,.7fr) minmax(0,1.3fr);gap:24px;border-top:1px solid var(--line);padding-top:14px}
+.source-row h3{font-size:15px;font-weight:500;margin:0 0 6px}
+.source-row a{font-size:12px}
+.source-row p{margin:0;color:var(--sub);font-size:13px;line-height:21px}
+.source-row small{display:block;margin-top:8px;color:var(--dim);font-size:11px;line-height:18px}
+.footer{border-top:1px solid var(--line);margin-top:75px;padding-top:17px;display:flex;justify-content:space-between;gap:15px;color:var(--dim);font-size:11px}
+@media(max-width:1050px){.workbench{grid-template-columns:1fr}.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 18px}.controls h3{grid-column:1/-1}.stage:not([data-width="mobile"]){min-width:680px}.intro h1{font-size:66px}}
+@media(max-width:700px){.shell{display:block}.rail{border-right:0;border-bottom:1px solid var(--line);padding:19px 22px;flex-direction:row;align-items:center}.logo{width:102px}.rail p,.rail a,.rail small{display:none}.main{padding:0 22px 65px}.topline{padding:19px 0}.intro{padding:51px 0 60px;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.intro .kicker,.intro h1,.intro p{grid-column:1/-1}.intro h1{font-size:54px}.intro p{font-size:15px;line-height:24px}.section-head,.sources{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.section-head>span,.section-head>div,.sources .label,.sources .source-list{grid-column:1/-1}.section-head{row-gap:22px}.workbench{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.control{margin-bottom:12px}.preview-scroller{margin:0 -2px}.stage:not([data-width="mobile"]){min-width:680px}.source-row{grid-template-columns:1fr;gap:10px}.footer{display:block}.footer span{display:block;margin-bottom:5px}}
+@media(max-width:420px){.controls{grid-template-columns:1fr}}
+</style></head><body>
+<div class="shell">
+<aside class="rail"><img class="logo" src="../assets/geniotek-primary-logo.svg" alt="Geniotek" width="300" height="85"><p>Grid Laboratory<br>Geometry & Inspector</p><a href="../index.html#grid">← Layout & Grid</a><small>PHASE 05 / RESEARCH<br>NOT APPROVED TOKENS</small></aside>
+<main class="main"><header class="topline"><span>GENIOTEK / GRID LABORATORY</span><span>RESEARCH BUILD · 01</span></header>
+<div class="intro"><span class="kicker">01 / GEOMETRY LAB</span><h1>Make alignment<br>inspectable.</h1><p>Compare structural grid choices with the same content, then inspect actual DOM positions. This lab tests geometry; it does not constrain how color, icons, signs, motion or interaction may express information.</p></div>
+<section class="section" aria-labelledby="geometry-title">
+<div class="section-head"><span class="kicker">GEOMETRY / CONTROL</span><div><h2 id="geometry-title">The structure is measurable.</h2><p>IBM supplies geometric and gutter concepts. Apple informs relationship and reflow. ABCD’s EUC suggests proportion and restraint. Geniotek’s column choices here remain experiments, not transferred official parameters.</p></div></div>
+<div class="workbench">
+<div class="controls" aria-label="Grid experiment settings">
+<h3>Experiment controls</h3>
+<div class="control"><label for="columns">Column count</label><select id="columns"><option value="12" selected>12 columns · Study 04</option><option value="16">16 columns · Carbon comparison</option></select><p class="control-hint">Narrow preview automatically uses four columns.</p></div>
+<div class="control"><label for="mode">Gutter behavior</label><select id="mode"><option value="wide">Wide · 32px</option><option value="narrow" selected>Narrow · 16px</option><option value="condensed">Condensed · 1px</option></select><p class="control-hint">The visual surface extends into gutters in narrow mode; type stays on columns.</p></div>
+<div class="control"><label for="width">Preview width</label><select id="width"><option value="fluid" selected>Fluid / container</option><option value="tablet">760px comparison</option><option value="mobile">390px reflow</option></select></div>
+<div class="control"><label for="leading">Baseline spacing</label><select id="leading"><option value="24" selected>24px</option><option value="28">28px</option><option value="32">32px</option></select><p class="control-hint">Overlay shows rhythm lines; it does not prove optical alignment of glyphs.</p></div>
+<div class="control"><label class="toggle"><input id="showCols" type="checkbox" checked> Column guides</label><label class="toggle"><input id="showBase" type="checkbox"> Baseline guides</label><label class="toggle"><input id="showBounds" type="checkbox" checked> Index / content boundary</label><label class="toggle"><input id="simulate" type="checkbox"> Inject 12px misalignment</label></div>
+</div>
+<div class="preview-wrap"><div class="preview-header"><span>LIVE SAMPLE / REAL DOM</span><span id="geometryText" aria-live="polite"></span></div>
+<div class="preview-scroller"><div id="stage" class="stage show-cols show-bounds" data-mode="narrow" data-width="fluid">
+<div class="cols stage-heading"><span class="minor index" data-audit="index">TYPE SYSTEM</span><h3 class="content-field" data-audit="content">One grid. Different reading tasks.</h3></div>
+<div class="cols sample-text"><span class="minor index" data-audit="index">EDITORIAL</span><p class="content-field" data-audit="content" data-test="offset">Engineering judgment begins before production. The specification defines a result but cannot describe every decision needed to achieve it consistently.</p></div>
+<div class="cols three"><span class="minor index" data-audit="index">PARALLEL</span><div class="content-field" data-audit="content"><article><b>Design</b><p>Define the intended experience.</p></article><article><b>Engineering</b><p>Verify feasibility and risks.</p></article><article><b>Manufacturing</b><p>Maintain a repeatable process.</p></article></div></div>
+<div class="cols metrics"><span class="minor index" data-audit="index">MEASUREMENT</span><div class="content-field surface" data-audit="content"><span class="metric">24.50<em>mm</em></span></div></div>
+<div class="cols record"><span class="minor index" data-audit="index">RECORD</span><div class="content-field" data-audit="content"><div class="record-line"><span>Nominal diameter</span><b>Ø 24.50 mm</b></div><div class="record-line"><span>Tolerance</span><b>± 0.05 mm</b></div><div class="record-line"><span>Material</span><b>ABS / Example</b></div></div></div>
+<div class="grid-overlay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="baseline-overlay" aria-hidden="true"></div><div class="boundary-overlay" aria-hidden="true"></div>
+</div></div>
+<section class="results" aria-labelledby="audit-heading"><h3 id="audit-heading">Real geometry inspection</h3><p class="result-note">Measures the actual left edges of marked DOM elements against calculated column starts, checks horizontal overflow, and distinguishes detected issues from visual-review questions.</p><p id="auditSummary" class="checker-summary" aria-live="polite">Calculating…</p><div id="auditResults" class="results-table"></div><button type="button" id="rerun">Recheck layout</button><p class="control-hint">A passing measurement is not a visual-design approval. Intentional exceptions need documented justification.</p></section>
+</div></div></section>
+<section class="section" aria-labelledby="sources-title"><div class="section-head"><span class="kicker">02 / EVIDENCE MAP</span><div><h2 id="sources-title">Which rule comes from where?</h2><p>Official source statements are separated from Geniotek’s inferences and proposals; no column count or CSS value is attributed to ABCD.</p></div></div>
+<div class="sources"><span class="kicker label">SOURCE / APPLICATION</span><div class="source-list">
+<div class="source-row"><div><h3>IBM Design Language</h3><a href="https://www.ibm.com/design/language/2x-grid/" target="_blank" rel="noopener">2x Grid ↗</a></div><div><p>Source: consistent divisions, margins, equal columns/rows, and gutters as structural geometry.</p><small>Geniotek experiment: compare 12 and 16 columns against one stable set of content; neither is automatically approved.</small></div></div>
+<div class="source-row"><div><h3>IBM Carbon</h3><a href="https://www.carbondesignsystem.com/building-blocks/foundations/2x-grid/guidelines" target="_blank" rel="noopener">2x Grid guidelines ↗</a></div><div><p>Source: 32px default wide gutter, 16px narrow, 1px condensed; narrow/condensed allow containers to hang into gutters while text remains aligned.</p><small>Geniotek experiment: compare surface behavior without changing the sample’s text start.</small></div></div>
+<div class="source-row"><div><h3>Apple HIG</h3><a href="https://developer.apple.com/design/human-interface-guidelines/layout" target="_blank" rel="noopener">Layout ↗</a></div><div><p>Source: alignment makes relationships scannable; indentation communicates hierarchy; whitespace and reflow support changing content and size.</p><small>Geniotek experiment: inspect index/content separation and 390px reflow. This is an application, not Apple’s fixed grid.</small></div></div>
+<div class="source-row"><div><h3>ABCD / EUC</h3><a href="https://ablackcover.com/EUC" target="_blank" rel="noopener">Project details ↗</a></div><div><p>Source: scale and grid symbolize planning; information develops by proportional relationships while visual design remains restrained.</p><small>Geniotek inference: minimize unnecessary grid visibility and maintain a consistent proportional structure. ABCD publishes no CSS tokens for this project.</small></div></div>
+</div></div></section>
+<section class="section" aria-labelledby="manual-title"><div class="section-head"><span class="kicker">03 / HUMAN REVIEW</span><div><h2 id="manual-title">Numbers cannot judge composition.</h2><p>Before freezing a system, check overall visual grey, reading order, intentional exceptions, bilingual wrapping, 200% browser zoom, color/icon interplay and whether the layout remains calm with guides turned off.</p></div></div></section>
+<footer class="footer"><span>GENIOTEK / GRID LABORATORY · PHASE 05</span><span>RESEARCH ONLY · NO TOKENS FROZEN</span></footer>
+</main></div>
+<script>
+(function(){
+"use strict";
+const stage=document.getElementById("stage"), columns=document.getElementById("columns"),mode=document.getElementById("mode"),width=document.getElementById("width"),leading=document.getElementById("leading");
+const colCheck=document.getElementById("showCols"),baseCheck=document.getElementById("showBase"),boundCheck=document.getElementById("showBounds"),simulate=document.getElementById("simulate");
+const summary=document.getElementById("auditSummary"),results=document.getElementById("auditResults"),label=document.getElementById("geometryText");
+function config(){
+ const n=width.value==="mobile"?4:Number(columns.value),g=width.value==="mobile"?12:mode.value==="wide"?32:mode.value==="narrow"?16:1;
+ stage.style.setProperty("--n",String(n));stage.style.setProperty("--rail",String(n/4));stage.style.setProperty("--content-start",String(n/4+1));stage.style.setProperty("--gutter",g+"px");stage.style.setProperty("--leading",leading.value+"px");
+ stage.dataset.width=width.value;stage.dataset.mode=mode.value;
+ stage.classList.toggle("show-cols",colCheck.checked);stage.classList.toggle("show-baseline",baseCheck.checked);stage.classList.toggle("show-bounds",boundCheck.checked);stage.classList.toggle("simulate-drift",simulate.checked);
+ label.textContent=n+" columns / "+g+"px gutter / "+leading.value+"px baseline";
+ requestAnimationFrame(audit);
+}
+function audit(){
+ const n=Number(getComputedStyle(stage).getPropertyValue("--n").trim()),g=parseFloat(getComputedStyle(stage).getPropertyValue("--gutter"));
+ const pad=parseFloat(getComputedStyle(stage).paddingLeft),box=stage.getBoundingClientRect(),inner=stage.clientWidth-pad*2;
+ const track=(inner-(n-1)*g)/n,rail=n/4,contentX=box.left+stage.clientLeft+pad+rail*(track+g),indexX=box.left+stage.clientLeft+pad;
+ const tolerance=2.5, rows=[];let failures=0;
+ document.querySelectorAll("#stage [data-audit]").forEach(function(el){
+   const actual=el.getBoundingClientRect().left, expected=el.dataset.audit==="index"?indexX:contentX,delta=actual-expected;
+   const pass=Math.abs(delta)<=tolerance;
+   if(!pass)failures++;
+   rows.push({name:(el.dataset.audit==="index"?"Index ":"Content ")+el.textContent.trim().slice(0,28),value:(delta>=0?"+":"")+delta.toFixed(1)+"px",pass:pass});
+ });
+ const over=stage.scrollWidth>stage.clientWidth+2; if(over)failures++;
+ rows.push({name:"Horizontal overflow inside preview",value:over?"Detected":"None",pass:!over});
+ rows.push({name:"Measured grid track",value:track.toFixed(1)+"px",pass:null});
+ rows.push({name:"Text baseline / optical alignment",value:"Human review required",pass:null});
+ summary.textContent=failures?failures+" geometric issue(s) detected":"No geometric exceptions detected ("+n+"-column sample)";
+ results.replaceChildren();
+ rows.forEach(function(row){const item=document.createElement("div");item.className="result "+(row.pass===null?"":row.pass?"pass":"warn");const a=document.createElement("span"),b=document.createElement("span");a.textContent=row.name;b.className="value";b.textContent=row.value;item.append(a,b);results.append(item)});
+}
+[columns,mode,width,leading,colCheck,baseCheck,boundCheck,simulate].forEach(el=>el.addEventListener("change",config));
+document.getElementById("rerun").addEventListener("click",audit);
+window.addEventListener("resize",audit);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(audit);
+config();
+})();
+</script>
+</body></html>
