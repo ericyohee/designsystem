@@ -1,0 +1,15 @@
+/* 由 scripts/build_tokens.py 从 tokens.json 生成，不要手动修改。 */
+:root {
+  --gk-color-brand: #6666FF; /* frozen */
+  --gk-color-action: #4B4BDB; /* candidate */
+  --gk-color-ink: #1A1A1A; /* frozen */
+  --gk-color-body: #53534E; /* candidate */
+  --gk-color-muted: #6B6B65; /* candidate */
+  --gk-color-paper: #F8F8F6; /* candidate */
+  --gk-color-cream: #F1F0EA; /* candidate */
+  --gk-color-rule: #DCDCD6; /* candidate */
+  --gk-color-result: #FF5900; /* candidate */
+  --gk-font-display: "Archivo", "IBM Plex Sans", sans-serif; /* frozen */
+  --gk-font-sans: "IBM Plex Sans", "IBM Plex Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; /* frozen */
+  --gk-font-mono: "IBM Plex Mono", ui-monospace, monospace; /* frozen */
+}
