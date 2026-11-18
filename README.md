@@ -23,7 +23,7 @@ Geniotek 品牌标准的总入口。做任何对外或对内的品牌呈现之�
 | `core/tokens.json` | 颜色和字体的唯一数值来源 |
 | `core/tokens.md` / `core/tokens.css` | 由上面自动生成的清单（给人看 / 给网页用） |
 | `core/brand.md` | 所有场景共用的规则 |
-| `scenarios/` | 各场景的规范 |
+| `scenarios/` | 各场景的规范。网页已有内容；其余四个目前是框架，栏目标着“待定”的还没有规则 |
 | `assets/` | 官方标志 |
 | `index.html`、`studies/` | 网页方向的研究与试验页，是规范的依据，不是规范本身 |
 
@@ -35,4 +35,4 @@ Geniotek 品牌标准的总入口。做任何对外或对内的品牌呈现之�
 python3 scripts/build_tokens.py
 ```
 
-每个值都有状态：`frozen`（已定稿）或 `candidate`（暂用，可能调整）。
+每个值都有状态：`frozen`（已定稿）、`candidate`（暂用，可能调整）或 `planned`（确定要有，但数值还没定，不能用）。

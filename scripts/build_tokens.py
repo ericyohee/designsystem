@@ -13,8 +13,8 @@ HEADER = "由 scripts/build_tokens.py 从 tokens.json 生成，不要手动修�
 
 def build_css(tokens):
     lines = [f"/* {HEADER} */", ":root {"]
-    for group in ("color", "font"):
-        for name, token in tokens[group].items():
+    for group in ("color", "font"):  # planned tokens have no value yet, so gradients are not emitted
+        for name, token in tokens.get(group, {}).items():
             lines.append(f"  --gk-{group}-{name}: {token['value']}; /* {token['status']} */")
     lines.append("}")
     return "\n".join(lines) + "\n"
@@ -27,6 +27,9 @@ def build_md(tokens):
     out += ["", "## 颜色", "", "| 名称 | 色值 | 状态 | 用在哪 | 不要这样用 |", "| --- | --- | --- | --- | --- |"]
     for name, t in tokens["color"].items():
         out.append(f"| {name} | `{t['value']}` | {t['status']} | {t['use']} | {t['avoid']} |")
+    out += ["", "## 渐变", "", "| 名称 | 状态 | 表达什么 | 用在哪 | 不要这样用 | 还要决定 |", "| --- | --- | --- | --- | --- | --- |"]
+    for name, t in tokens.get("gradient", {}).items():
+        out.append(f"| {name} | {t['status']} | {t['meaning']} | {t['use']} | {t['avoid']} | {'；'.join(t['open'])} |")
     out += ["", "## 字体", "", "| 名称 | 字体 | 字重 | 宽度 | 状态 | 用在哪 | 不要这样用 |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for name, t in tokens["font"].items():
         family = t["value"].split(",")[0].strip('"')
